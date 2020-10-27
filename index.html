@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="html" lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -14,7 +14,11 @@
         <h1 class="header__text">2048 Game</h1>
     </header>
     <main class="main">
-        <button class="btn">Start game</button>
+        <div class="row">
+            <div class="btns__wrapper">
+                <button class="btn">Start game</button>
+                <button class="btn">Rules</button>
+                </div>
         <div class="scoreboard">
             <div class="scoreboard__wrapper scoreboard__wrapper--score">
                 <span class="scoreboard__label">Score</span>
@@ -25,6 +29,7 @@
                 <span class="scoreboard__value">0</span>
             </div>
         </div>
+    </div>
         <div class="board">
             <div class="row">
                 <div class="cell"></div>
@@ -52,8 +57,8 @@
             </div>
         </div>
     </main>
-    <footer>
-        <p class="footer_text">2048 game done by
+    <footer class="footer">
+        <p class="footer__text">2048 game done by
             <a class="footer__link" href="https://github.com/apyd">Artur Pydych</a>
         </p>
     </footer>
