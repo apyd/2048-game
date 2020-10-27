@@ -58,9 +58,19 @@
   background-color: transparent;
   color: #FFFFFF;
   background-color: #7678ED;
+  border: 1px solid #7678ED;
   border-radius: 5px;
   padding: 20px;
   font-size: 1.3rem;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+}
+
+.main > .row .btn:hover {
+  background-color: #F7B801;
+  border: 1px solid #7678ED;
+  color: #3D348B;
+  cursor: pointer;
 }
 
 .main > .row .scoreboard {
@@ -106,6 +116,7 @@
   min-width: 320px;
   width: 100%;
   border-radius: 5px;
+  border: 5px solid #7678ED;
   background-color: #7678ED;
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -116,7 +127,7 @@
 
 .main .board .cell {
   border-radius: 5px;
-  background-color: #F7B801;
+  background-color: #3D348B;
   margin: 5px;
 }
 
