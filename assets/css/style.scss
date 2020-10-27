@@ -23,7 +23,7 @@
 }
 
 .main {
-    .row {
+    > .row {
         @include centerFlex(row);
         align-items: stretch;
         margin-bottom: 50px;
@@ -49,6 +49,23 @@
                 padding: 0 20px;
                 height: 100%;
             }
+        }
+    }
+
+    .board {
+        display: grid;
+        min-width: 320px;
+        width: 100%;
+        border-radius: 5px;
+        background-color: $medium-slate-blue;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        height: 400px;
+
+        .cell {
+            border-radius: 5px;
+            background-color: $selective-yellow;
+            margin: 5px;
         }
     }
 }
