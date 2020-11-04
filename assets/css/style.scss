@@ -36,6 +36,7 @@
     height: 100vh;
     width: 100%;
     background-color: rgba(0,0,0,.7);
+    z-index: 1000;
 
     .popup {
         background-color: white;
@@ -143,6 +144,74 @@
             border-radius: 5px;
             background-color: $dark-slate-blue;
 
+            .tile {
+                display: flex;
+                height: 100%;
+                justify-content: center;
+                align-content: center;
+                align-items: stretch;
+                position: relative;
+                border-radius: 5px;
+            
+                .tile__value {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    font-size: 2rem;
+                    font-weight: bold;
+                    height: 2rem;
+                    width: 6em;
+                    line-height: 2rem;
+                    text-align: center;
+                    text-shadow: #0f0f0f 1px 1px;
+                }
+
+            }
+
+            .tile--2 {
+                background-color: $tile2--bg;
+            }
+
+            .tile--4 {
+                background-color: $tile4--bg;
+            }
+
+            .tile--8 {
+                background-color: $tile8--bg;
+            }
+
+            .tile--16 {
+                background-color: $tile16--bg;
+            }
+
+            .tile--32 {
+                background-color: $tile32--bg;
+            }
+
+            .tile--64 {
+                background-color: $tile64--bg;
+            }
+
+            .tile--128 {
+                background-color: $tile128--bg;
+            }
+
+            .tile--256 {
+                background-color: $tile256--bg;
+            }
+
+            .tile--512 {
+                background-color: $tile512--bg;
+            }
+
+            .tile--1024 {
+                background-color: $tile1024--bg;
+            }
+
+            .tile--2048 {
+                background-color: $tile2048--bg;
+            }
         }
     }
 }
