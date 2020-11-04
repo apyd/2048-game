@@ -22,6 +22,71 @@
     position: relative;
 }
 
+.overlay {
+    display: none;
+}
+
+.overlay--visible {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0,0,0,.7);
+
+    .popup {
+        background-color: white;
+        position: relative;
+        width: 35vw;
+        height: 50vh;
+        border-radius: 5px;
+        color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .popup__header {
+            display: flex;
+            align-items: center;
+            align-content: center;
+            width: 100%;
+            position: relative;
+            justify-content: center;
+            padding-top: 16px;
+
+            .header__text {
+                margin: 0;
+            }
+
+            .btn--close {
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                padding: 10px;
+                margin: 0;
+                background-color: transparent;
+                width: 40px;
+                height: 40px;
+                border: none;
+                border-radius: 5px;
+            
+                &:hover {
+                    cursor: pointer;
+                    background-color: #f2f2f2;
+                }
+
+                .icon--close {
+                    height: auto;
+                    width: 100%;
+                }
+            }
+            }
+    }
+}
+
 .main {
     > .row {
         @include centerFlex(row);
@@ -67,16 +132,16 @@
         min-width: 320px;
         width: 100%;
         border-radius: 5px;
-        border: 5px solid $medium-slate-blue;
+        border: 10px solid $medium-slate-blue;
         background-color: $medium-slate-blue;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        grid-gap: 10px;
         height: 400px;
 
         .cell {
             border-radius: 5px;
             background-color: $dark-slate-blue;
-            margin: 5px;
 
         }
     }

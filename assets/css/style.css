@@ -33,6 +33,91 @@
   position: relative;
 }
 
+.overlay {
+  display: none;
+}
+
+.overlay--visible {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.overlay--visible .popup {
+  background-color: white;
+  position: relative;
+  width: 35vw;
+  height: 50vh;
+  border-radius: 5px;
+  color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.overlay--visible .popup .popup__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  width: 100%;
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 16px;
+}
+
+.overlay--visible .popup .popup__header .header__text {
+  margin: 0;
+}
+
+.overlay--visible .popup .popup__header .btn--close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 10px;
+  margin: 0;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+}
+
+.overlay--visible .popup .popup__header .btn--close:hover {
+  cursor: pointer;
+  background-color: #f2f2f2;
+}
+
+.overlay--visible .popup .popup__header .btn--close .icon--close {
+  height: auto;
+  width: 100%;
+}
+
 .main > .row {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -116,19 +201,19 @@
   min-width: 320px;
   width: 100%;
   border-radius: 5px;
-  border: 5px solid #7678ED;
+  border: 10px solid #7678ED;
   background-color: #7678ED;
-  -ms-grid-columns: 1fr 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-  -ms-grid-rows: 1fr 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr 1fr;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-rows: (1fr)[4];
+      grid-template-rows: repeat(4, 1fr);
+  grid-gap: 10px;
   height: 400px;
 }
 
 .main .board .cell {
   border-radius: 5px;
   background-color: #3D348B;
-  margin: 5px;
 }
 
 .footer {

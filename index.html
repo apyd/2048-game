@@ -10,14 +10,29 @@
 </head>
 
 <body class="body">
+    <div class="overlay overlay--visible">
+        <div class="popup">
+            <!-- <span class="icon--close">+</span> -->
+            <header class="popup__header">
+                <h2 class="header__text">Rules</h2>
+                <button class="btn btn--close">
+                    <img src="./assets/icons/close-icon.svg" alt="close icon" class="icon--close">
+                </button>
+
+            </header>
+            <div class="popup__body">
+                <p class="popup__text">This is set of rules</p>
+            </div>
+        </div>
+    </div>
     <header class="header">
         <h1 class="header__text">2048 Game</h1>
     </header>
     <main class="main">
         <div class="row">
             <div class="btns__wrapper">
-                <button class="btn">Start game</button>
-                <button class="btn">Rules</button>
+                <button class="btn btn--start">Start game</button>
+                <button class="btn btn--rules">Rules</button>
                 </div>
         <div class="scoreboard">
             <div class="scoreboard__wrapper scoreboard__wrapper--score">
@@ -31,22 +46,22 @@
         </div>
     </div>
         <div class="board">
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
-                <div class="cell"></div>
+                <div class="cell" data-coordinates="11"></div>
+                <div class="cell" data-coordinates="21"></div>
+                <div class="cell" data-coordinates="31"></div>
+                <div class="cell" data-coordinates="41"></div>
+                <div class="cell" data-coordinates="21"></div>
+                <div class="cell" data-coordinates="22"></div>
+                <div class="cell" data-coordinates="23"></div>
+                <div class="cell" data-coordinates="24"></div>
+                <div class="cell" data-coordinates="31"></div>
+                <div class="cell" data-coordinates="32"></div>
+                <div class="cell" data-coordinates="33"></div>
+                <div class="cell" data-coordinates="34"></div>
+                <div class="cell" data-coordinates="41"></div>
+                <div class="cell" data-coordinates="42"></div>
+                <div class="cell" data-coordinates="43"></div>
+                <div class="cell" data-coordinates="44"></div>
             </div>
         </div>
     </main>
@@ -55,7 +70,7 @@
             <a class="footer__link" href="https://github.com/apyd">Artur Pydych</a>
         </p>
     </footer>
-    <script src="assets/js/app.js"></script>
+    <script type="module" src="./assets/js/app.js"></script>
 </body>
 
 </html>
