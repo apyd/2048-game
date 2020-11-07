@@ -9,12 +9,26 @@ export class View {
         this.overlay.classList.toggle('overlay--visible');
     }
 
-    addTile() {
+    addTile(coordinates) {
+        console.log(coordinates);
+        let parent = document.querySelector(`[data-coordinates="${coordinates}"]`);
+        let tile = this.createTile();
+        parent.appendChild(tile, parent);
+    }
 
+    createTile() {
+            let div = document.createElement('div');
+            let span = document.createElement('span');
+            div.classList.add('tile');
+            div.classList.add('tile--2');
+            span.classList.add('tile__value')
+            span.innerHTML = "2";
+            div.appendChild(span, div);
+            return div;
     }
 
     moveTiles(direction) {
-        
+        console.log('move Tiles');
     }
 
     mergeTiles() {
