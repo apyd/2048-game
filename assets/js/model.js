@@ -34,12 +34,18 @@ export class Model {
         }
 
         moveTiles(key) {
+            let boardToSort = [...this.board];
             if (key === 'ArrowRight') {
-                let boardToSort = [...this.board];
                 for (let i = 0; i < boardToSort.length; i++) {
                     boardToSort[i].sort((a,b) => this.sortToRight(a,b));
                 }
             }
+            if (key === 'ArrowLeft') {
+                for (let i = 0; i < boardToSort.length; i++) {
+                    boardToSort[i].sort((a, b) => this.sortToRight(a, b)).reverse();
+                }
+            }
+            this.board = [...boardToSort];
         }
         sortToRight(a, b) {
                 if (typeof a === typeof b) {
