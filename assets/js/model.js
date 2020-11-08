@@ -4,8 +4,8 @@ import {
 } from './app.js';
 export class Model {
     constructor() {
-        this.tilesOnBoard = 0;
         this.tilesLimit = 12;
+        this.tiles = [];
         this.score;
         this.bestScore;
         this.board = [
@@ -14,6 +14,7 @@ export class Model {
             ['', '', '', ''],
             ['', '', '', '']
         ]
+
         }
         generateCoordinates() {
             let x = Math.floor((Math.random() * 4));
@@ -22,17 +23,31 @@ export class Model {
         }
 
         checkCollision(x, y) {
-            return !this.board[x][y] ? true : false
+            return this.board[x][y] ? false : true;
         }
 
         addTile() {
                 let coordinates = this.generateCoordinates();
                 this.board[coordinates.charAt(0)][coordinates.charAt(1)] = 2;
-                this.tilesOnBoard++;
+                this.tiles.push(coordinates);
                 return coordinates;
         }
 
-        moveTiles() {
-                console.log('moveTiles');
+        moveTiles(key) {
+            if (key === 'ArrowRight') {
+                let boardToSort = [...this.board];
+                for (let i = 0; i < boardToSort.length; i++) {
+                    boardToSort[i].sort((a,b) => this.sortToRight(a,b));
+                }
+            }
         }
+        sortToRight(a, b) {
+                if (typeof a === typeof b) {
+                    return 0;
+                } else if (a < b) {
+                    return -1;
+                } else {
+                    return 1;
+                }
+}
 }

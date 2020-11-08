@@ -10,7 +10,6 @@ export class View {
     }
 
     addTile(coordinates) {
-        console.log(coordinates);
         let parent = document.querySelector(`[data-coordinates="${coordinates}"]`);
         let tile = this.createTile();
         parent.appendChild(tile, parent);

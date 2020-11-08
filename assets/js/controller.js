@@ -15,6 +15,7 @@ export class Controller {
 
     onKeyPress(key) {
             if (!key.includes('Arrow')) return;
+            model.moveTiles(key);
             view.moveTiles(key);
             let coordinates = model.addTile();
             view.addTile(coordinates);
