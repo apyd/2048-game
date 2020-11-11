@@ -1,7 +1,3 @@
-import {
-    controller,
-    view
-} from './app.js';
 export class Model {
     constructor() {
         this.tilesLimit = 12;
@@ -35,17 +31,35 @@ export class Model {
 
         moveTiles(key) {
             let boardToSort = [...this.board];
-            if (key === 'ArrowRight' || 'ArrowLeft') {
-                for (let i = 0; i < boardToSort.length; i++) {
-                    boardToSort[i].sort((a, b) => this.sortToSide(a, b, key));
+            let sortedBoard;
+            if (key === 'ArrowRight' || key === 'ArrowLeft') {
+                boardToSort.map(subArray => { subArray.sort((a, b) => this.sortToSide(a, b, key))});
+                sortedBoard = [...boardToSort];
+            }
+            else {
+                let rotatedBoard = [];
+                rotatedBoard = this.rotateBoard(boardToSort);
+                rotatedBoard.map(subArray => { subArray.sort((a, b) => this.sortToSide(a, b, key))});
+                sortedBoard = this.rotateBoard(rotatedBoard);
+                
+            }
+            this.board = [...sortedBoard];
+            console.log(this.board);
+        }
+
+        rotateBoard(boardToRotate) {
+            let rotatedBoard = Array.from(Array(4), () => new Array());
+            for (let i = 0; i < boardToRotate.length; i++) {
+                for(let j = 0; j < boardToRotate.length; j++) {
+                    rotatedBoard[i].push(boardToRotate[j][i]);
                 }
             }
-            this.board = [...boardToSort];
+            return rotatedBoard;
         }
 
         sortToSide(a, b, key) {
                 let condition;
-                key === 'ArrowLeft' ? condition = a > b : condition = a < b;
+                (key === 'ArrowLeft' || key == 'ArrowUp') ? condition = a > b : condition = a < b;
                 if (typeof a === typeof b) {
                     return 0;
                 } else if (condition) {
