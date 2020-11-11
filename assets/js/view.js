@@ -3,6 +3,10 @@ export class View {
         this.popupVisible = false;
         this.overlay = overlay;
     }
+    
+    get popupVisibility() {
+        return this.popupVisible;
+    }
 
     togglePopup() {
         this.popupVisible = !this.popupVisible;

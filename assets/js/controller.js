@@ -14,6 +14,7 @@ export class Controller {
     }
 
     onKeyPress(key) {
+            (key === 'Escape' && view.popupVisibility) ? view.togglePopup() : null;
             if (!key.includes('Arrow')) return;
             model.moveTiles(key);
             view.moveTiles(key);
