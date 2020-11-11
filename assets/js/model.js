@@ -35,22 +35,20 @@ export class Model {
 
         moveTiles(key) {
             let boardToSort = [...this.board];
-            if (key === 'ArrowRight') {
+            if (key === 'ArrowRight' || 'ArrowLeft') {
                 for (let i = 0; i < boardToSort.length; i++) {
-                    boardToSort[i].sort((a,b) => this.sortToRight(a,b));
-                }
-            }
-            if (key === 'ArrowLeft') {
-                for (let i = 0; i < boardToSort.length; i++) {
-                    boardToSort[i].sort((a, b) => this.sortToRight(a, b)).reverse();
+                    boardToSort[i].sort((a, b) => this.sortToSide(a, b, key));
                 }
             }
             this.board = [...boardToSort];
         }
-        sortToRight(a, b) {
+
+        sortToSide(a, b, key) {
+                let condition;
+                key === 'ArrowLeft' ? condition = a > b : condition = a < b;
                 if (typeof a === typeof b) {
                     return 0;
-                } else if (a < b) {
+                } else if (condition) {
                     return -1;
                 } else {
                     return 1;
