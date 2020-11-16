@@ -31,21 +31,35 @@ export class Model {
 
         moveTiles(key) {
             let boardToSort = [...this.board];
-            let sortedBoard;
+            let sortedBoard = Array.from(Array(4), () => new Array());
+            let _tempArray = Array.from(Array(4), () => new Array());
             if (key === 'ArrowRight' || key === 'ArrowLeft') {
-                boardToSort.map(subArray => { subArray.sort((a, b) => this.sortToSide(a, b, key))});
-                sortedBoard = [...boardToSort];
-            }
+                for (let i = 0; i < boardToSort.length; i++) {
+                    _tempArray[i] = boardToSort[i].map((value, i) => {
+                                return {
+                                    i,
+                                    value
+                        }
+                    }).sort((a, b) => this.sortToSide(a, b, key));
+                    sortedBoard[i] = _tempArray[i].map(obj => obj.value);
+                    }
+                    }
             else {
-                let rotatedBoard = [];
-                rotatedBoard = this.rotateBoard(boardToSort);
-                rotatedBoard.map(subArray => { subArray.sort((a, b) => this.sortToSide(a, b, key))});
-                sortedBoard = this.rotateBoard(rotatedBoard);
-                
+                let rotatedBoard = this.rotateBoard(boardToSort);
+                for (let i = 0; i < boardToSort.length; i++) {
+                    _tempArray[i] = rotatedBoard[i].map((value, i) => {
+                        return {
+                            i,
+                            value
+                        }
+                    }).sort((a, b) => this.sortToSide(a, b, key));
+                    sortedBoard[i] = _tempArray[i].map(obj => obj.value);
+                }
+                rotatedBoard = this.rotateBoard(sortedBoard);
+                sortedBoard = rotatedBoard;
+                }
+                this.board = [...sortedBoard];
             }
-            this.board = [...sortedBoard];
-            console.log(this.board);
-        }
 
         rotateBoard(boardToRotate) {
             let rotatedBoard = Array.from(Array(4), () => new Array());
@@ -59,13 +73,23 @@ export class Model {
 
         sortToSide(a, b, key) {
                 let condition;
-                (key === 'ArrowLeft' || key == 'ArrowUp') ? condition = a > b : condition = a < b;
-                if (typeof a === typeof b) {
+                (key === 'ArrowLeft' || key === 'ArrowUp') ? condition = a.value > b.value: condition = a.value < b.value;
+                if ((typeof a.value === 'number') && (typeof b.value === 'number')) {
+                    a.value === b.value ? this.mergeTiles(a, b, condition) : null;
                     return 0;
                 } else if (condition) {
                     return -1;
                 } else {
                     return 1;
                 }
-}
+        }
+        mergeTiles(a, b, condition) {
+            if (condition === a.value > b.value) {
+                b.value += b.value;
+                a.value = '';
+            } else {
+                a.value *= 2;
+                b.value = '';
+            }
+        }
 }
