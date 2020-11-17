@@ -2,7 +2,7 @@ export class Model {
     constructor() {
         this.tilesLimit = 12;
         this.tiles = [];
-        this.score;
+        this.score = 0;
         this.bestScore;
         this.board = [
             ['', '', '', ''],
@@ -62,6 +62,7 @@ export class Model {
                     if (arr[i] === arr[i - 1]) {
                         arr[i] += arr[i - 1];
                         arr[i - 1] = '';
+                        this.updateScore(arr[i]);
                     }
                 }
             } else {
@@ -69,9 +70,14 @@ export class Model {
                     if (arr[i] === arr[i + 1]) {
                         arr[i] += arr[i + 1];
                         arr[i + 1] = '';
+                        this.updateScore(arr[i]);
                     }
                 }
             }
             return arr;
+        }
+
+        updateScore(pointsToAdd) {
+            this.score += pointsToAdd;
         }
 }
