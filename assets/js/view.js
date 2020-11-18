@@ -1,7 +1,9 @@
 export class View {
-    constructor(overlay) {
+    constructor(overlay, bestScore, score) {
         this.popupVisible = false;
         this.overlay = overlay;
+        this.bestScore = bestScore;
+        this.score = score;
     }
     
     get popupVisibility() {
@@ -30,11 +32,12 @@ export class View {
             return div;
     }
 
-    moveTiles(direction) {
+    updateBoard(board) {
         console.log('move Tiles');
     }
 
-    mergeTiles() {
-
+    updateResults(score) {
+        this.bestScore = localStorage.getItem('bestScore');
+        console.log(this.bestScore, this.score);
     }
 }

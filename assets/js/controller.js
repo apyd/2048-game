@@ -17,9 +17,10 @@ export class Controller {
             (key === 'Escape' && view.popupVisibility) ? view.togglePopup() : null;
             if (!key.includes('Arrow')) return;
             model.moveTiles(key);
-            view.moveTiles(key);
+            // view.moveTiles(key);
             let coordinates = model.addTile();
             view.addTile(coordinates);
+            view.updateResults(1);
     }
 
     endGame() {

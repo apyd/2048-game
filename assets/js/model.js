@@ -3,7 +3,7 @@ export class Model {
         this.tilesLimit = 12;
         this.tiles = [];
         this.score = 0;
-        this.bestScore;
+        this.bestScore = 0;
         this.board = [
             ['', '', '', ''],
             ['', '', '', ''],
@@ -77,7 +77,20 @@ export class Model {
             return arr;
         }
 
+        get score() {
+            return this.score;
+        }
+
+        set score(score) {
+            this.score = score;
+        }
+
+        get bestScore() {
+            return this.bestScore;
+        }
+
         updateScore(pointsToAdd) {
-            this.score += pointsToAdd;
+            this.score(pointsToAdd);
+            localStorage.setItem('bestScore', this.score());
         }
 }
