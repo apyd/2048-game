@@ -3,7 +3,7 @@ import {
     model
 } from './app.js';
 
-export class Controller {
+export default class Controller {
     constructor() {
         this.gameStatus = 'init';
     }
@@ -20,7 +20,6 @@ export class Controller {
             // view.moveTiles(key);
             let coordinates = model.addTile();
             view.addTile(coordinates);
-            view.updateResults(1);
     }
 
     endGame() {
