@@ -1,9 +1,10 @@
-export class View {
-    constructor(overlay, bestScore, score) {
+export default class View {
+    constructor(overlay, scoreEl, bestScoreEl) {
         this.popupVisible = false;
         this.overlay = overlay;
-        this.bestScore = bestScore;
-        this.score = score;
+        this.bestScoreEl = bestScoreEl;
+        this.scoreEl = scoreEl;
+        bestScoreEl.innerHTML = +localStorage.getItem('bestScore');
     }
     
     get popupVisibility() {
@@ -36,8 +37,8 @@ export class View {
         console.log('move Tiles');
     }
 
-    updateResults(score) {
-        this.bestScore = localStorage.getItem('bestScore');
-        console.log(this.bestScore, this.score);
+    updateScore(score) {
+        this.scoreEl.innerHTML = score;
+        this.bestScoreEl.innerHTML = localStorage.getItem('bestScore'); 
     }
 }

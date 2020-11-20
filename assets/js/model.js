@@ -1,16 +1,19 @@
-export class Model {
+import {
+    view
+} from './app.js';
+
+export default class Model {
     constructor() {
         this.tilesLimit = 12;
         this.tiles = [];
         this.score = 0;
-        this.bestScore = 0;
+        this.bestScore = +localStorage.getItem('bestScore');
         this.board = [
             ['', '', '', ''],
             ['', '', '', ''],
             ['', '', '', ''],
             ['', '', '', '']
         ]
-
         }
         generateCoordinates() {
             let x = Math.floor((Math.random() * 4));
@@ -76,21 +79,13 @@ export class Model {
             }
             return arr;
         }
-
-        get score() {
-            return this.score;
-        }
-
-        set score(score) {
-            this.score = score;
-        }
-
-        get bestScore() {
-            return this.bestScore;
-        }
-
+        
         updateScore(pointsToAdd) {
-            this.score(pointsToAdd);
-            localStorage.setItem('bestScore', this.score());
+            this.score += pointsToAdd;
+            if (this.score > this.bestScore) {
+                    localStorage.setItem('bestScore', this.score);
+                    this.bestScore = +localStorage.getItem('bestScore');
+            }    
+            view.updateScore(this.score);
         }
 }
