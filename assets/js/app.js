@@ -14,7 +14,7 @@ const currentScoreSpan = document.querySelectorAll('.scoreboard__value')[1];
 export const view = new View(overlay, bestScoreSpan, currentScoreSpan);
 export const model = new Model();
 export const controller = new Controller(startBtn, closeBtn, rulesBtn);
-startBtn.addEventListener("click", controller.startGame);
+startBtn.addEventListener("click", () => controller.startGame());
 rulesBtn.addEventListener("click", () => view.togglePopup());
 closeBtn.addEventListener("click", () => view.togglePopup());
 overlay.addEventListener("click", (e) => e.target === overlay ? view.togglePopup() : null);

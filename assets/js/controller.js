@@ -5,24 +5,25 @@ import {
 
 export default class Controller {
     constructor() {
-        this.gameStatus = 'init';
+        this.gameStatus = 0;
     }
 
     startGame() {
-        console.log('Start game');
-        this.gameStatus = 'running';
+        this.gameStatus = 1;
+        view.addTile(model.addTile());
+        view.addTile(model.addTile());
     }
 
     onKeyPress(key) {
+            if (!this.gameStatus) return;
             (key === 'Escape' && view.popupVisibility) ? view.togglePopup() : null;
             if (!key.includes('Arrow')) return;
             model.moveTiles(key);
             // view.moveTiles(key);
-            let coordinates = model.addTile();
-            view.addTile(coordinates);
+            view.addTile(model.addTile());
     }
 
     endGame() {
-        this.gameStatus = 'finished';
+        this.gameStatus = 0;
     }
 }
