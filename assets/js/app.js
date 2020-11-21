@@ -8,12 +8,10 @@ const startBtn = document.querySelector(".btn--start");
 const closeBtn = document.querySelector(".btn--close");
 const rulesBtn = document.querySelector(".btn--rules");
 const overlay = document.querySelector(".overlay");
-const bestScoreSpan = document.querySelectorAll('.scoreboard__value')[0];
-const currentScoreSpan = document.querySelectorAll('.scoreboard__value')[1];
 
-export const view = new View(overlay, bestScoreSpan, currentScoreSpan);
+export const view = new View();
 export const model = new Model();
-export const controller = new Controller(startBtn, closeBtn, rulesBtn);
+export const controller = new Controller();
 startBtn.addEventListener("click", () => controller.startGame());
 rulesBtn.addEventListener("click", () => view.togglePopup());
 closeBtn.addEventListener("click", () => view.togglePopup());

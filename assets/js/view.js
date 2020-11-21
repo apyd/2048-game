@@ -1,44 +1,37 @@
 export default class View {
-    constructor(overlay, scoreEl, bestScoreEl) {
+    constructor() {
         this.popupVisible = false;
-        this.overlay = overlay;
-        this.bestScoreEl = bestScoreEl;
-        this.scoreEl = scoreEl;
-        bestScoreEl.innerHTML = +localStorage.getItem('bestScore');
-    }
-    
-    get popupVisibility() {
-        return this.popupVisible;
     }
 
     togglePopup() {
         this.popupVisible = !this.popupVisible;
-        this.overlay.classList.toggle('overlay--visible');
+        document.querySelector(".overlay").classList.toggle('overlay--visible');
     }
 
     addTile(coordinates) {
-        let parent = document.querySelector(`[data-coordinates="${coordinates}"]`);
-        let tile = this.createTile();
-        parent.appendChild(tile, parent);
+        let board = document.querySelector('.board');
+        let tile = document.createElement('div');
+        tile.classList.add('tile');
+        tile.classList.add('tile--2');
+        tile.style.left = `${coordinates.charAt(0)*95+(coordinates.charAt(0)*10)}px`;
+        tile.style.top = `${coordinates.charAt(1)*95+(coordinates.charAt(1)*10)}px`;
+        tile.dataset.coordinates = coordinates;
+        let span = document.createElement('span');
+        span.classList.add('tile__value')
+        span.innerHTML = "2";
+        tile.appendChild(span);
+        board.appendChild(tile);
     }
 
-    createTile() {
-            let div = document.createElement('div');
-            let span = document.createElement('span');
-            div.classList.add('tile');
-            div.classList.add('tile--2');
-            span.classList.add('tile__value')
-            span.innerHTML = "2";
-            div.appendChild(span, div);
-            return div;
+    moveTiles() {
     }
 
-    updateBoard(board) {
-        console.log('move Tiles');
+
+    mergeTiles() {
     }
 
     updateScore(score) {
-        this.scoreEl.innerHTML = score;
-        this.bestScoreEl.innerHTML = localStorage.getItem('bestScore'); 
+        document.querySelectorAll('.scoreboard__value')[0].innerHTML = score;
+        document.querySelectorAll('.scoreboard__value')[1].innerHTML = localStorage.getItem('bestScore');
     }
 }
