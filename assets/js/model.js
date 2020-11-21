@@ -1,4 +1,5 @@
 import {
+    controller,
     view
 } from './app.js';
 
@@ -37,6 +38,7 @@ export default class Model {
         addTile() {
                 let coordinates = this.generateCoordinates();
                 this.board[coordinates.charAt(0)][coordinates.charAt(1)] = 2;
+                controller.tilesOnBoard++;
                 return coordinates;
         }
 
@@ -74,6 +76,7 @@ export default class Model {
                         arr[i] += arr[i - 1];
                         arr[i - 1] = '';
                         this.updateScore(arr[i]);
+                        controller.tilesOnBoard--;
                     }
                 }
             } else {
@@ -82,6 +85,7 @@ export default class Model {
                         arr[i] += arr[i + 1];
                         arr[i + 1] = '';
                         this.updateScore(arr[i]);
+                        controller.tilesOnBoard--;
                     }
                 }
             }

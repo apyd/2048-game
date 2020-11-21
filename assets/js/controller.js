@@ -6,6 +6,7 @@ import {
 export default class Controller {
     constructor() {
         this.gameStatus = 0;
+        this.tilesOnBoard = 0;
     }
 
     startGame() {
