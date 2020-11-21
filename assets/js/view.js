@@ -8,6 +8,13 @@ export default class View {
         document.querySelector(".overlay").classList.toggle('overlay--visible');
     }
 
+    clearBoard() {
+        let board = document.querySelector('.board');
+        while (board.firstChild) {
+            board.removeChild(board.lastChild);
+        }
+    }
+
     addTile(coordinates) {
         let board = document.querySelector('.board');
         let tile = document.createElement('div');

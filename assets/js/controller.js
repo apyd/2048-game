@@ -9,17 +9,18 @@ export default class Controller {
     }
 
     startGame() {
+        model.clearBoard();
+        view.clearBoard();
         this.gameStatus = 1;
         view.addTile(model.addTile());
         view.addTile(model.addTile());
     }
 
     onKeyPress(key) {
-            if (!this.gameStatus) return;
-            (key === 'Escape' && view.popupVisibility) ? view.togglePopup() : null;
-            if (!key.includes('Arrow')) return;
+            (key === 'Escape' && view.popupVisible) ? view.togglePopup() : null;
+            if (!key.includes('Arrow') || (!this.gameStatus)) return;
             model.moveTiles(key);
-            // view.moveTiles(key);
+            view.moveTiles(key);
             view.addTile(model.addTile());
     }
 
