@@ -81,21 +81,22 @@ export default class Model {
             return rotatedBoard;
         }
         mergeTiles(arr, key) {
+            if (arr.length < 2) return arr;
             if ((key === 'ArrowDown' || key === 'ArrowRight')) {
-                for (let i = arr.length; i > 0; i--) {
-                    if (arr[i] === arr[i - 1]) {
-                        arr[i] += arr[i - 1];
+                for (let i = arr.length - 1; i >= 1; i--) {
+                    if (arr[i].val === arr[i - 1].val) {
+                        arr[i].val += arr[i - 1].val;
                         arr[i - 1] = '';
-                        this.updateScore(arr[i]);
+                        this.updateScore(arr[i].val);
                         controller.tilesOnBoard--;
                     }
                 }
             } else {
-                for (let i = 0; i < arr.length; i++) {
-                    if (arr[i] === arr[i + 1]) {
-                        arr[i] += arr[i + 1];
+                for (let i = 0; i <= arr.length - 2; i++) {
+                    if (arr[i].val === arr[i + 1].val) {
+                        arr[i].val += arr[i + 1].val;
                         arr[i + 1] = '';
-                        this.updateScore(arr[i]);
+                        this.updateScore(arr[i].val);
                         controller.tilesOnBoard--;
                     }
                 }
