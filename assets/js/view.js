@@ -1,3 +1,7 @@
+import {
+    model
+} from "./app.js";
+
 export default class View {
     constructor() {
         this.popupVisible = false;
@@ -15,14 +19,14 @@ export default class View {
         }
     }
 
-    addTile(coordinates) {
+    addTile({y, x, id}) {
         let board = document.querySelector('.board');
         let tile = document.createElement('div');
         tile.classList.add('tile');
         tile.classList.add('tile--2');
-        tile.style.left = `${coordinates.charAt(0)*95+(coordinates.charAt(0)*10)}px`;
-        tile.style.top = `${coordinates.charAt(1)*95+(coordinates.charAt(1)*10)}px`;
-        tile.dataset.coordinates = coordinates;
+        tile.style.left = `${x*95+x*10}px`;
+        tile.style.top = `${y*95+y*10}px`;
+        tile.dataset.id = id;
         let span = document.createElement('span');
         span.classList.add('tile__value')
         span.innerHTML = "2";
@@ -30,7 +34,8 @@ export default class View {
         board.appendChild(tile);
     }
 
-    moveTiles() {
+    moveTiles(key) {
+
     }
 
 

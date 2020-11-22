@@ -20,8 +20,7 @@ export default class Controller {
     onKeyPress(key) {
             (key === 'Escape' && view.popupVisible) ? view.togglePopup() : null;
             if (!key.includes('Arrow') || (!this.gameStatus)) return;
-            model.moveTiles(key);
-            view.moveTiles(key);
+            view.moveTiles(model.moveTiles(key));
             view.addTile(model.addTile());
     }
 

@@ -5,6 +5,7 @@ import {
 
 export default class Model {
     constructor() {
+        this.nextId = 0;
         this.tilesLimit = 12;
         this.score = 0;
         this.bestScore = +localStorage.getItem('bestScore');
@@ -22,7 +23,8 @@ export default class Model {
                 ['', '', '', ''],
                 ['', '', '', ''],
                 ['', '', '', '']
-            ]
+            ];
+            this.nextId = 0;
         }
 
         generateCoordinates() {
@@ -37,9 +39,18 @@ export default class Model {
 
         addTile() {
                 let coordinates = this.generateCoordinates();
-                this.board[coordinates.charAt(0)][coordinates.charAt(1)] = 2;
+                let id = this.nextId;
+                this.board[coordinates.charAt(0)][coordinates.charAt(1)] = {
+                    id: id,
+                    val: 2
+                };
+                this.nextId++;
                 controller.tilesOnBoard++;
-                return coordinates;
+                return {
+                    y: coordinates.charAt(0),
+                    x: coordinates.charAt(1),
+                    id: id
+                };
         }
 
         moveTiles(key) {
