@@ -69,6 +69,23 @@ export default class Model {
             }
             (key === 'ArrowUp' || key === 'ArrowDown') ? sortedBoard = this.rotateBoard([...sortedBoard]): null;
             this.board = [...sortedBoard];
+            return this.generateArrayWithUpdatedTiles(sortedBoard);
+        }
+
+        generateArrayWithUpdatedTiles(board) {
+            let arrayWithTiles = [];
+            for (let [index, subArray] of board.entries()) {
+                arrayWithTiles.push(subArray.filter(el => el).map(el => {
+                    return {
+                        id: el.id,
+                        y: index,
+                        x: subArray.map(arrayEl => {
+                            return arrayEl.id
+                        }).indexOf(el.id)
+                    }
+                }));
+            }
+            return arrayWithTiles.flat(1);
         }
 
         rotateBoard(boardToRotate) {
