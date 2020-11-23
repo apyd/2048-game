@@ -85,7 +85,8 @@ export default class Model {
                     }
                 }));
             }
-            return arrayWithTiles.flat(1);
+            let arr = [].concat(...arrayWithTiles);
+            return arr;
         }
 
         rotateBoard(boardToRotate) {
