@@ -1,7 +1,3 @@
-import {
-    model
-} from "./app.js";
-
 export default class View {
     constructor() {
         this.popupVisible = false;
@@ -34,12 +30,23 @@ export default class View {
         board.appendChild(tile);
     }
 
-    moveTiles(key) {
-
+    moveTiles(arrayWithTiles) {
+        let tiles = document.querySelectorAll('.tile');
+        let index;
+        tiles.forEach(tile => {
+            index = arrayWithTiles.map(arrTile => arrTile.id).indexOf(+tile.dataset.id);
+            if(index === -1) {
+                let mergedIndex = arrayWithTiles.filter(arrTile => arrTile.mergedId).map(arrTile => arrTile.mergedId).indexOf(+tile.dataset.id);
+                return this.mergeTiles(tiles[mergedIndex], tile);
+            }
+            tile.style.left = `${arrayWithTiles[index].x*95+arrayWithTiles[index].x*10}px`;
+            tile.style.top = `${arrayWithTiles[index].y*95+arrayWithTiles[index].y*10}px`;
+        });
     }
 
 
-    mergeTiles() {
+    mergeTiles(retainedTile, tileToMerge) {
+        console.log(retainedTile, tileToMerge);
     }
 
     updateScore(score) {
