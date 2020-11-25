@@ -36,8 +36,9 @@ export default class View {
         tiles.forEach(tile => {
             index = arrayWithTiles.map(arrTile => arrTile.id).indexOf(+tile.dataset.id);
             if(index === -1) {
-                let mergedIndex = arrayWithTiles.filter(arrTile => arrTile.mergedId).map(arrTile => arrTile.mergedId).indexOf(+tile.dataset.id);
-                return this.mergeTiles(tiles[mergedIndex], tile);
+                let retainedTileObj = arrayWithTiles.filter(el => el.mergedId === (+tile.dataset.id));
+                let retainedTile = document.querySelector(`[data-id="${retainedTileObj[0].id}"]`);
+                return this.mergeTiles(retainedTile, tile, retainedTileObj);
             }
             tile.style.left = `${arrayWithTiles[index].x*95+arrayWithTiles[index].x*10}px`;
             tile.style.top = `${arrayWithTiles[index].y*95+arrayWithTiles[index].y*10}px`;
@@ -45,8 +46,14 @@ export default class View {
     }
 
 
-    mergeTiles(retainedTile, tileToMerge) {
-        console.log(retainedTile, tileToMerge);
+    mergeTiles(retainedTile, tileToMerge, retainedObj) {
+        tileToMerge.style.left = `${retainedObj[0].x*95+retainedObj[0].x*10}px`;
+        tileToMerge.style.top = `${retainedObj[0].y*95+retainedObj[0].y*10}px`;
+        retainedTile.style.left = `${retainedObj[0].x*95+retainedObj[0].x*10}px`;
+        retainedTile.style.top = `${retainedObj[0].y*95+retainedObj[0].y*10}px`;
+        retainedTile.classList = `tile tile--${retainedObj[0].val}`;
+        retainedTile.firstChild.innerHTML = `${retainedObj[0].val}`;
+        tileToMerge.remove();
     }
 
     updateScore(score) {

@@ -78,11 +78,12 @@ export default class Model {
                 arrayWithTiles.push(subArray.filter(el => el).map(el => {
                     return {
                         id: el.id,
+                        val: el.val,
                         y: index,
                         x: subArray.map(arrayEl => {
                             return arrayEl.id
                         }).indexOf(el.id),
-                        mergedId: el.mergedId
+                        mergedId : el.mergedId
                     }
                 }));
             }
@@ -105,7 +106,7 @@ export default class Model {
                 for (let i = arr.length - 1; i >= 1; i--) {
                     if (arr[i].val === arr[i - 1].val) {
                         arr[i].val += arr[i - 1].val;
-                        arr[i].mergedId = i - 1;
+                        arr[i].mergedId = arr[i - 1].id;
                         arr[i - 1] = '';
                         this.updateScore(arr[i].val);
                         controller.tilesOnBoard--;
@@ -114,9 +115,10 @@ export default class Model {
             } else {
                 for (let i = 0; i <= arr.length - 2; i++) {
                     if (arr[i].val === arr[i + 1].val) {
+                        console.log(arr[i], arr[i+1]);
                         arr[i].val += arr[i + 1].val;
+                        arr[i].mergedId = arr[i + 1].id;
                         arr[i + 1] = '';
-                        arr[i].mergedId = i + 1;
                         this.updateScore(arr[i].val);
                         controller.tilesOnBoard--;
                     }
