@@ -2,7 +2,7 @@ import Controller from "./controller.js";
 import View from "./view.js";
 import Model from "./model.js";
 
-!localStorage.getItem('bestScore') ? localStorage.getItem('bestScore', 0) : null;
+!localStorage.getItem('bestScore') ? localStorage.setItem('bestScore', 0) : null;
 
 const startBtn = document.querySelector(".btn--start");
 const closeBtn = document.querySelector(".btn--close");
@@ -17,3 +17,4 @@ rulesBtn.addEventListener("click", () => view.togglePopup());
 closeBtn.addEventListener("click", () => view.togglePopup());
 overlay.addEventListener("click", (e) => e.target === overlay ? view.togglePopup() : null);
 window.addEventListener("keyup", (e) => controller.onKeyPress(e.key));
+window.addEventListener('DOMContentLoaded', () => view.updateScore());

@@ -56,7 +56,7 @@ export default class View {
         tileToMerge.remove();
     }
 
-    updateScore(score) {
+    updateScore(score = 0) {
         document.querySelectorAll('.scoreboard__value')[0].innerHTML = score;
         document.querySelectorAll('.scoreboard__value')[1].innerHTML = localStorage.getItem('bestScore');
     }
