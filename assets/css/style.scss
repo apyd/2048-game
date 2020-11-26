@@ -152,6 +152,10 @@
             align-items: stretch;
             border-radius: 5px;
             position: absolute;
+            @include animation(addTile, .5s) {
+                0% { transform: scale(.7);}
+                100% { transform: scale(1);}
+            }
             
             .tile__value {
                 position: absolute;
@@ -212,8 +216,20 @@
         .tile--2048 {
             background-color: $tile2048--bg;
         }
+
+        .move {
+            transition: all .3s ease;
         }
+
+        .merge {
+            @include animation(mergeTiles, .3s) {
+                0% { transform: scale(1.5);}
+                100% { transform: scale(1);}
+        }
+
     }
+}
+}
 
 .footer {
     position: absolute;

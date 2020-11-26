@@ -42,6 +42,7 @@ export default class View {
             }
             tile.style.left = `${arrayWithTiles[index].x*95+arrayWithTiles[index].x*10}px`;
             tile.style.top = `${arrayWithTiles[index].y*95+arrayWithTiles[index].y*10}px`;
+            tile.classList.add('move');
         });
     }
 
@@ -53,7 +54,9 @@ export default class View {
         retainedTile.style.top = `${retainedObj[0].y*95+retainedObj[0].y*10}px`;
         retainedTile.classList = `tile tile--${retainedObj[0].val}`;
         retainedTile.firstChild.innerHTML = `${retainedObj[0].val}`;
+        retainedTile.classList.add('merge');
         tileToMerge.remove();
+
     }
 
     updateScore(score = 0) {
