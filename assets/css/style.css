@@ -298,8 +298,8 @@
 .main .board .add {
   -webkit-animation-name: addTile;
           animation-name: addTile;
-  -webkit-animation-duration: 0.5s;
-          animation-duration: 0.5s;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
 }
 
 @-webkit-keyframes addTile {
@@ -325,15 +325,15 @@
 }
 
 .main .board .move {
-  -webkit-transition: all .3s ease;
-  transition: all .3s ease;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
 }
 
 .main .board .merge {
   -webkit-animation-name: mergeTiles;
           animation-name: mergeTiles;
-  -webkit-animation-duration: 0.3s;
-          animation-duration: 0.3s;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
 }
 
 @-webkit-keyframes mergeTiles {
@@ -360,10 +360,15 @@
 
 .footer {
   position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
   bottom: 0;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  justify-content: center;
 }
 
 .footer .footer__link {

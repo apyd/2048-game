@@ -27,7 +27,7 @@ export default class View {
         span.innerHTML = "2";
         tile.appendChild(span);
         board.appendChild(tile);
-        setTimeout(() => tile.classList.remove('add'), 500);
+        setTimeout(() => tile.classList.remove('add'), 1000);
     }
 
     moveTiles(arrayWithTiles) {
@@ -43,7 +43,7 @@ export default class View {
             tile.style.left = `${arrayWithTiles[index].x*95+arrayWithTiles[index].x*10}px`;
             tile.style.top = `${arrayWithTiles[index].y*95+arrayWithTiles[index].y*10}px`;
             tile.classList.add('move');
-            setTimeout(() => tile.classList.remove('move'), 300);
+            setTimeout(() => tile.classList.remove('move'), 1000);
         });
     }
 
@@ -57,7 +57,7 @@ export default class View {
         retainedTile.classList = `tile tile--${retainedObj[0].val}`;
         retainedTile.firstChild.innerHTML = `${retainedObj[0].val}`;
         retainedTile.classList.add('merge');
-        setTimeout(() => retainedTile.classList.remove('merge'), 300);
+        setTimeout(() => retainedTile.classList.remove('merge'), 1000);
         tileToMerge.remove();
 
     }
