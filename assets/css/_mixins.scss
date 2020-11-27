@@ -11,11 +11,9 @@
 }
 
 @mixin animation($name, $duration) {
-  
     @keyframes #{$name} {
       @content;
     }
-  
     animation-name: $name;
     animation-duration: $duration;
   }

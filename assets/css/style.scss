@@ -152,10 +152,6 @@
             align-items: stretch;
             border-radius: 5px;
             position: absolute;
-            @include animation(addTile, .5s) {
-                0% { transform: scale(.7);}
-                100% { transform: scale(1);}
-            }
             
             .tile__value {
                 position: absolute;
@@ -216,6 +212,13 @@
         .tile--2048 {
             background-color: $tile2048--bg;
         }
+
+        .add {
+            @include animation(addTile, .5s) {
+                0% { transform: scale(.7);}
+                100% { transform: scale(1);}
+            }
+        };
 
         .move {
             transition: all .3s ease;

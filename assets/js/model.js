@@ -115,7 +115,6 @@ export default class Model {
             } else {
                 for (let i = 0; i <= arr.length - 2; i++) {
                     if (arr[i].val === arr[i + 1].val) {
-                        console.log(arr[i], arr[i+1]);
                         arr[i].val += arr[i + 1].val;
                         arr[i].mergedId = arr[i + 1].id;
                         arr[i + 1] = '';

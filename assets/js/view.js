@@ -18,8 +18,7 @@ export default class View {
     addTile({y, x, id}) {
         let board = document.querySelector('.board');
         let tile = document.createElement('div');
-        tile.classList.add('tile');
-        tile.classList.add('tile--2');
+        tile.classList.add('tile', 'tile--2', 'add');
         tile.style.left = `${x*95+x*10}px`;
         tile.style.top = `${y*95+y*10}px`;
         tile.dataset.id = id;
@@ -28,6 +27,7 @@ export default class View {
         span.innerHTML = "2";
         tile.appendChild(span);
         board.appendChild(tile);
+        setTimeout(() => tile.classList.remove('add'), 500);
     }
 
     moveTiles(arrayWithTiles) {
@@ -43,6 +43,7 @@ export default class View {
             tile.style.left = `${arrayWithTiles[index].x*95+arrayWithTiles[index].x*10}px`;
             tile.style.top = `${arrayWithTiles[index].y*95+arrayWithTiles[index].y*10}px`;
             tile.classList.add('move');
+            setTimeout(() => tile.classList.remove('move'), 300);
         });
     }
 
@@ -50,11 +51,13 @@ export default class View {
     mergeTiles(retainedTile, tileToMerge, retainedObj) {
         tileToMerge.style.left = `${retainedObj[0].x*95+retainedObj[0].x*10}px`;
         tileToMerge.style.top = `${retainedObj[0].y*95+retainedObj[0].y*10}px`;
+        tileToMerge.classList.add('merge');
         retainedTile.style.left = `${retainedObj[0].x*95+retainedObj[0].x*10}px`;
         retainedTile.style.top = `${retainedObj[0].y*95+retainedObj[0].y*10}px`;
         retainedTile.classList = `tile tile--${retainedObj[0].val}`;
         retainedTile.firstChild.innerHTML = `${retainedObj[0].val}`;
         retainedTile.classList.add('merge');
+        setTimeout(() => retainedTile.classList.remove('merge'), 300);
         tileToMerge.remove();
 
     }
