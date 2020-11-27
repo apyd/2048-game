@@ -93,6 +93,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    overflow: hidden;
 
     > .row {
         @include centerFlex(row);
@@ -129,7 +130,13 @@
                 @include centerFlex(column);
                 padding: 0 20px;
                 height: 100%;
+
+                .scoreboard__value {
+                    font-weight: bold;
+                }
             }
+
+
         }
     }
 
@@ -214,18 +221,18 @@
         }
 
         .add {
-            @include animation(addTile, 1s) {
+            @include animation(addTile, .6s) {
                 0% { transform: scale(.7);}
                 100% { transform: scale(1);}
             }
         };
 
         .move {
-            transition: all 1s ease;
+            transition: all .6s ease;
         }
 
         .merge {
-            @include animation(mergeTiles, 1s) {
+            @include animation(mergeTiles, .6s) {
                 0% { transform: scale(1.5);}
                 100% { transform: scale(1);}
         }

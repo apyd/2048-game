@@ -60,11 +60,13 @@ export default class Model {
             if (key === 'ArrowRight' || key === 'ArrowDown') {
                 for (let [index, subArray] of boardToSort.entries()) {
                     sortedBoard[index] = subArray.filter(el => !el).concat(this.mergeTiles(subArray.filter(el => el), key));
+                    sortedBoard[index] = [...sortedBoard[index]].filter(el => !el).concat([...sortedBoard[index]].filter(el => el));
                 }
             }
             else {
                 for (let [index, subArray] of boardToSort.entries()) {
                     sortedBoard[index] = this.mergeTiles(subArray.filter(el => el), key).concat(subArray.filter(el => !el));
+                    sortedBoard[index] = [...sortedBoard[index]].filter(el => el).concat([...sortedBoard[index]].filter(el => !el));
                 }
             }
             (key === 'ArrowUp' || key === 'ArrowDown') ? sortedBoard = this.rotateBoard([...sortedBoard]): null;
