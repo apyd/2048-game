@@ -4,9 +4,9 @@ import Model from "./model.js";
 
 !localStorage.getItem('bestScore') ? localStorage.setItem('bestScore', 0) : null;
 
-const startBtn = document.querySelector(".btn--start");
+const startBtn = document.querySelectorAll(".btn--primary")[0];
 const closeBtn = document.querySelector(".btn--close");
-const rulesBtn = document.querySelector(".btn--rules");
+const rulesBtn = document.querySelectorAll(".btn--primary")[1];
 const overlay = document.querySelector(".overlay");
 
 export const view = new View();
