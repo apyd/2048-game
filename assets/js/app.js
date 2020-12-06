@@ -2,7 +2,8 @@ import Controller from "./controller.js";
 import View from "./view.js";
 import Model from "./model.js";
 
-!localStorage.getItem('bestScore') ? localStorage.setItem('bestScore', 0) : null;
+!localStorage.getItem(`bestScore3`) ? localStorage.setItem(`bestScore3`, 0) : null;
+!localStorage.getItem(`bestScore4`) ? localStorage.setItem(`bestScore4`, 0) : null;
 
 const startBtn = document.querySelectorAll(".btn--primary")[0];
 const closeBtn = document.querySelector(".btn--close");
@@ -16,7 +17,7 @@ export const controller = new Controller();
 
 radioBtns.forEach(radioBtn => radioBtn.addEventListener('click', () => {
     startBtn.disabled = false;
-    controller.gameType(radioBtn.value);
+    controller.gameType = radioBtn.value;
 }))
 
 startBtn.addEventListener("click", () => controller.startGame());

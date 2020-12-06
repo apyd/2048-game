@@ -7,11 +7,17 @@ export default class Controller {
     constructor() {
         this.gameStatus = 0;
         this.tilesOnBoard = 0;
+        this.gameType;
+    }
+
+    restartGame() {
+        model.clearBoard();
+        view.clearBoard();
     }
 
     startGame() {
-        model.clearBoard();
-        view.clearBoard();
+        model.createBoard(this.gameType);
+        view.createBoard(this.gameType);
         view.updateScore();
         this.gameStatus = 1;
         view.addTile(model.addTile());

@@ -8,28 +8,24 @@ export default class Model {
         this.nextId = 0;
         this.tilesLimit = 12;
         this.score = 0;
-        this.bestScore = +localStorage.getItem('bestScore');
-        this.board = [
-            ['', '', '', ''],
-            ['', '', '', ''],
-            ['', '', '', ''],
-            ['', '', '', '']
-        ]
+        this.bestScore = +localStorage.getItem(`bestScore${this.gameType}`);
+        this.gameType;
+        this.board;
+        }
+
+        createBoard(selectedType) {
+                this.gameType = +selectedType;
+                this.board = Array(this.gameType).fill('').map(() => Array(this.gameType));
         }
 
         clearBoard() {
-            this.board = [
-                ['', '', '', ''],
-                ['', '', '', ''],
-                ['', '', '', ''],
-                ['', '', '', '']
-            ];
+            this.board = Array(this.gameType).fill('').map(() => Array(this.gameType));
             this.nextId = 0;
         }
 
         generateCoordinates() {
-            let x = Math.floor((Math.random() * 4));
-            let y = Math.floor((Math.random() * 4));
+            let x = Math.floor((Math.random() * this.gameType));
+            let y = Math.floor((Math.random() * this.gameType));
             return this.checkCollision(x, y) ? `${x}${y}` : this.generateCoordinates();
         }
 
@@ -55,7 +51,7 @@ export default class Model {
 
         moveTiles(key) {
             let boardToSort = [...this.board];
-            let sortedBoard = Array.from(Array(4), () => new Array());
+            let sortedBoard = Array(this.gameType).fill('').map(() => Array(this.gameType));
             (key === 'ArrowUp' || key === 'ArrowDown') ? boardToSort = this.rotateBoard([...boardToSort]): null;
             if (key === 'ArrowRight' || key === 'ArrowDown') {
                 for (let [index, subArray] of boardToSort.entries()) {
@@ -94,7 +90,7 @@ export default class Model {
         }
 
         rotateBoard(boardToRotate) {
-            let rotatedBoard = Array.from(Array(4), () => new Array());
+            let rotatedBoard = Array(this.gameType).fill('').map(() => Array(this.gameType));
             for (let i = 0; i < boardToRotate.length; i++) {
                 for(let j = 0; j < boardToRotate.length; j++) {
                     rotatedBoard[i].push(boardToRotate[j][i]);
