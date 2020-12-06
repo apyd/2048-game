@@ -9,8 +9,30 @@
     <link rel='shortcut icon' type='image/x-icon' href='assets/icons/favicon.ico' />
     <title>2048 Game</title>
 </head>
-
 <body class="body">
+    <div class="entry-screen">
+        <header class="header">
+            <h2 class="header__text">2048 Game</h2>
+        </header>
+        <h3 class="">Select game type:</h3>
+        <div class="row">
+            <div class="radio__wrapper">
+                <input class="radio" type="radio" value="3" id="gameTypeA" name="gameType" />
+                <label for="gameTypeA" class="label">
+                    <p class="radio__text">3x3</p>
+                    <img class="radio__img" src="assets/img/checkbox3x3.png" />
+                </label>
+            </div>
+            <div class="radio__wrapper">
+                <input class="radio" type="radio" value="4" id="gametypeB" name="gameType" />
+                <label for="gametypeB" class="label">
+                    <p class="radio__text">4x4</p>
+                    <img class="radio__img" src="assets/img/checkbox4x4.png" />
+                </label>
+            </div>
+        </div>
+        <button disabled class="btn btn--primary btn--disabled">Start game</button>
+    </div>
     <div class="overlay">
         <div class="popup">
             <header class="popup__header">
@@ -25,10 +47,10 @@
             </div>
         </div>
     </div>
-    <header class="header">
-        <h1 class="header__text">2048 Game</h1>
-    </header>
     <main class="main">
+        <header class="header">
+            <h2 class="header__text">2048 Game</h2>
+        </header>
         <div class="row">
             <div class="btns__wrapper">
                 <button class="btn btn--primary">Start game</button>
@@ -45,12 +67,12 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <button class="btn btn--round"><img class="btn__icon" src="assets/icons/double-arrow-up.svg"></button>
-        <button class="btn btn--round"><img class="btn__icon" src="assets/icons/double-arrow-down.svg"></button>
-        <button class="btn btn--round"><img class="btn__icon" src="assets/icons/double-arrow-left.svg"></button>
-        <button class="btn btn--round"><img class="btn__icon" src="assets/icons/double-arrow-right.svg"></button>
-    </div>
+    <!-- <div class="row">
+        <button class="btn btn--round" data-direction="ArrowUp"><img class="btn__icon" src="assets/icons/double-arrow-up.svg"></button>
+        <button class="btn btn--round" data-direction="ArrowDown"><img class="btn__icon" src="assets/icons/double-arrow-down.svg"></button>
+        <button class="btn btn--round" data-direction="ArrowLeft"><img class="btn__icon" src="assets/icons/double-arrow-left.svg"></button>
+        <button class="btn btn--round" data-direction="ArrowRight"><img class="btn__icon" src="assets/icons/double-arrow-right.svg"></button>
+    </div> -->
         <div class="board"></div>
         </div>
     </main>

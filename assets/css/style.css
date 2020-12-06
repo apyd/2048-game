@@ -33,6 +33,108 @@
   position: relative;
 }
 
+.btn {
+  border: none;
+  background-color: transparent;
+  border-radius: 5px;
+  font-size: 1.3rem;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+  padding: 20px;
+}
+
+.btn--primary {
+  color: #FFFFFF;
+  background-color: #7678ED;
+  border: 1px solid #7678ED;
+}
+
+.btn--primary:hover {
+  background-color: #F7B801;
+  border: 1px solid #7678ED;
+  color: #3D348B;
+  cursor: pointer;
+}
+
+:disabled {
+  opacity: .5;
+}
+
+:disabled:hover {
+  cursor: not-allowed;
+  background-color: #7678ED;
+  border: 1px solid #7678ED;
+  color: #FFFFFF;
+}
+
+.radio {
+  display: none;
+}
+
+.label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+}
+
+.radio:checked + label {
+  border: 3px solid #F7B801;
+  border-radius: 5px;
+}
+
+.entry-screen {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100vw;
+}
+
+.entry-screen .row {
+  margin-bottom: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 70vw;
+}
+
+.entry-screen .row .radio:not(:checked) + label {
+  border: 3px solid transparent;
+  border-radius: 5px;
+}
+
+.entry-screen .row .radio__img {
+  padding: 10px;
+}
+
+.entry-screen .row .radio__text {
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 5px 0 0 0;
+}
+
+.entry-screen .row .btn {
+  margin: 20px;
+}
+
 .overlay {
   display: none;
 }
@@ -129,6 +231,7 @@
           flex-direction: column;
   width: 100%;
   overflow: hidden;
+  display: none;
 }
 
 .main > .row {
@@ -149,58 +252,6 @@
       -ms-flex-align: stretch;
           align-items: stretch;
   margin-bottom: 20px;
-}
-
-.main > .row .btn {
-  border: none;
-  background-color: transparent;
-  border-radius: 5px;
-  font-size: 1.3rem;
-  font-family: "Inter", sans-serif;
-  font-weight: bold;
-  padding: 0;
-  margin: 0;
-}
-
-.main > .row .btn--round {
-  border-radius: 25px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  border-radius: 50%;
-  padding: 10px;
-  margin: 0px 15px;
-  border: 1px solid #7678ED;
-}
-
-.main > .row .btn--round:hover {
-  background-color: #7678ED;
-  cursor: pointer;
-}
-
-.main > .row .btn--round .btn__icon {
-  width: 50px;
-  height: 50px;
-}
-
-.main > .row .btn--primary {
-  color: #FFFFFF;
-  background-color: #7678ED;
-  border: 1px solid #7678ED;
-  padding: 20px;
-}
-
-.main > .row .btn--primary:hover {
-  background-color: #F7B801;
-  border: 1px solid #7678ED;
-  color: #3D348B;
-  cursor: pointer;
 }
 
 .main > .row .scoreboard {
@@ -249,7 +300,7 @@
   height: 430px;
   border-radius: 5px;
   border: 10px solid #7678ED;
-  background: url("../img/board-bg.png") no-repeat no-repeat;
+  background: url("../img/board-bg-4.png") no-repeat no-repeat;
   margin: 0 auto;
   position: relative;
 }
