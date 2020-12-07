@@ -1,8 +1,9 @@
 export default class View {
     constructor() {
         this.popupVisible = false;
-        this.tileDimension;
-        this.innerBorderWidth;
+        this.tileDimension = 95;
+        this.innerBorderWidth = 10;
+        this.gameType;
     }
 
     togglePopup() {
@@ -18,15 +19,24 @@ export default class View {
     }
 
     initGame(gameType) {
+        this.gameType = gameType;
         document.querySelector('.board').id = `t${gameType}`;
+        if (gameType === '3') {
+            this.tileDimension = 128;
+            this.innerBorderWidth = 13;
+        }
         document.querySelector('.entry-screen').classList.add('hidden');
         document.querySelector('.main').classList.remove('hidden');
     }
 
-    addTile({y, x, id}) {
+    addTile({
+            y,
+            x,
+            id
+        }) {
         let board = document.querySelector('.board');
         let tile = document.createElement('div');
-        tile.classList.add('tile', 'tile--2', 'add');
+        tile.classList.add('tile', `t${this.gameType}`, 'tile--2', 'add');
         tile.style.left = `${x*this.tileDimension+x*this.innerBorderWidth}px`;
         tile.style.top = `${y*this.tileDimension+y*this.innerBorderWidth}px`;
         tile.dataset.id = id;
