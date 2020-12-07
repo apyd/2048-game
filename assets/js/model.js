@@ -13,7 +13,7 @@ export default class Model {
         this.board;
         }
 
-        createBoard(selectedType) {
+        initGame(selectedType) {
                 this.gameType = +selectedType;
                 this.board = Array(this.gameType).fill('').map(() => Array(this.gameType));
         }

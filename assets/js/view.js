@@ -1,6 +1,8 @@
 export default class View {
     constructor() {
         this.popupVisible = false;
+        this.tileDimension;
+        this.innerBorderWidth;
     }
 
     togglePopup() {
@@ -15,15 +17,21 @@ export default class View {
         }
     }
 
+    initGame(gameType) {
+        document.querySelector('.board').id = `t${gameType}`;
+        document.querySelector('.entry-screen').classList.add('hidden');
+        document.querySelector('.main').classList.remove('hidden');
+    }
+
     addTile({y, x, id}) {
         let board = document.querySelector('.board');
         let tile = document.createElement('div');
         tile.classList.add('tile', 'tile--2', 'add');
-        tile.style.left = `${x*95+x*10}px`;
-        tile.style.top = `${y*95+y*10}px`;
+        tile.style.left = `${x*this.tileDimension+x*this.innerBorderWidth}px`;
+        tile.style.top = `${y*this.tileDimension+y*this.innerBorderWidth}px`;
         tile.dataset.id = id;
         let span = document.createElement('span');
-        span.classList.add('tile__value')
+        span.classList.add('tile__value');
         span.innerHTML = "2";
         tile.appendChild(span);
         board.appendChild(tile);
@@ -40,8 +48,8 @@ export default class View {
                 let retainedTile = document.querySelector(`[data-id="${retainedTileObj[0].id}"]`);
                 return this.mergeTiles(retainedTile, tile, retainedTileObj);
             }
-            tile.style.left = `${arrayWithTiles[index].x*95+arrayWithTiles[index].x*10}px`;
-            tile.style.top = `${arrayWithTiles[index].y*95+arrayWithTiles[index].y*10}px`;
+            tile.style.left = `${arrayWithTiles[index].x*this.tileDimension+arrayWithTiles[index].x*this.innerBorderWidth}px`;
+            tile.style.top = `${arrayWithTiles[index].y*this.tileDimension+arrayWithTiles[index].y*this.innerBorderWidth}px`;
             tile.classList.add('move');
             setTimeout(() => tile.classList.remove('move'), 600);
         });

@@ -16,9 +16,8 @@ export default class Controller {
     }
 
     startGame() {
-        model.createBoard(this.gameType);
-        view.createBoard(this.gameType);
-        view.updateScore();
+        model.initGame(this.gameType);
+        view.initGame(this.gameType);
         this.gameStatus = 1;
         view.addTile(model.addTile());
         view.addTile(model.addTile());
