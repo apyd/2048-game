@@ -135,6 +135,10 @@
   margin: 20px;
 }
 
+.hidden {
+  display: none;
+}
+
 .overlay {
   display: none;
 }
@@ -231,7 +235,10 @@
           flex-direction: column;
   width: 100%;
   overflow: hidden;
-  display: none;
+}
+
+.main .header__text {
+  text-align: center;
 }
 
 .main > .row {
@@ -300,9 +307,16 @@
   height: 430px;
   border-radius: 5px;
   border: 10px solid #7678ED;
-  background: url("../img/board-bg-4.png") no-repeat no-repeat;
   margin: 0 auto;
   position: relative;
+}
+
+.main .board#t3 {
+  background: url("../img/board-bg-3.png") no-repeat no-repeat;
+}
+
+.main .board#t4 {
+  background: url("../img/board-bg-4.png") no-repeat no-repeat;
 }
 
 .main .board .tile {
@@ -444,6 +458,10 @@
     -webkit-transform: scale(1);
             transform: scale(1);
   }
+}
+
+.hidden {
+  display: none;
 }
 
 .footer {

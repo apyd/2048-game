@@ -22,7 +22,6 @@
     position: relative;
 }
 
-
 .btn {
     border: none;
     background-color: transparent;
@@ -107,8 +106,12 @@
             margin: 20px;
         }
     }
-
 }
+
+.hidden {
+    display: none;
+}
+
 
 .overlay {
     display: none;
@@ -182,7 +185,10 @@
     flex-direction: column;
     width: 100%;
     overflow: hidden;
-    display: none;
+
+    .header__text {
+        text-align: center;
+    }
 
     > .row {
         @include centerFlex(row);
@@ -212,9 +218,16 @@
         height: 430px;
         border-radius: 5px;
         border: 10px solid $medium-slate-blue;
-        background: url('../img/board-bg-4.png') no-repeat no-repeat;
         margin: 0 auto;
         position: relative;
+
+        &#t3 {
+            background: url('../img/board-bg-3.png') no-repeat no-repeat;
+        }
+        
+        &#t4 {
+            background: url('../img/board-bg-4.png') no-repeat no-repeat;
+        }
 
         .tile {
             background-color: $dark-slate-blue;
@@ -305,7 +318,11 @@
         }
 
     }
+    }
 }
+
+.hidden {
+    display: none;
 }
 
 .footer {
