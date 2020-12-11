@@ -67,12 +67,12 @@ export default class View {
 
 
     mergeTiles(retainedTile, tileToMerge, retainedObj) {
-        tileToMerge.style.left = `${retainedObj[0].x*95+retainedObj[0].x*10}px`;
-        tileToMerge.style.top = `${retainedObj[0].y*95+retainedObj[0].y*10}px`;
+        tileToMerge.style.left = `${retainedObj[0].x*this.tileDimension+retainedObj[0].x*this.innerBorderWidth}px`;
+        tileToMerge.style.top = `${retainedObj[0].y*this.tileDimension+retainedObj[0].y*this.innerBorderWidth}px`;
         tileToMerge.classList.add('merge');
-        retainedTile.style.left = `${retainedObj[0].x*95+retainedObj[0].x*10}px`;
-        retainedTile.style.top = `${retainedObj[0].y*95+retainedObj[0].y*10}px`;
-        retainedTile.classList = `tile tile--${retainedObj[0].val}`;
+        retainedTile.style.left = `${retainedObj[0].x*this.tileDimension+retainedObj[0].x*this.innerBorderWidth}px`;
+        retainedTile.style.top = `${retainedObj[0].y*this.tileDimension+retainedObj[0].y*this.innerBorderWidth}px`;
+        retainedTile.classList = `tile t${this.gameType} tile--${retainedObj[0].val}`;
         retainedTile.firstChild.innerHTML = `${retainedObj[0].val}`;
         retainedTile.classList.add('merge');
         setTimeout(() => retainedTile.classList.remove('merge'), 600);
