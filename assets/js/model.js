@@ -15,7 +15,7 @@ export default class Model {
 
         initGame(selectedType) {
                 this.gameType = +selectedType;
-                this.board = Array(this.gameType).fill('').map(() => Array(this.gameType));
+                this.board = Array(this.gameType).fill().map(() => Array(this.gameType).fill(''));
         }
 
         clearBoard() {
@@ -51,7 +51,7 @@ export default class Model {
 
         moveTiles(key) {
             let boardToSort = [...this.board];
-            let sortedBoard = Array(this.gameType).fill('').map(() => Array(this.gameType));
+            let sortedBoard = Array(this.gameType).fill().map(() => Array(this.gameType));
             (key === 'ArrowUp' || key === 'ArrowDown') ? boardToSort = this.rotateBoard([...boardToSort]): null;
             if (key === 'ArrowRight' || key === 'ArrowDown') {
                 for (let [index, subArray] of boardToSort.entries()) {
@@ -90,7 +90,7 @@ export default class Model {
         }
 
         rotateBoard(boardToRotate) {
-            let rotatedBoard = Array(this.gameType).fill('').map(() => Array(this.gameType));
+            let rotatedBoard = Array(this.gameType).fill().map(() => Array());
             for (let i = 0; i < boardToRotate.length; i++) {
                 for(let j = 0; j < boardToRotate.length; j++) {
                     rotatedBoard[i].push(boardToRotate[j][i]);
