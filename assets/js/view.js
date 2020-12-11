@@ -21,6 +21,7 @@ export default class View {
     initGame(gameType) {
         this.gameType = gameType;
         document.querySelector('.board').id = `t${gameType}`;
+        document.querySelectorAll('.scoreboard__value')[1].innerHTML = localStorage.getItem(`bestScore${this.gameType}`);
         if (gameType === '3') {
             this.tileDimension = 128;
             this.innerBorderWidth = 13;
@@ -82,6 +83,6 @@ export default class View {
 
     updateScore(score = 0) {
         document.querySelectorAll('.scoreboard__value')[0].innerHTML = score;
-        document.querySelectorAll('.scoreboard__value')[1].innerHTML = localStorage.getItem('bestScore');
+        document.querySelectorAll('.scoreboard__value')[1].innerHTML = localStorage.getItem(`bestScore${this.gameType}`);
     }
 }

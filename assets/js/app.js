@@ -2,9 +2,6 @@ import Controller from "./controller.js";
 import View from "./view.js";
 import Model from "./model.js";
 
-!localStorage.getItem(`bestScore3`) ? localStorage.setItem(`bestScore3`, 0) : null;
-!localStorage.getItem(`bestScore4`) ? localStorage.setItem(`bestScore4`, 0) : null;
-
 const startBtn = document.querySelectorAll(".btn--primary")[0];
 const closeBtn = document.querySelector(".btn--close");
 const rulesBtn = document.querySelectorAll(".btn--primary")[1];

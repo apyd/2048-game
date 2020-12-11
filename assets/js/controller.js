@@ -16,6 +16,7 @@ export default class Controller {
     }
 
     startGame() {
+        !localStorage.getItem(`bestScore${this.gameType}`) ? localStorage.setItem(`bestScore${this.gameType}`, 0) : null;
         model.initGame(this.gameType);
         view.initGame(this.gameType);
         this.gameStatus = 1;

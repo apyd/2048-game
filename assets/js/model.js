@@ -127,8 +127,8 @@ export default class Model {
         updateScore(pointsToAdd) {
             this.score += pointsToAdd;
             if (this.score > this.bestScore) {
-                    localStorage.setItem('bestScore', this.score);
-                    this.bestScore = +localStorage.getItem('bestScore');
+                    localStorage.setItem(`bestScore${this.gameType}`, this.score);
+                    this.bestScore = +localStorage.getItem(`bestScore${this.gameType}`);
             }    
             view.updateScore(this.score);
         }
