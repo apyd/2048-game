@@ -71,6 +71,7 @@
 .radio:checked + label {
     border: 3px solid $selective-yellow;
     border-radius: 5px;
+    opacity: 1;
 }
 
 .entry-screen {
@@ -88,6 +89,7 @@
         .radio:not(:checked) + label {
             border: 3px solid transparent;
             border-radius: 5px;
+            opacity: .6;
         }
 
         .radio__img {
