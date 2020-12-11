@@ -313,10 +313,45 @@
 
 .main .board#t3 {
   background: url("../img/board-bg-3.png") no-repeat no-repeat;
+  -webkit-animation-name: blur;
+          animation-name: blur;
+  -webkit-animation-duration: 0.4s;
+          animation-duration: 0.4s;
+}
+
+@-webkit-keyframes blur {
+  0% {
+    -webkit-filter: blur(20px);
+  }
+  100% {
+    -webkit-filter: blur(0px);
+  }
+}
+
+@keyframes blur {
+  0% {
+    -webkit-filter: blur(20px);
+  }
+  100% {
+    -webkit-filter: blur(0px);
+  }
 }
 
 .main .board#t4 {
   background: url("../img/board-bg-4.png") no-repeat no-repeat;
+  -webkit-animation-name: blur;
+          animation-name: blur;
+  -webkit-animation-duration: 0.4s;
+          animation-duration: 0.4s;
+}
+
+@keyframes blur {
+  0% {
+    -webkit-filter: blur(20px);
+  }
+  100% {
+    -webkit-filter: blur(0px);
+  }
 }
 
 .main .board .tile {

@@ -223,10 +223,18 @@
 
         &#t3 {
             background: url('../img/board-bg-3.png') no-repeat no-repeat;
+            @include animation(blur, .4s) {
+                0% { -webkit-filter: blur(20px);}
+                100% { -webkit-filter: blur(0px);}
+            }
         }
         
         &#t4 {
             background: url('../img/board-bg-4.png') no-repeat no-repeat;
+            @include animation(blur, .4s) {
+                0% { -webkit-filter: blur(20px);}
+                100% { -webkit-filter: blur(0px);}
+            }
         }
 
         .tile {
