@@ -27,3 +27,4 @@ window.addEventListener("keyup", (e) => controller.onKeyPress(e.key));
 window.addEventListener('DOMContentLoaded', () => view.updateScore());
 board.addEventListener('touchstart', (e) => controller.onTouch(e.type, e.changedTouches[0].clientX, e.changedTouches[0].clientY));
 board.addEventListener('touchend', (e) => controller.onTouch(e.type, e.changedTouches[0].clientX, e.changedTouches[0].clientY));
+leftArrow.addEventListener('click', () => controller.stopGame());

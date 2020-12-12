@@ -1,8 +1,8 @@
 export default class View {
     constructor() {
         this.popupVisible = false;
-        this.tileDimension = 95;
-        this.innerBorderWidth = 10;
+        this.tileDimension;
+        this.innerBorderWidth;
         this.gameType;
     }
 
@@ -26,8 +26,17 @@ export default class View {
             this.tileDimension = 128;
             this.innerBorderWidth = 13;
         }
+        else {
+            this.tileDimension = 95;
+            this.innerBorderWidth = 10;
+        }
         document.querySelector('.entry-screen').classList.add('hidden');
         document.querySelector('.main').classList.remove('hidden');
+    }
+
+    showEntryScreen() {
+        document.querySelector('.entry-screen').classList.remove('hidden');
+        document.querySelector('.main').classList.add('hidden');
     }
 
     addTile({

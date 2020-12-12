@@ -55,6 +55,11 @@ export default class Controller {
         this.initX = eX;
     }
 
+    stopGame() {
+        this.gameStatus = 0;
+        view.showEntryScreen();
+    }
+
     endGame() {
         this.gameStatus = 0;
     }
