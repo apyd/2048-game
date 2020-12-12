@@ -12,12 +12,9 @@ export default class Controller {
         this.initX;
     }
 
-    restartGame() {
+    startGame() {
         model.clearBoard();
         view.clearBoard();
-    }
-
-    startGame() {
         !localStorage.getItem(`bestScore${this.gameType}`) ? localStorage.setItem(`bestScore${this.gameType}`, 0) : null;
         model.initGame(this.gameType);
         view.initGame(this.gameType);

@@ -42,7 +42,8 @@
   font-weight: bold;
   padding: 0;
   margin: 0;
-  padding: 20px;
+  padding: 15px;
+  margin: 0 5px;
 }
 
 .btn--primary {
@@ -263,6 +264,12 @@
   margin-bottom: 20px;
 }
 
+.main > .row .btns__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .main > .row .scoreboard {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -296,7 +303,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0 20px;
+  padding: 0 15px;
   height: 100%;
 }
 
