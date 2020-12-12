@@ -7,6 +7,7 @@ const closeBtn = document.querySelector(".btn--close");
 const rulesBtn = document.querySelectorAll(".btn--primary")[1];
 const overlay = document.querySelector(".overlay");
 const radioBtns = document.querySelectorAll(".radio");
+const board = document.querySelector('.board');
 
 export const view = new View();
 export const model = new Model();
@@ -23,3 +24,5 @@ closeBtn.addEventListener("click", () => view.togglePopup());
 overlay.addEventListener("click", (e) => e.target === overlay ? view.togglePopup() : null);
 window.addEventListener("keyup", (e) => controller.onKeyPress(e.key));
 window.addEventListener('DOMContentLoaded', () => view.updateScore());
+board.addEventListener('touchstart', (e) => controller.onTouch(e.type, e.changedTouches[0].clientX, e.changedTouches[0].clientY));
+board.addEventListener('touchend', (e) => controller.onTouch(e.type, e.changedTouches[0].clientX, e.changedTouches[0].clientY));

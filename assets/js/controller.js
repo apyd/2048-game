@@ -8,6 +8,8 @@ export default class Controller {
         this.gameStatus = 0;
         this.tilesOnBoard = 0;
         this.gameType;
+        this.initY;
+        this.initX;
     }
 
     restartGame() {
@@ -29,6 +31,31 @@ export default class Controller {
             if (!key.includes('Arrow') || (!this.gameStatus)) return;
             view.moveTiles(model.moveTiles(key));
             view.addTile(model.addTile());
+    }
+
+    onTouch(type, eX, eY) {
+        if (type === 'touchend') {
+            let key;
+            let angle = (Math.atan2(Math.round(eY - this.initY), (Math.round(eX - this.initX))));
+            angle *= 180 / Math.PI;
+            angle = Math.round(angle);
+            if (angle === 0) return;
+            else {
+                if (angle >= -135 && angle < -45) {
+                    key = 'ArrowUp';
+                } else if (angle >= -45 && angle < 45) {
+                    key = 'ArrowRight';
+                } else if (angle >= 45 && angle < 135) {
+                    key = 'ArrowDown';
+                } else {
+                    key = 'ArrowLeft';
+                }
+            }
+            view.moveTiles(model.moveTiles(key));
+            view.addTile(model.addTile());
+        }
+        this.initY = eY;
+        this.initX = eX;
     }
 
     endGame() {

@@ -115,7 +115,7 @@
   width: 70vw;
 }
 
-.entry-screen .row .radio:not(:checked) + label {
+.entry-screen .row .radio:not(:checked) + label img {
   border: 3px solid transparent;
   border-radius: 5px;
   opacity: .6;
