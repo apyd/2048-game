@@ -6,13 +6,14 @@ import {
 export default class Controller {
     constructor() {
         this.gameStatus = 0;
-        this.tilesOnBoard = 0;
+        this.tilesOnBoard;
         this.gameType;
         this.initY;
         this.initX;
     }
 
     startGame() {
+        this.tilesOnBoard = 0;
         model.clearBoard();
         view.clearBoard();
         !localStorage.getItem(`bestScore${this.gameType}`) ? localStorage.setItem(`bestScore${this.gameType}`, 0) : null;
@@ -24,10 +25,15 @@ export default class Controller {
     }
 
     onKeyPress(key) {
-            (key === 'Escape' && view.popupVisible) ? view.togglePopup() : null;
-            if (!key.includes('Arrow') || (!this.gameStatus)) return;
-            view.moveTiles(model.moveTiles(key));
-            view.addTile(model.addTile());
+        (key === 'Escape' && view.popupVisible) ? view.togglePopup() : null;
+        if (!key.includes('Arrow') || (!this.gameStatus)) return;
+        view.moveTiles(model.moveTiles(key));
+        view.addTile(model.addTile());
+        if (this.tilesOnBoard === (this.gameType * this.gameType)) {
+            let isContinued = model.checkIfPossibleMerge();
+            console.log(isContinued);
+            !isContinued ? this.endGame() : null;
+        }
     }
 
     onTouch(type, eX, eY) {
@@ -50,6 +56,11 @@ export default class Controller {
             }
             view.moveTiles(model.moveTiles(key));
             view.addTile(model.addTile());
+            if (this.tilesOnBoard === (this.gameType * this.gameType)) {
+                let isContinued = model.checkIfPossibleMerge();
+                console.log(isContinued);
+                !isContinued ? this.endGame() : null;
+            }
         }
         this.initY = eY;
         this.initX = eX;
@@ -62,5 +73,6 @@ export default class Controller {
 
     endGame() {
         this.gameStatus = 0;
+        console.log('end game');
     }
 }

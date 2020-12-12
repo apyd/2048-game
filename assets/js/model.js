@@ -6,7 +6,6 @@ import {
 export default class Model {
     constructor() {
         this.nextId = 0;
-        this.tilesLimit = 12;
         this.score = 0;
         this.bestScore = +localStorage.getItem(`bestScore${this.gameType}`);
         this.gameType;
@@ -68,6 +67,24 @@ export default class Model {
             (key === 'ArrowUp' || key === 'ArrowDown') ? sortedBoard = this.rotateBoard([...sortedBoard]): null;
             this.board = [...sortedBoard];
             return this.generateArrayWithUpdatedTiles(sortedBoard);
+        }
+
+        checkIfPossibleMerge() {
+            let tempBoard = [...this.board];
+            tempBoard.forEach((boardRow, i) => {
+                if (i < boardRow.length - 1) {
+                    console.log(i);
+                    if (boardRow[i].val === boardRow[i + 1].val) return true;
+                }
+            });
+            tempBoard = this.rotateBoard([...tempBoard]);
+            tempBoard.forEach((boardRow, i) => {
+                if (i < boardRow.length - 1) {
+                    console.log(i);
+                    if (boardRow[i].val === boardRow[i + 1].val) return true;
+                }
+            });
+            return false;
         }
 
         generateArrayWithUpdatedTiles(board) {
