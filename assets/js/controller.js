@@ -31,7 +31,6 @@ export default class Controller {
         view.addTile(model.addTile());
         if (this.tilesOnBoard === (this.gameType * this.gameType)) {
             let isContinued = model.checkIfPossibleMerge();
-            console.log(isContinued);
             !isContinued ? this.endGame() : null;
         }
     }
@@ -58,7 +57,6 @@ export default class Controller {
             view.addTile(model.addTile());
             if (this.tilesOnBoard === (this.gameType * this.gameType)) {
                 let isContinued = model.checkIfPossibleMerge();
-                console.log(isContinued);
                 !isContinued ? this.endGame() : null;
             }
         }
@@ -73,6 +71,5 @@ export default class Controller {
 
     endGame() {
         this.gameStatus = 0;
-        console.log('end game');
     }
 }

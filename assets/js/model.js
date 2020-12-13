@@ -71,19 +71,17 @@ export default class Model {
 
         checkIfPossibleMerge() {
             let tempBoard = [...this.board];
-            tempBoard.forEach((boardRow, i) => {
-                if (i < boardRow.length - 1) {
-                    console.log(i);
-                    if (boardRow[i].val === boardRow[i + 1].val) return true;
+            for (const subArray of tempBoard) {
+                for (let i = 0; i <= subArray.length - 2; i++) {
+                    if (subArray[i].val === subArray[i + 1].val) return true;
                 }
-            });
+            }
             tempBoard = this.rotateBoard([...tempBoard]);
-            tempBoard.forEach((boardRow, i) => {
-                if (i < boardRow.length - 1) {
-                    console.log(i);
-                    if (boardRow[i].val === boardRow[i + 1].val) return true;
+            for (const subArray of tempBoard) {
+                for (let i = 0; i <= subArray.length - 2; i++) {
+                    if (subArray[i].val === subArray[i + 1].val) return true;
                 }
-            });
+            }
             return false;
         }
 
