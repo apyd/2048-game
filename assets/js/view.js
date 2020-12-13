@@ -22,13 +22,14 @@ export default class View {
         this.gameType = gameType;
         document.querySelector('.board').id = `t${gameType}`;
         document.querySelectorAll('.scoreboard__value')[1].innerHTML = localStorage.getItem(`bestScore${this.gameType}`);
-        if (gameType === '3') {
-            this.tileDimension = 128;
-            this.innerBorderWidth = 13;
-        }
-        else {
+        document.querySelectorAll('.scoreboard__value')[0].innerHTML = 0;
+        if (gameType === '4') {
             this.tileDimension = 95;
             this.innerBorderWidth = 10;
+        }
+        else {
+            this.tileDimension = 76.4;
+            this.innerBorderWidth = 7;
         }
         document.querySelector('.entry-screen').classList.add('hidden');
         document.querySelector('.main').classList.remove('hidden');
@@ -55,7 +56,7 @@ export default class View {
         span.innerHTML = "2";
         tile.appendChild(span);
         board.appendChild(tile);
-        setTimeout(() => tile.classList.remove('add'), 600);
+        setTimeout(() => tile.classList.remove('add'), 800);
     }
 
     moveTiles(arrayWithTiles) {

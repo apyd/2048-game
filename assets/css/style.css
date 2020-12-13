@@ -320,8 +320,8 @@
   position: relative;
 }
 
-.main .board#t3 {
-  background: url("../img/board-bg-3.png") no-repeat no-repeat;
+.main .board#t4 {
+  background: url("../img/board-bg-4.png") no-repeat no-repeat;
   -webkit-animation-name: blur;
           animation-name: blur;
   -webkit-animation-duration: 0.4s;
@@ -346,8 +346,8 @@
   }
 }
 
-.main .board#t4 {
-  background: url("../img/board-bg-4.png") no-repeat no-repeat;
+.main .board#t5 {
+  background: url("../img/board-bg-5.png") no-repeat no-repeat;
   -webkit-animation-name: blur;
           animation-name: blur;
   -webkit-animation-duration: 0.4s;
@@ -380,14 +380,14 @@
   position: absolute;
 }
 
-.main .board .tile.t3 {
-  height: 128px;
-  width: 128px;
-}
-
 .main .board .tile.t4 {
   height: 95px;
   width: 95px;
+}
+
+.main .board .tile.t5 {
+  height: 76.4px;
+  width: 76.4px;
 }
 
 .main .board .tile .tile__value {
@@ -452,8 +452,8 @@
 .main .board .add {
   -webkit-animation-name: addTile;
           animation-name: addTile;
-  -webkit-animation-duration: 0.6s;
-          animation-duration: 0.6s;
+  -webkit-animation-duration: 0.8s;
+          animation-duration: 0.8s;
 }
 
 @-webkit-keyframes addTile {
@@ -479,8 +479,8 @@
 }
 
 .main .board .move {
-  -webkit-transition: all .6s ease;
-  transition: all .6s ease;
+  -webkit-transition: all .4s ease;
+  transition: all .4s ease;
 }
 
 .main .board .merge {
