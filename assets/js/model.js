@@ -7,7 +7,7 @@ export default class Model {
     constructor() {
         this.nextId = 0;
         this.score = 0;
-        this.bestScore = +localStorage.getItem(`bestScore${this.gameType}`);
+        this.bestScore;
         this.gameType;
         this.board;
         this.numberOfMoves = 0;
@@ -16,6 +16,7 @@ export default class Model {
     initGame(selectedType) {
             this.gameType = +selectedType;
             this.board = Array(this.gameType).fill().map(() => Array(this.gameType).fill(''));
+            this.bestScore = +localStorage.getItem(`bestScore${this.gameType}`);
     }
 
     clearBoard() {
