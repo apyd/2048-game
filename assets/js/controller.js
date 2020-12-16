@@ -16,12 +16,12 @@ export default class Controller {
 
     startGame() {
         this.tilesOnBoard = 0;
+        this.gameStatus = 1;
         model.clearBoard();
         view.clearBoard();
         !localStorage.getItem(`bestScore${this.gameType}`) ? localStorage.setItem(`bestScore${this.gameType}`, 0) : null;
         model.initGame(this.gameType);
         view.initGame(this.gameType);
-        this.gameStatus = 1;
         this.startGameTime = performance.now();
         view.addTile(model.addTile());
         view.addTile(model.addTile());
@@ -73,7 +73,6 @@ export default class Controller {
     }
 
     endGame() {
-        console.log('end');
         this.endGameTime = performance.now();
         let timeElapsed = this.endGameTime - this.startGameTime;
         view.showEndGamePopup(this.convertMillisToMinutesAndSeconds(timeElapsed), model.numberOfMoves, model.score);

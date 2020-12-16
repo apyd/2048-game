@@ -21,6 +21,7 @@ export default class Model {
     clearBoard() {
         this.board = Array(this.gameType).fill('').map(() => Array(this.gameType));
         this.nextId = 0;
+        this.score = 0;
     }
 
     generateCoordinates() {
