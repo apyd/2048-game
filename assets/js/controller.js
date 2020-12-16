@@ -10,6 +10,8 @@ export default class Controller {
         this.gameType;
         this.initY;
         this.initX;
+        this.startGameTime;
+        this.EndGameTime;
     }
 
     startGame() {
@@ -20,6 +22,7 @@ export default class Controller {
         model.initGame(this.gameType);
         view.initGame(this.gameType);
         this.gameStatus = 1;
+        this.startGameTime = performance.now();
         view.addTile(model.addTile());
         view.addTile(model.addTile());
     }
@@ -70,6 +73,18 @@ export default class Controller {
     }
 
     endGame() {
+        console.log('end');
+        this.endGameTime = performance.now();
+        let timeElapsed = this.endGameTime - this.startGameTime;
+        view.showEndGamePopup(this.convertMillisToMinutesAndSeconds(timeElapsed), model.numberOfMoves, model.score);
         this.gameStatus = 0;
     }
+    convertMillisToMinutesAndSeconds(millis) {
+        var minutes = Math.floor(millis / 60000);
+        var seconds = ((millis % 60000) / 1000).toFixed(0);
+        return `${minutes === 0 ? ''
+                : minutes === 1 ? minutes `minute :` 
+                : minutes `minutes :`} ${seconds < 10 ? '0' : ''} ${seconds} seconds` ;
+    }
+
 }

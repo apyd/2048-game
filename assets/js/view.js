@@ -11,6 +11,19 @@ export default class View {
         document.querySelector(".overlay").classList.toggle('overlay--visible');
     }
 
+    showRulesPopup() {
+
+    }
+
+    showEndGamePopup(time, numberOfMoves, result) {
+        document.querySelectorAll('.header__text')[1].innerHTML = 'End game';
+        const popupBody = document.querySelector('.popup__body');
+        popupBody.innerHTML = `<p class="popup__text">Time elapsed: ${time}</p>
+                             <p class="popup__text">Moves performed: ${numberOfMoves}</p>
+                             <p class="popup__text">Your result: ${result} points! </p>`
+        this.togglePopup();
+    }
+
     clearBoard() {
         let board = document.querySelector('.board');
         while (board.firstChild) {
