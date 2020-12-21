@@ -222,8 +222,9 @@
 .overlay--visible .popup {
   background-color: white;
   position: relative;
-  width: 35vw;
-  height: 50vh;
+  width: 55vw;
+  max-width: 650px;
+  height: 55vh;
   border-radius: 5px;
   color: black;
   display: -webkit-box;
@@ -236,6 +237,18 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media (min-width: 481px) and (max-width: 724px) {
+  .overlay--visible .popup {
+    width: 70vw;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .overlay--visible .popup {
+    width: 80vw;
+  }
 }
 
 .overlay--visible .popup .popup__header {

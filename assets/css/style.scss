@@ -174,13 +174,22 @@
     .popup {
         background-color: white;
         position: relative;
-        width: 35vw;
-        height: 50vh;
+        width: 55vw;
+        max-width: 650px;
+        height: 55vh;
         border-radius: 5px;
         color: black;
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        @include tablet {
+            width: 70vw;
+        }
+
+        @include mobile {
+            width: 80vw;
+        }
 
         .popup__header {
             display: flex;
