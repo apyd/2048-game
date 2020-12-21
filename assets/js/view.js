@@ -41,8 +41,8 @@ export default class View {
             this.innerBorderWidth = 10;
         }
         else {
-            this.tileDimension = 76.4;
-            this.innerBorderWidth = 7;
+            this.tileDimension = 77;
+            this.innerBorderWidth = 7.5;
         }
         document.querySelector('.entry-screen').classList.add('hidden');
         document.querySelector('.main').classList.remove('hidden');

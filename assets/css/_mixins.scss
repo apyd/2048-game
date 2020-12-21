@@ -17,3 +17,15 @@
     animation-name: $name;
     animation-duration: $duration;
   }
+
+  @mixin tablet {
+    @media (min-width: #{$screen-s-max+1}) and (max-width: #{$screen-l-max}) {
+        @content;
+    }
+  }
+
+  @mixin mobile {
+    @media (min-width: #{$screen-s-min}) and (max-width: #{$screen-s-max}) {
+        @content;
+    }
+ }

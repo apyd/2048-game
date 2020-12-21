@@ -67,6 +67,39 @@
     display: flex;
     flex-direction: column;
     justify-items: center;
+    height: 300px;
+    width: 300px;
+    @include tablet {
+        height: 210px;
+        width: 210px;
+    }
+
+    @include mobile {
+        height: 99px;
+        width: 99px;
+    }
+
+    &.label--4 {
+        background: url('./../img/board-4.png') no-repeat no-repeat;
+        @include tablet {
+            background: url('./../img/board-l-4.png') no-repeat no-repeat;
+        }
+    
+        @include mobile {
+            background: url('./../img/board-m-4.png') no-repeat no-repeat;
+        }
+    }
+
+    &.label--5 {
+        background: url('./../img/board-5.png') no-repeat no-repeat;
+        @include tablet {
+            background: url('./../img/board-l-5.png') no-repeat no-repeat;
+        }
+    
+        @include mobile {
+            background: url('./../img/board-m-5.png') no-repeat no-repeat;
+        }
+    }
 }
 
 .radio:checked + label {
@@ -114,7 +147,6 @@
 .hidden {
     display: none;
 }
-
 
 .overlay {
     display: none;
@@ -178,7 +210,7 @@
                     width: 100%;
                 }
             }
-            }
+    }
 
             .popup__body {
             display: flex;
@@ -234,24 +266,33 @@
     .board {
         width: 430px;
         height: 430px;
-        border-radius: 5px;
-        border: 10px solid $medium-slate-blue;
         margin: 0 auto;
         position: relative;
 
+        @include mobile {
+            width: 300px;
+            height: 300px;
+        }
+
         &#t4 {
-            background: url('../img/board-bg-4.png') no-repeat no-repeat;
+            background: url('../img/4.png') no-repeat no-repeat;
             @include animation(blur, .4s) {
                 0% { -webkit-filter: blur(20px);}
                 100% { -webkit-filter: blur(0px);}
             }
+            @include mobile {
+                background: url('../img/4-m.png') no-repeat no-repeat;
+            }
         }
         
         &#t5 {
-            background: url('../img/board-bg-5.png') no-repeat no-repeat;
+            background: url('../img/5.png') no-repeat no-repeat;
             @include animation(blur, .4s) {
                 0% { -webkit-filter: blur(20px);}
                 100% { -webkit-filter: blur(0px);}
+            }
+            @include mobile {
+                background: url('../img/5-m.png') no-repeat no-repeat;
             }
         }
 
@@ -267,11 +308,21 @@
             &.t4 {
                 height: 95px;
                 width: 95px;
+
+                @include mobile {
+                    height: 67.5px;
+                    width: 67.5px;
+                }
             }
 
             &.t5 {
-                height: 76.4px;
-                width: 76.4px;
+                height: 77px;
+                width: 77px;
+
+                @include mobile {
+                    height: 54px;
+                    width: 54px;
+                }
             }
             
             .tile__value {

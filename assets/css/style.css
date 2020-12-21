@@ -83,6 +83,54 @@
       -ms-flex-direction: column;
           flex-direction: column;
   justify-items: center;
+  height: 300px;
+  width: 300px;
+}
+
+@media (min-width: 481px) and (max-width: 724px) {
+  .label {
+    height: 210px;
+    width: 210px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .label {
+    height: 99px;
+    width: 99px;
+  }
+}
+
+.label.label--4 {
+  background: url("./../img/board-4.png") no-repeat no-repeat;
+}
+
+@media (min-width: 481px) and (max-width: 724px) {
+  .label.label--4 {
+    background: url("./../img/board-l-4.png") no-repeat no-repeat;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .label.label--4 {
+    background: url("./../img/board-m-4.png") no-repeat no-repeat;
+  }
+}
+
+.label.label--5 {
+  background: url("./../img/board-5.png") no-repeat no-repeat;
+}
+
+@media (min-width: 481px) and (max-width: 724px) {
+  .label.label--5 {
+    background: url("./../img/board-l-5.png") no-repeat no-repeat;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .label.label--5 {
+    background: url("./../img/board-m-5.png") no-repeat no-repeat;
+  }
 }
 
 .radio:checked + label {
@@ -334,14 +382,19 @@
 .main .board {
   width: 430px;
   height: 430px;
-  border-radius: 5px;
-  border: 10px solid #7678ED;
   margin: 0 auto;
   position: relative;
 }
 
+@media (min-width: 320px) and (max-width: 480px) {
+  .main .board {
+    width: 300px;
+    height: 300px;
+  }
+}
+
 .main .board#t4 {
-  background: url("../img/board-bg-4.png") no-repeat no-repeat;
+  background: url("../img/4.png") no-repeat no-repeat;
   -webkit-animation-name: blur;
           animation-name: blur;
   -webkit-animation-duration: 0.4s;
@@ -366,8 +419,14 @@
   }
 }
 
+@media (min-width: 320px) and (max-width: 480px) {
+  .main .board#t4 {
+    background: url("../img/4-m.png") no-repeat no-repeat;
+  }
+}
+
 .main .board#t5 {
-  background: url("../img/board-bg-5.png") no-repeat no-repeat;
+  background: url("../img/5.png") no-repeat no-repeat;
   -webkit-animation-name: blur;
           animation-name: blur;
   -webkit-animation-duration: 0.4s;
@@ -380,6 +439,12 @@
   }
   100% {
     -webkit-filter: blur(0px);
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .main .board#t5 {
+    background: url("../img/5-m.png") no-repeat no-repeat;
   }
 }
 
@@ -405,9 +470,23 @@
   width: 95px;
 }
 
+@media (min-width: 320px) and (max-width: 480px) {
+  .main .board .tile.t4 {
+    height: 67.5px;
+    width: 67.5px;
+  }
+}
+
 .main .board .tile.t5 {
-  height: 76.4px;
-  width: 76.4px;
+  height: 77px;
+  width: 77px;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .main .board .tile.t5 {
+    height: 54px;
+    width: 54px;
+  }
 }
 
 .main .board .tile .tile__value {
