@@ -85,6 +85,7 @@
   justify-items: center;
   height: 300px;
   width: 300px;
+  opacity: .7;
 }
 
 @media (min-width: 481px) and (max-width: 724px) {
@@ -96,41 +97,46 @@
 
 @media (min-width: 320px) and (max-width: 480px) {
   .label {
-    height: 99px;
-    width: 99px;
+    height: 150px;
+    width: 150px;
+    margin: 5px;
   }
 }
 
 .label.label--4 {
-  background: url("./../img/board-4.png") no-repeat no-repeat;
+  background: url("./../img/board-4.png") center center;
 }
 
 @media (min-width: 481px) and (max-width: 724px) {
   .label.label--4 {
-    background: url("./../img/board-l-4.png") no-repeat no-repeat;
+    background: url("./../img/board-l-4.png") center center;
   }
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
   .label.label--4 {
-    background: url("./../img/board-m-4.png") no-repeat no-repeat;
+    background: url("./../img/board-m-4.png") center center;
   }
 }
 
 .label.label--5 {
-  background: url("./../img/board-5.png") no-repeat no-repeat;
+  background: url("./../img/board-5.png") center center;
 }
 
 @media (min-width: 481px) and (max-width: 724px) {
   .label.label--5 {
-    background: url("./../img/board-l-5.png") no-repeat no-repeat;
+    background: url("./../img/board-l-5.png") center center;
   }
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
   .label.label--5 {
-    background: url("./../img/board-m-5.png") no-repeat no-repeat;
+    background: url("./../img/board-m-5.png") center center;
   }
+}
+
+.radio:not(:checked) + label {
+  border: 3px solid transparent;
 }
 
 .radio:checked + label {
@@ -161,7 +167,7 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  width: 70vw;
+  width: 90vw;
 }
 
 .entry-screen .row .radio:not(:checked) + label img {
