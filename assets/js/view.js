@@ -61,8 +61,8 @@ export default class View {
         let board = document.querySelector('.board');
         let tile = document.createElement('div');
         tile.classList.add('tile', `t${this.gameType}`, 'tile--2', 'add');
-        tile.style.left = `${x*this.tileDimension+x*this.innerBorderWidth}px`;
-        tile.style.top = `${y*this.tileDimension+y*this.innerBorderWidth}px`;
+        tile.style.left = `${(x*this.tileDimension+x*this.innerBorderWidth)+this.innerBorderWidth}px`;
+        tile.style.top = `${(y*this.tileDimension+y*this.innerBorderWidth)+this.innerBorderWidth}px`;
         tile.dataset.id = id;
         let span = document.createElement('span');
         span.classList.add('tile__value');
@@ -82,8 +82,8 @@ export default class View {
                 let retainedTile = document.querySelector(`[data-id="${retainedTileObj[0].id}"]`);
                 return this.mergeTiles(retainedTile, tile, retainedTileObj);
             }
-            tile.style.left = `${arrayWithTiles[index].x*this.tileDimension+arrayWithTiles[index].x*this.innerBorderWidth}px`;
-            tile.style.top = `${arrayWithTiles[index].y*this.tileDimension+arrayWithTiles[index].y*this.innerBorderWidth}px`;
+            tile.style.left = `${(arrayWithTiles[index].x*this.tileDimension+arrayWithTiles[index].x*this.innerBorderWidth)+this.innerBorderWidth}px`;
+            tile.style.top = `${(arrayWithTiles[index].y*this.tileDimension+arrayWithTiles[index].y*this.innerBorderWidth)+this.innerBorderWidth}px`;
             tile.classList.add('move');
             setTimeout(() => tile.classList.remove('move'), 600);
         });
@@ -91,11 +91,11 @@ export default class View {
 
 
     mergeTiles(retainedTile, tileToMerge, retainedObj) {
-        tileToMerge.style.left = `${retainedObj[0].x*this.tileDimension+retainedObj[0].x*this.innerBorderWidth}px`;
-        tileToMerge.style.top = `${retainedObj[0].y*this.tileDimension+retainedObj[0].y*this.innerBorderWidth}px`;
+        tileToMerge.style.left = `${(retainedObj[0].x*this.tileDimension+retainedObj[0].x*this.innerBorderWidth)+this.innerBorderWidth}px`;
+        tileToMerge.style.top = `${(retainedObj[0].y*this.tileDimension+retainedObj[0].y*this.innerBorderWidth)+this.innerBorderWidth}px`;
         tileToMerge.classList.add('merge');
-        retainedTile.style.left = `${retainedObj[0].x*this.tileDimension+retainedObj[0].x*this.innerBorderWidth}px`;
-        retainedTile.style.top = `${retainedObj[0].y*this.tileDimension+retainedObj[0].y*this.innerBorderWidth}px`;
+        retainedTile.style.left = `${(retainedObj[0].x*this.tileDimension+retainedObj[0].x*this.innerBorderWidth)+this.innerBorderWidth}px`;
+        retainedTile.style.top = `${(retainedObj[0].y*this.tileDimension+retainedObj[0].y*this.innerBorderWidth)+this.innerBorderWidth}px`;
         retainedTile.classList = `tile t${this.gameType} tile--${retainedObj[0].val}`;
         retainedTile.firstChild.innerHTML = `${retainedObj[0].val}`;
         retainedTile.classList.add('merge');

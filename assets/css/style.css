@@ -104,34 +104,34 @@
 }
 
 .label.label--4 {
-  background: url("./../img/board-4.png") center center;
+  background: url("./../img/4-gametype-l.png") center center;
 }
 
 @media (min-width: 481px) and (max-width: 724px) {
   .label.label--4 {
-    background: url("./../img/board-l-4.png") center center;
+    background: url("./../img/4-gametype-m.png") center center;
   }
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
   .label.label--4 {
-    background: url("./../img/board-m-4.png") center center;
+    background: url("./../img/4-gametype-s.png") center center;
   }
 }
 
 .label.label--5 {
-  background: url("./../img/board-5.png") center center;
+  background: url("./../img/5-gametype-l.png") center center;
 }
 
 @media (min-width: 481px) and (max-width: 724px) {
   .label.label--5 {
-    background: url("./../img/board-l-5.png") center center;
+    background: url("./../img/5-gametype-m.png") center center;
   }
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
   .label.label--5 {
-    background: url("./../img/board-m-5.png") center center;
+    background: url("./../img/5-gametype-s.png") center center;
   }
 }
 
