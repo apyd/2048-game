@@ -46,28 +46,25 @@
   margin: 0 5px;
 }
 
-.btn--primary {
+.btn.btn--primary {
   color: #FFFFFF;
   background-color: #7678ED;
   border: 1px solid #7678ED;
 }
 
-.btn--primary:hover {
+.btn.btn--primary:not(:disabled):hover {
   background-color: #F7B801;
   border: 1px solid #7678ED;
   color: #3D348B;
   cursor: pointer;
 }
 
-:disabled {
+.btn:disabled {
   opacity: .5;
 }
 
-:disabled:hover {
+.btn:disabled:hover {
   cursor: not-allowed;
-  background-color: #7678ED;
-  border: 1px solid #7678ED;
-  color: #FFFFFF;
 }
 
 .radio {
