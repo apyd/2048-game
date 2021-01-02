@@ -46,6 +46,15 @@
   margin: 0 5px;
 }
 
+@media (min-width: 320px) and (max-width: 480px) {
+  .btn {
+    padding: 0 5px;
+    margin: 0 4px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}
+
 .btn.btn--primary {
   color: #FFFFFF;
   background-color: #7678ED;
@@ -328,7 +337,7 @@
   text-align: center;
 }
 
-.main > .row {
+.main .row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -348,13 +357,13 @@
   margin-bottom: 20px;
 }
 
-.main > .row .btns__wrapper {
+.main .row .btns__wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.main > .row .scoreboard {
+.main .row .scoreboard {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -373,7 +382,13 @@
   margin-left: 12px;
 }
 
-.main > .row .scoreboard .scoreboard__wrapper {
+@media (min-width: 320px) and (max-width: 480px) {
+  .main .row .scoreboard {
+    margin-left: 2px;
+  }
+}
+
+.main .row .scoreboard .scoreboard__wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -391,7 +406,14 @@
   height: 100%;
 }
 
-.main > .row .scoreboard .scoreboard__wrapper .scoreboard__value {
+@media (min-width: 320px) and (max-width: 480px) {
+  .main .row .scoreboard .scoreboard__wrapper {
+    padding: 0 5px;
+    font-size: 1rem;
+  }
+}
+
+.main .row .scoreboard .scoreboard__wrapper .scoreboard__value {
   font-weight: bold;
 }
 

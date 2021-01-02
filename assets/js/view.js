@@ -64,7 +64,6 @@ export default class View {
         this.tileDimension = this.gameSettings[`t${this.gameType}`][this.screenType].tileDimension;
         this.innerBorderWidth = this.gameSettings[`t${this.gameType}`][this.screenType].innerBorderWidth;
         this.outerBorderWidth = this.gameSettings[`t${this.gameType}`][this.screenType].outerBorderWidth;
-        console.log(this.tileDimension, this.innerBorderWidth, this.outerBorderWidth);
         document.querySelector('.entry-screen').classList.add('hidden');
         document.querySelector('.main').classList.remove('hidden');
     }
