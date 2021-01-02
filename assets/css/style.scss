@@ -8,7 +8,7 @@
 }
 
 .html {
-    height: 100vh;
+    height: 100%;
 }
 
 .body {
@@ -20,6 +20,8 @@
     height : 100%;
     @include centerFlex(column);
     position: relative;
+    min-height: 300px;
+    overscroll-behavior: contain;
 }
 
 .btn {
@@ -37,7 +39,7 @@
     @include mobile {
         padding: 0 5px;
         margin: 0 4px;
-        height: 40px;
+        height: 50px;
         font-size: 1.2rem;
     }
 
@@ -60,9 +62,7 @@
         &:hover {
             cursor: not-allowed;
         }
-    }
-
-    
+    }    
 }
 
 .radio {
@@ -350,7 +350,7 @@
                 width: 72px;
 
                 @include mobile {
-                    height: px;
+                    height: 54px;
                     width: 54px;
                 }
             }

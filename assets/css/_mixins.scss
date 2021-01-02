@@ -25,7 +25,7 @@
   }
 
   @mixin mobile {
-    @media (min-width: #{$screen-s-min}) and (max-width: #{$screen-s-max}) {
+    @media (max-width: #{$screen-s-max}) {
         @content;
     }
  }

@@ -6,7 +6,7 @@
 }
 
 .html {
-  height: 100vh;
+  height: 100%;
 }
 
 .body {
@@ -31,6 +31,8 @@
       -ms-flex-align: center;
           align-items: center;
   position: relative;
+  min-height: 300px;
+  overscroll-behavior: contain;
 }
 
 .btn {
@@ -46,11 +48,11 @@
   margin: 0 5px;
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (max-width: 480px) {
   .btn {
     padding: 0 5px;
     margin: 0 4px;
-    height: 40px;
+    height: 50px;
     font-size: 1.2rem;
   }
 }
@@ -101,7 +103,7 @@
   }
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (max-width: 480px) {
   .label {
     height: 150px;
     width: 150px;
@@ -119,7 +121,7 @@
   }
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (max-width: 480px) {
   .label.label--4 {
     background: url("./../img/4-gametype-s.png") center center;
   }
@@ -135,7 +137,7 @@
   }
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (max-width: 480px) {
   .label.label--5 {
     background: url("./../img/5-gametype-s.png") center center;
   }
@@ -251,7 +253,7 @@
   }
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (max-width: 480px) {
   .overlay--visible .popup {
     width: 80vw;
   }
@@ -382,7 +384,7 @@
   margin-left: 12px;
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (max-width: 480px) {
   .main .row .scoreboard {
     margin-left: 2px;
   }
@@ -406,7 +408,7 @@
   height: 100%;
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (max-width: 480px) {
   .main .row .scoreboard .scoreboard__wrapper {
     padding: 0 5px;
     font-size: 1rem;
@@ -424,7 +426,7 @@
   position: relative;
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (max-width: 480px) {
   .main .board {
     width: 300px;
     height: 300px;
@@ -457,7 +459,7 @@
   }
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (max-width: 480px) {
   .main .board#t4 {
     background: url("../img/4x4mobile.png") no-repeat no-repeat;
   }
@@ -480,7 +482,7 @@
   }
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (max-width: 480px) {
   .main .board#t5 {
     background: url("../img/5x5mobile.png") no-repeat no-repeat;
   }
@@ -508,7 +510,7 @@
   width: 88px;
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (max-width: 480px) {
   .main .board .tile.t4 {
     height: 66px;
     width: 66px;
@@ -520,9 +522,9 @@
   width: 72px;
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (max-width: 480px) {
   .main .board .tile.t5 {
-    height: px;
+    height: 54px;
     width: 54px;
   }
 }
