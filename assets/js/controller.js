@@ -31,7 +31,7 @@ export default class Controller {
         (key === 'Escape' && view.popupVisible) ? view.togglePopup() : null;
         if (!key.includes('Arrow') || (!this.gameStatus)) return;
         view.moveTiles(model.moveTiles(key));
-        view.addTile(model.addTile());
+        model.canAddTile ? view.addTile(model.addTile()) : null;
         if (this.tilesOnBoard === (this.gameType * this.gameType)) {
             let isContinued = model.checkIfPossibleMerge();
             !isContinued ? this.endGame() : null;

@@ -95,6 +95,7 @@ export default class View {
     }
 
     moveTiles(arrayWithTiles) {
+        if (!arrayWithTiles) return;
         let tiles = document.querySelectorAll('.tile');
         let index;
         tiles.forEach(tile => {

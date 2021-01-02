@@ -1,5 +1,6 @@
 import {
     controller,
+    model,
     view
 } from './app.js';
 
@@ -11,6 +12,7 @@ export default class Model {
         this.gameType;
         this.board;
         this.numberOfMoves = 0;
+        this.canAddTile = true;
     }
 
     initGame(selectedType) {
@@ -36,6 +38,8 @@ export default class Model {
     }
 
     addTile() {
+            if (!this.canAddTile) return;
+            console.log('cannAdd: ' + this.canAddTile);
             let coordinates = this.generateCoordinates();
             let id = this.nextId;
             this.board[coordinates.charAt(0)][coordinates.charAt(1)] = {
@@ -68,9 +72,13 @@ export default class Model {
             }
         }
         (key === 'ArrowUp' || key === 'ArrowDown') ? sortedBoard = this.rotateBoard([...sortedBoard]): null;
+        let previouslyUpdatedTiles = this.generateArrayWithUpdatedTiles(this.board);
         this.board = [...sortedBoard];
+        let arrWithUpdatedTiles = this.generateArrayWithUpdatedTiles(sortedBoard);
+        this.checkIfArraysEqual(previouslyUpdatedTiles, arrWithUpdatedTiles) ? this.canAddTile = false : this.canAddTile = true;
+        if (!this.canAddTile) return;
         this.numberOfMoves++;
-        return this.generateArrayWithUpdatedTiles(sortedBoard);
+        return arrWithUpdatedTiles;
     }
 
     checkIfPossibleMerge() {
@@ -87,6 +95,15 @@ export default class Model {
             }
         }
         return false;
+    }
+
+    checkIfArraysEqual(arr1, arr2) {
+        if (typeof arr1 === 'undefined') return false;
+        let previouslyUpdatedTiles = JSON.stringify(arr1);
+        let arrWithUpdatedTiles = JSON.stringify(arr2);
+        let results;
+        previouslyUpdatedTiles === arrWithUpdatedTiles ? results = true : results = false;
+        return results;
     }
 
     generateArrayWithUpdatedTiles(board) {
