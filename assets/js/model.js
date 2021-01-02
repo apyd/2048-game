@@ -39,7 +39,6 @@ export default class Model {
 
     addTile() {
             if (!this.canAddTile) return;
-            console.log('cannAdd: ' + this.canAddTile);
             let coordinates = this.generateCoordinates();
             let id = this.nextId;
             this.board[coordinates.charAt(0)][coordinates.charAt(1)] = {

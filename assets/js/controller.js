@@ -12,6 +12,7 @@ export default class Controller {
         this.initX;
         this.startGameTime;
         this.EndGameTime;
+        this.minSwipeDistance = 20;
     }
 
     startGame() {
@@ -41,6 +42,7 @@ export default class Controller {
     onTouch(type, eX, eY) {
         if (type === 'touchend') {
             let key;
+            if (Math.abs(Math.round(eY - this.initY)) < this.minSwipeDistance && Math.abs(Math.round(eX - this.initX)) < this.minSwipeDistance) return;
             let angle = (Math.atan2(Math.round(eY - this.initY), (Math.round(eX - this.initX))));
             angle *= 180 / Math.PI;
             angle = Math.round(angle);
@@ -57,7 +59,7 @@ export default class Controller {
                 }
             }
             view.moveTiles(model.moveTiles(key));
-            view.addTile(model.addTile());
+            model.canAddTile ? view.addTile(model.addTile()) : null;
             if (this.tilesOnBoard === (this.gameType * this.gameType)) {
                 let isContinued = model.checkIfPossibleMerge();
                 !isContinued ? this.endGame() : null;
