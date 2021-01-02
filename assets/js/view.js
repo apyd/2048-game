@@ -3,31 +3,36 @@ export default class View {
         this.popupVisible = false;
         this.tileDimension;
         this.innerBorderWidth;
+        this.outerBorderWidth;
         this.gameType;
         this.screenType;
         this.gameSettings = {
             t4: {
                 mobile: {
-                    tileDimension: 67.5,
-                    innerBorderWidth: 6
+                    tileDimension: 66,
+                    innerBorderWidth: 8,
+                    outerBorderWidth: 6
                 },
                 desktop: {
-                    tileDimension: 95,
-                    innerBorderWidth: 10
+                    tileDimension: 88,
+                    innerBorderWidth: 10,
+                    outerBorderWidth: 9
             }
             },
             t5: {
                 mobile: {
                     tileDimension: 54,
-                    innerBorderWidth: 7.5
+                    innerBorderWidth: 5,
+                    outerBorderWidth: 5
                 },
                 desktop: {
-                    tileDimension: 77,
-                    innerBorderWidth: 7.5
+                    tileDimension: 72,
+                    innerBorderWidth: 7,
+                    outerBorderWidth: 6
                 }
             }
-            }
-            }
+        }
+    }
 
     togglePopup() {
         this.popupVisible = !this.popupVisible;
@@ -58,6 +63,8 @@ export default class View {
         windowWidth > 480 ? this.screenType = 'desktop' : this.screenType = 'mobile';
         this.tileDimension = this.gameSettings[`t${this.gameType}`][this.screenType].tileDimension;
         this.innerBorderWidth = this.gameSettings[`t${this.gameType}`][this.screenType].innerBorderWidth;
+        this.outerBorderWidth = this.gameSettings[`t${this.gameType}`][this.screenType].outerBorderWidth;
+        console.log(this.tileDimension, this.innerBorderWidth, this.outerBorderWidth);
         document.querySelector('.entry-screen').classList.add('hidden');
         document.querySelector('.main').classList.remove('hidden');
     }
@@ -75,8 +82,8 @@ export default class View {
         let board = document.querySelector('.board');
         let tile = document.createElement('div');
         tile.classList.add('tile', `t${this.gameType}`, 'tile--2', 'add');
-        tile.style.left = `${(x*this.tileDimension+x*this.innerBorderWidth)+this.innerBorderWidth}px`;
-        tile.style.top = `${(y*this.tileDimension+y*this.innerBorderWidth)+this.innerBorderWidth}px`;
+        tile.style.left = `${(x*this.tileDimension+x*this.innerBorderWidth)+this.outerBorderWidth}px`;
+        tile.style.top = `${(y*this.tileDimension+y*this.innerBorderWidth)+this.outerBorderWidth}px`;
         tile.dataset.id = id;
         tile.dataset.x = x;
         tile.dataset.y = y;
@@ -98,8 +105,8 @@ export default class View {
                 let retainedTile = document.querySelector(`[data-id="${retainedTileObj[0].id}"]`);
                 return this.mergeTiles(retainedTile, tile, retainedTileObj);
             }
-            tile.style.left = `${(arrayWithTiles[index].x*this.tileDimension+arrayWithTiles[index].x*this.innerBorderWidth)+this.innerBorderWidth}px`;
-            tile.style.top = `${(arrayWithTiles[index].y*this.tileDimension+arrayWithTiles[index].y*this.innerBorderWidth)+this.innerBorderWidth}px`;
+            tile.style.left = `${(arrayWithTiles[index].x*this.tileDimension+arrayWithTiles[index].x*this.innerBorderWidth)+this.outerBorderWidth}px`;
+            tile.style.top = `${(arrayWithTiles[index].y*this.tileDimension+arrayWithTiles[index].y*this.innerBorderWidth)+this.outerBorderWidth}px`;
             tile.dataset.x = arrayWithTiles[index].x;
             tile.dataset.y = arrayWithTiles[index].y;
             tile.classList.add('move');
@@ -109,11 +116,11 @@ export default class View {
 
 
     mergeTiles(retainedTile, tileToMerge, retainedObj) {
-        tileToMerge.style.left = `${(retainedObj[0].x*this.tileDimension+retainedObj[0].x*this.innerBorderWidth)+this.innerBorderWidth}px`;
-        tileToMerge.style.top = `${(retainedObj[0].y*this.tileDimension+retainedObj[0].y*this.innerBorderWidth)+this.innerBorderWidth}px`;
+        tileToMerge.style.left = `${(retainedObj[0].x*this.tileDimension+retainedObj[0].x*this.innerBorderWidth)+this.outerBorderWidth}px`;
+        tileToMerge.style.top = `${(retainedObj[0].y*this.tileDimension+retainedObj[0].y*this.innerBorderWidth)+this.outerBorderWidth}px`;
         tileToMerge.classList.add('merge');
-        retainedTile.style.left = `${(retainedObj[0].x*this.tileDimension+retainedObj[0].x*this.innerBorderWidth)+this.innerBorderWidth}px`;
-        retainedTile.style.top = `${(retainedObj[0].y*this.tileDimension+retainedObj[0].y*this.innerBorderWidth)+this.innerBorderWidth}px`;
+        retainedTile.style.left = `${(retainedObj[0].x*this.tileDimension+retainedObj[0].x*this.innerBorderWidth)+this.outerBorderWidth}px`;
+        retainedTile.style.top = `${(retainedObj[0].y*this.tileDimension+retainedObj[0].y*this.innerBorderWidth)+this.outerBorderWidth}px`;
         retainedTile.classList = `tile t${this.gameType} tile--${retainedObj[0].val}`;
         retainedTile.firstChild.innerHTML = `${retainedObj[0].val}`;
         retainedTile.classList.add('merge');
@@ -126,13 +133,19 @@ export default class View {
         document.querySelectorAll('.scoreboard__value')[0].innerHTML = score;
         document.querySelectorAll('.scoreboard__value')[1].innerHTML = localStorage.getItem(`bestScore${this.gameType}`);
     }
-    onScreenResize(e) {
+    onScreenResize() {
         let tiles = document.querySelectorAll('.tile');
+        let screenType = this.screenType;
         let windowWidth = window.innerWidth;
         windowWidth > 480 ? this.screenType = 'desktop' : this.screenType = 'mobile';
+        if (screenType === this.screenType) return;
+        this.tileDimension = this.gameSettings[`t${this.gameType}`][this.screenType].tileDimension;
+        this.innerBorderWidth = this.gameSettings[`t${this.gameType}`][this.screenType].innerBorderWidth;
+        this.outerBorderWidth = this.gameSettings[`t${this.gameType}`][this.screenType].outerBorderWidth;
         tiles.forEach(tile => {
-            tile.style.left = `${(tile.dataset.x*this.tileDimension+tile.dataset.x*this.innerBorderWidth)+this.innerBorderWidth}px`;
-            tile.style.top = `${(tile.dataset.y*this.tileDimension+tile.dataset.y*this.innerBorderWidth)+this.innerBorderWidth}px`;
+            tile.style.left = `${(tile.dataset.x*this.tileDimension+tile.dataset.x*this.innerBorderWidth)+this.outerBorderWidth}px`;
+            tile.style.top = `${(tile.dataset.y*this.tileDimension+tile.dataset.y*this.innerBorderWidth)+this.outerBorderWidth}px`;
         });
+
     }
 }

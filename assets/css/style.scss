@@ -277,8 +277,8 @@
     }
 
     .board {
-        width: 430px;
-        height: 430px;
+        width: 400px;
+        height: 400px;
         margin: 0 auto;
         position: relative;
 
@@ -288,24 +288,24 @@
         }
 
         &#t4 {
-            background: url('../img/4.png') no-repeat no-repeat;
+            background: url('../img/4x4desktop.png') no-repeat no-repeat;
             @include animation(blur, .4s) {
                 0% { -webkit-filter: blur(20px);}
                 100% { -webkit-filter: blur(0px);}
             }
             @include mobile {
-                background: url('../img/4-m.png') no-repeat no-repeat;
+                background: url('../img/4x4mobile.png') no-repeat no-repeat;
             }
         }
         
         &#t5 {
-            background: url('../img/5.png') no-repeat no-repeat;
+            background: url('../img/5x5desktop.png') no-repeat no-repeat;
             @include animation(blur, .4s) {
                 0% { -webkit-filter: blur(20px);}
                 100% { -webkit-filter: blur(0px);}
             }
             @include mobile {
-                background: url('../img/5-m.png') no-repeat no-repeat;
+                background: url('../img/5x5mobile.png') no-repeat no-repeat;
             }
         }
 
@@ -319,21 +319,21 @@
             position: absolute;
 
             &.t4 {
-                height: 95px;
-                width: 95px;
+                height: 88px;
+                width: 88px;
 
                 @include mobile {
-                    height: 67.5px;
-                    width: 67.5px;
+                    height: 66px;
+                    width: 66px;
                 }
             }
 
             &.t5 {
-                height: 77px;
-                width: 77px;
+                height: 72px;
+                width: 72px;
 
                 @include mobile {
-                    height: 54px;
+                    height: px;
                     width: 54px;
                 }
             }
