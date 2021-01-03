@@ -35,6 +35,12 @@
   overscroll-behavior: contain;
 }
 
+@media screen and (max-width: 480px) {
+  .body {
+    font-size: 12px;
+  }
+}
+
 .btn {
   border: none;
   background-color: transparent;
@@ -46,7 +52,7 @@
   padding: 10px;
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .btn {
     height: 50px;
     font-size: 1.2rem;
@@ -107,14 +113,14 @@
   opacity: .7;
 }
 
-@media (min-width: 481px) and (max-width: 724px) {
+@media screen and (min-width: 481px) and (max-width: 724px) {
   .label {
     height: 210px;
     width: 210px;
   }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .label {
     height: 150px;
     width: 150px;
@@ -126,13 +132,13 @@
   background: url("./../img/4-gametype-l.png") center center;
 }
 
-@media (min-width: 481px) and (max-width: 724px) {
+@media screen and (min-width: 481px) and (max-width: 724px) {
   .label.label--4 {
     background: url("./../img/4-gametype-m.png") center center;
   }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .label.label--4 {
     background: url("./../img/4-gametype-s.png") center center;
   }
@@ -142,13 +148,13 @@
   background: url("./../img/5-gametype-l.png") center center;
 }
 
-@media (min-width: 481px) and (max-width: 724px) {
+@media screen and (min-width: 481px) and (max-width: 724px) {
   .label.label--5 {
     background: url("./../img/5-gametype-m.png") center center;
   }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .label.label--5 {
     background: url("./../img/5-gametype-s.png") center center;
   }
@@ -232,6 +238,8 @@
   width: 55vw;
   max-width: 650px;
   height: 55vh;
+  min-height: 250px;
+  max-height: 400px;
   border-radius: 5px;
   color: #000000;
   display: -webkit-box;
@@ -249,13 +257,13 @@
           align-items: center;
 }
 
-@media (min-width: 481px) and (max-width: 724px) {
+@media screen and (min-width: 481px) and (max-width: 724px) {
   .overlay .popup {
     width: 70vw;
   }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .overlay .popup {
     width: 80vw;
   }
@@ -318,12 +326,13 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  font-size: vmin(4vw, 4vh);
 }
 
 .overlay .popup .popup__body .text__label {
@@ -340,6 +349,12 @@
           flex-direction: column;
   width: 100%;
   overflow: hidden;
+}
+
+@media screen and (max-width: 724px) and (orientation: landscape) {
+  .main {
+    overflow: visible;
+  }
 }
 
 .main .header__text {
@@ -371,7 +386,7 @@
   margin: 0px auto 20px auto;
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .main .row {
     width: 300px;
   }
@@ -419,7 +434,7 @@
   height: 100%;
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .main .row .scoreboard .scoreboard__wrapper {
     padding: 0 10px;
     font-size: 1rem;
@@ -437,7 +452,7 @@
   position: relative;
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .board {
     width: 300px;
     height: 300px;
@@ -470,7 +485,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .board#t4 {
     background: url("../img/4x4mobile.png") no-repeat no-repeat;
   }
@@ -493,7 +508,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .board#t5 {
     background: url("../img/5x5mobile.png") no-repeat no-repeat;
   }
@@ -527,7 +542,7 @@
   font-size: 16px;
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .board .tile.t4 {
     height: 66px;
     width: 66px;
@@ -541,7 +556,7 @@
   font-size: 14px;
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .board .tile.t5 {
     height: 54px;
     width: 54px;

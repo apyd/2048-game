@@ -1,8 +1,8 @@
-@mixin centerFlex($direction) {
+@mixin positionFlex($direction, $align) {
     display: flex;
     flex-direction: $direction;
     justify-content: center;
-    align-items: center
+    align-items: $align;
 }
 
 @mixin animation($name, $duration) {
@@ -11,16 +11,22 @@
     }
     animation-name: $name;
     animation-duration: $duration;
-  }
+}
 
-  @mixin tablet {
-    @media (min-width: #{$screen-s-max+1}) and (max-width: #{$screen-l-max}) {
+@mixin tablet {
+    @media screen and (min-width: #{$screen-s-max+1}) and (max-width: #{$screen-l-max}) {
         @content;
     }
-  }
+}
 
-  @mixin mobile {
-    @media (max-width: #{$screen-s-max}) {
+@mixin mobile {
+    @media screen and (max-width: #{$screen-s-max}){
         @content;
     }
- }
+}
+
+@mixin screensLandscape {
+    @media screen and (max-width: #{$screen-l-max}) and (orientation:landscape){
+      @content;
+    }
+}

@@ -18,11 +18,15 @@
     padding: 0;
     margin: 0;
     color: $white;
-    height : 100%;
-    @include centerFlex(column);
+    height: 100%;
+    @include positionFlex(column, center);
     position: relative;
     min-height: 300px;
     overscroll-behavior: contain;
+
+    @include mobile {
+        font-size: 12px;
+    }
 }
 
 .btn {
@@ -77,7 +81,7 @@
 }
 
 .label {
-    @include centerFlex(column);
+    @include positionFlex(column, center);
     height: 300px;
     width: 300px;
     opacity: .7;
@@ -117,7 +121,7 @@
 }
 
 .entry-screen {
-    @include centerFlex(column);
+    @include positionFlex(column, center);
     width: 100vw;
 
     .row {
@@ -151,7 +155,7 @@
 
 .overlay {
     position: absolute;
-    @include centerFlex(row);
+    @include positionFlex(row, center);
     top: 0;
     left: 0;
     height: 100vh;
@@ -165,9 +169,11 @@
         width: 55vw;
         max-width: 650px;
         height: 55vh;
+        min-height: 250px;
+        max-height: 400px;
         border-radius: 5px;
         color: $black;
-        @include centerFlex(column);
+        @include positionFlex(column, center);
 
         @include tablet {
             width: 70vw;
@@ -178,7 +184,7 @@
         }
 
         .popup__header {
-            @include centerFlex(row);
+            @include positionFlex(row, center);
             width: 100%;
             position: relative;
             padding-top: 16px;
@@ -212,28 +218,32 @@
     }
 
             .popup__body {
-                @include centerFlex(column);
+                @include positionFlex(column, left);
                 flex: 1;
+                font-size: vmin(4vw, 4vh);
 
                 .text__label {
                     font-weight: bold;
                 }
             }
         }
-}
+    }
 
 .main {
     display: flex;
     flex-direction: column;
     width: 100%;
     overflow: hidden;
+    @include screensLandscape {
+        overflow: visible;
+    }
 
     .header__text {
         text-align: center;
     }
 
     .row {
-        @include centerFlex(row);
+        @include positionFlex(row, center);
         align-items: stretch;
         margin-bottom: 20px;
         justify-content: space-between;
@@ -249,12 +259,12 @@
         }
 
         .scoreboard {
-            @include centerFlex(row);
+            @include positionFlex(row, center);
             border-radius: 5px;
             border: 1px solid $medium-slate-blue;
         
             .scoreboard__wrapper {
-                @include centerFlex(column);
+                @include positionFlex(column, center);
                 padding: 0 15px;
                 height: 100%;
 
@@ -306,7 +316,7 @@
 
     .tile {
         background-color: $dark-slate-blue;
-        @include centerFlex(row);
+        @include positionFlex(row, center);
         align-items: stretch;
         border-radius: 5px;
         position: absolute;
@@ -420,7 +430,7 @@
 
 .footer {
     position: absolute;
-    @include centerFlex(row);
+    @include positionFlex(row, center);
     width: 100%;
     bottom: 0;
 
