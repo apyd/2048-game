@@ -11,10 +11,6 @@
     height: 100%;
 }
 
-.overlay {
-    display: none;
-}
-
 .body {
     font-family: $inter;
     font-size: 16px;
@@ -142,7 +138,6 @@
 
         .radio__text {
             text-align: center;
-            font-family: $inter;
             font-size: 1.5rem;
             font-weight: bold;
             margin: 5px 0 0 0;
@@ -154,7 +149,7 @@
     }
 }
 
-.overlay--visible {
+.overlay {
     position: absolute;
     @include centerFlex(row);
     top: 0;
@@ -206,7 +201,7 @@
             
                 &:hover {
                     cursor: pointer;
-                    background-color: #f2f2f2;
+                    background-color: $light-gray;
                 }
 
                 .icon--close {
@@ -274,72 +269,135 @@
             }
         }
     }
+}
 
-    .board {
-        width: 400px;
-        height: 400px;
-        margin: 0 auto;
-        position: relative;
+.board {
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    position: relative;
 
+    @include mobile {
+        width: 300px;
+        height: 300px;
+    }
+
+    &#t4 {
+        background: url('../img/4x4desktop.png') no-repeat no-repeat;
+        @include animation(blur, .4s) {
+            0% { -webkit-filter: blur(20px);}
+            100% { -webkit-filter: blur(0px);}
+        }
         @include mobile {
-            width: 300px;
-            height: 300px;
+            background: url('../img/4x4mobile.png') no-repeat no-repeat;
+        }
+    }
+    
+    &#t5 {
+        background: url('../img/5x5desktop.png') no-repeat no-repeat;
+        @include animation(blur, .4s) {
+            0% { -webkit-filter: blur(20px);}
+            100% { -webkit-filter: blur(0px);}
+        }
+        @include mobile {
+            background: url('../img/5x5mobile.png') no-repeat no-repeat;
+        }
+    }
+
+    .tile {
+        background-color: $dark-slate-blue;
+        @include centerFlex(row);
+        align-items: stretch;
+        border-radius: 5px;
+        position: absolute;
+
+        &.t4 {
+            height: 88px;
+            width: 88px;
+            font-size: 16px;
+
+            @include mobile {
+                height: 66px;
+                width: 66px;
+                font-size: 12px;
+            }
+
         }
 
-        &#t4 {
-            background: url('../img/4x4desktop.png') no-repeat no-repeat;
-            @include animation(blur, .4s) {
-                0% { -webkit-filter: blur(20px);}
-                100% { -webkit-filter: blur(0px);}
-            }
+        &.t5 {
+            height: 72px;
+            width: 72px;
+            font-size: 14px;
+
             @include mobile {
-                background: url('../img/4x4mobile.png') no-repeat no-repeat;
+                height: 54px;
+                width: 54px;
+                font-size: 10px;
+            }
+        }
+
+        &.tile--2 {
+            background-color: $tile2--bg;
+        }
+
+        &.tile--4 {
+            background-color: $tile4--bg;
+        }
+
+        &.tile--8 {
+            background-color: $tile8--bg;
+        }
+
+        &.tile--16 {
+            background-color: $tile16--bg;
+        }
+
+        &.tile--32 {
+            background-color: $tile32--bg;
+        }
+
+        &.tile--64 {
+            background-color: $tile64--bg;
+        }
+
+        &.tile--128 {
+            background-color: $tile128--bg;
+        }
+
+        &.tile--256 {
+            background-color: $tile256--bg;
+        }
+
+        &.tile--512 {
+            background-color: $tile512--bg;
+        }
+
+        &.tile--1024 {
+            background-color: $tile1024--bg;
+        }
+
+        &.tile--2048 {
+            background-color: $tile2048--bg;
+        }
+
+        &.add {
+            @include animation(addTile, .8s) {
+                0% { transform: scale(.7);}
+                100% { transform: scale(1);}
+            }
+        };
+
+        &.move {
+            transition: all .4s ease;
+        }
+
+        &.merge {
+            @include animation(mergeTiles, .6s) {
+                0% { transform: scale(1.5);}
+                100% { transform: scale(1);}
             }
         }
         
-        &#t5 {
-            background: url('../img/5x5desktop.png') no-repeat no-repeat;
-            @include animation(blur, .4s) {
-                0% { -webkit-filter: blur(20px);}
-                100% { -webkit-filter: blur(0px);}
-            }
-            @include mobile {
-                background: url('../img/5x5mobile.png') no-repeat no-repeat;
-            }
-        }
-
-        .tile {
-            background-color: $dark-slate-blue;
-            @include centerFlex(row);
-            align-items: stretch;
-            border-radius: 5px;
-            position: absolute;
-
-            &.t4 {
-                height: 88px;
-                width: 88px;
-                font-size: 16px;
-
-                @include mobile {
-                    height: 66px;
-                    width: 66px;
-                    font-size: 12px;
-                }
-
-            }
-
-            &.t5 {
-                height: 72px;
-                width: 72px;
-                font-size: 14px;
-
-                @include mobile {
-                    height: 54px;
-                    width: 54px;
-                    font-size: 10px;
-                }
-            }
-            
             .tile__value {
                 position: absolute;
                 top: 50%;
@@ -351,73 +409,8 @@
                 width: 6rem;
                 line-height: 2rem;
                 text-align: center;
-                text-shadow: #0f0f0f 1px 1px;
+                text-shadow: $black 1px 1px;
             }
-
-            }
-
-        .tile--2 {
-            background-color: $tile2--bg;
-        }
-
-        .tile--4 {
-            background-color: $tile4--bg;
-        }
-
-        .tile--8 {
-            background-color: $tile8--bg;
-        }
-
-        .tile--16 {
-            background-color: $tile16--bg;
-        }
-
-        .tile--32 {
-            background-color: $tile32--bg;
-        }
-
-        .tile--64 {
-            background-color: $tile64--bg;
-        }
-
-        .tile--128 {
-            background-color: $tile128--bg;
-        }
-
-        .tile--256 {
-            background-color: $tile256--bg;
-        }
-
-        .tile--512 {
-            background-color: $tile512--bg;
-        }
-
-        .tile--1024 {
-            background-color: $tile1024--bg;
-        }
-
-        .tile--2048 {
-            background-color: $tile2048--bg;
-        }
-
-        .add {
-            @include animation(addTile, .8s) {
-                0% { transform: scale(.7);}
-                100% { transform: scale(1);}
-            }
-        };
-
-        .move {
-            transition: all .4s ease;
-        }
-
-        .merge {
-            @include animation(mergeTiles, .6s) {
-                0% { transform: scale(1.5);}
-                100% { transform: scale(1);}
-        }
-
-    }
     }
 }
 
