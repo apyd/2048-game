@@ -124,15 +124,16 @@ export default class View {
         retainedTile.classList = `tile t${this.gameType} tile--${retainedObj[0].val}`;
         retainedTile.firstChild.innerHTML = `${retainedObj[0].val}`;
         retainedTile.classList.add('merge');
+        this.changeTileFontSize();
         setTimeout(() => retainedTile.classList.remove('merge'), 600);
         tileToMerge.remove();
-
     }
 
     updateScore(score = 0) {
         document.querySelectorAll('.scoreboard__value')[0].innerHTML = score;
         document.querySelectorAll('.scoreboard__value')[1].innerHTML = localStorage.getItem(`bestScore${this.gameType}`);
     }
+
     onScreenResize() {
         let tiles = document.querySelectorAll('.tile');
         let screenType = this.screenType;
@@ -147,5 +148,13 @@ export default class View {
             tile.style.top = `${(tile.dataset.y*this.tileDimension+tile.dataset.y*this.innerBorderWidth)+this.outerBorderWidth}px`;
         });
 
+    }
+    changeTileFontSize() {
+        const baseSize = 5;
+        const boxes = document.querySelectorAll('.merge');
+        boxes.forEach(box => {
+            if (box.textContent.length < baseSize) return;
+            box.style.fontSize = `1.6em`;
+        })
     }
 }
