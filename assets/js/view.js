@@ -1,6 +1,5 @@
 export default class View {
     constructor() {
-        this.popupVisible = false;
         this.tileDimension;
         this.innerBorderWidth;
         this.outerBorderWidth;
@@ -35,15 +34,14 @@ export default class View {
     }
 
     togglePopup() {
-        this.popupVisible = !this.popupVisible;
-        document.querySelector(".overlay").classList.toggle('overlay--visible');
+        document.querySelector(".overlay").classList.toggle('hidden');
     }
     showEndGamePopup(time, numberOfMoves, result) {
         document.querySelectorAll('.header__text')[1].innerHTML = 'End game';
         const popupBody = document.querySelector('.popup__body');
         popupBody.innerHTML = `<p class="popup__text"><span class="text__label">Time elapsed: </span>${time}</p>
                              <p class="popup__text"><span class="text__label">Moves performed: </span>${numberOfMoves}</p>
-                             <p class="popup__text"><span class="text__label">Your result: </span>${result} points! </p>`
+                             <p class="popup__text"><span class="text__label">Your result: </span>${result} points </p>`
         this.togglePopup();
     }
 
