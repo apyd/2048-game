@@ -1,8 +1,3 @@
-@mixin removeGap {
-    padding: 0;
-    margin: 0;
-}
-
 @mixin centerFlex($direction) {
     display: flex;
     flex-direction: $direction;

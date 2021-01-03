@@ -357,6 +357,17 @@
       -ms-flex-align: stretch;
           align-items: stretch;
   margin-bottom: 20px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 400px;
+  margin: 0px auto 20px auto;
+}
+
+@media (max-width: 480px) {
+  .main .row {
+    width: 300px;
+  }
 }
 
 .main .row .btns__wrapper {
@@ -410,7 +421,7 @@
 
 @media (max-width: 480px) {
   .main .row .scoreboard .scoreboard__wrapper {
-    padding: 0 5px;
+    padding: 0 10px;
     font-size: 1rem;
   }
 }
@@ -508,24 +519,28 @@
 .main .board .tile.t4 {
   height: 88px;
   width: 88px;
+  font-size: 16px;
 }
 
 @media (max-width: 480px) {
   .main .board .tile.t4 {
     height: 66px;
     width: 66px;
+    font-size: 12px;
   }
 }
 
 .main .board .tile.t5 {
   height: 72px;
   width: 72px;
+  font-size: 14px;
 }
 
 @media (max-width: 480px) {
   .main .board .tile.t5 {
     height: 54px;
     width: 54px;
+    font-size: 10px;
   }
 }
 
@@ -535,10 +550,10 @@
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  font-size: 2rem;
+  font-size: 2em;
   font-weight: bold;
   height: 2rem;
-  width: 6em;
+  width: 6rem;
   line-height: 2rem;
   text-align: center;
   text-shadow: #0f0f0f 1px 1px;

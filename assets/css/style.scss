@@ -15,7 +15,8 @@
     font-family: $inter;
     font-size: 16px;
     background-color: $dark-slate-blue;
-    @include removeGap;
+    padding: 0;
+    margin: 0;
     color: $white;
     height : 100%;
     @include centerFlex(column);
@@ -261,6 +262,13 @@
         @include centerFlex(row);
         align-items: stretch;
         margin-bottom: 20px;
+        justify-content: space-between;
+        width: 400px;
+        margin: 0px auto 20px auto;
+
+        @include mobile {
+            width: 300px;
+        }
 
         .btns__wrapper {
             display: flex;
@@ -282,7 +290,7 @@
                 height: 100%;
 
                 @include mobile {
-                    padding: 0 5px;
+                    padding: 0 10px;
                     font-size: 1rem; 
                 }
 
@@ -338,20 +346,25 @@
             &.t4 {
                 height: 88px;
                 width: 88px;
+                font-size: 16px;
 
                 @include mobile {
                     height: 66px;
                     width: 66px;
+                    font-size: 12px;
                 }
+
             }
 
             &.t5 {
                 height: 72px;
                 width: 72px;
+                font-size: 14px;
 
                 @include mobile {
                     height: 54px;
                     width: 54px;
+                    font-size: 10px;
                 }
             }
             
@@ -360,10 +373,10 @@
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                font-size: 2rem;
+                font-size: 2em;
                 font-weight: bold;
                 height: 2rem;
-                width: 6em;
+                width: 6rem;
                 line-height: 2rem;
                 text-align: center;
                 text-shadow: #0f0f0f 1px 1px;
