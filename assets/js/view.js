@@ -89,7 +89,13 @@ export default class View {
         span.innerHTML = "2";
         tile.appendChild(span);
         board.appendChild(tile);
-        setTimeout(() => tile.classList.remove('add'), 800);
+        tile.addEventListener('transitionend', () => {
+            tile.classList.remove('move');
+        });
+        tile.addEventListener('animationend', () => {
+            tile.classList.contains('add') ? tile.classList.remove('add') : null;
+            tile.classList.contains('merge') ? tile.classList.remove('merge') : null;
+        });
     }
 
     moveTiles(arrayWithTiles) {
@@ -108,7 +114,6 @@ export default class View {
             tile.dataset.x = arrayWithTiles[index].x;
             tile.dataset.y = arrayWithTiles[index].y;
             tile.classList.add('move');
-            setTimeout(() => tile.classList.remove('move'), 600);
         });
     }
 
@@ -122,8 +127,7 @@ export default class View {
         retainedTile.classList = `tile t${this.gameType} tile--${retainedObj[0].val}`;
         retainedTile.firstChild.innerHTML = `${retainedObj[0].val}`;
         retainedTile.classList.add('merge');
-        this.changeTileFontSize();
-        setTimeout(() => retainedTile.classList.remove('merge'), 600);
+        !retainedTile.textContent.length < 5 ? retainedTile.style.fontSize = `1.6em` : null;
         tileToMerge.remove();
     }
 
@@ -146,13 +150,5 @@ export default class View {
             tile.style.top = `${(tile.dataset.y*this.tileDimension+tile.dataset.y*this.innerBorderWidth)+this.outerBorderWidth}px`;
         });
 
-    }
-    changeTileFontSize() {
-        const baseSize = 5;
-        const boxes = document.querySelectorAll('.merge');
-        boxes.forEach(box => {
-            if (box.textContent.length < baseSize) return;
-            box.style.fontSize = `1.6em`;
-        })
     }
 }
