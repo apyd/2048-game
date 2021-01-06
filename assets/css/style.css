@@ -634,7 +634,6 @@
 
 @-webkit-keyframes addTile {
   0% {
-    visibility: hidden;
     -webkit-transform: scale(0);
             transform: scale(0);
   }
@@ -650,7 +649,6 @@
 
 @keyframes addTile {
   0% {
-    visibility: hidden;
     -webkit-transform: scale(0);
             transform: scale(0);
   }

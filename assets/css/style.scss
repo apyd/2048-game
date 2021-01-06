@@ -412,10 +412,7 @@
 
         &.add {
             @include animation(addTile, 800ms) {
-                0% {
-                    visibility: hidden;
-                    transform: scale(0);
-                }
+                0% {transform: scale(0);}
                 50% {transform: scale(0);}
                 100% { transform: scale(1);}
             }
