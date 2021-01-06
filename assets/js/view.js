@@ -37,7 +37,7 @@ export default class View {
         document.querySelector(".overlay").classList.toggle('hidden');
     }
     showEndGamePopup(time, numberOfMoves, result) {
-        document.querySelectorAll('.header__text')[1].innerHTML = 'End game';
+        document.querySelectorAll('.header__text')[2].innerHTML = 'End game';
         const popupBody = document.querySelector('.popup__body');
         popupBody.innerHTML = `<p class="popup__text"><span class="text__label">Time elapsed: </span>${time}</p>
                              <p class="popup__text"><span class="text__label">Moves performed: </span>${numberOfMoves}</p>
@@ -76,7 +76,6 @@ export default class View {
             x,
             id
         }) {
-        setTimeout(() => {
         let board = document.querySelector('.board');
         let tile = document.createElement('div');
         tile.classList.add('tile', `t${this.gameType}`, 'tile--2', 'add');
@@ -96,9 +95,8 @@ export default class View {
         tile.addEventListener('animationend', () => {
             tile.classList.contains('add') ? tile.classList.remove('add') : null;
             tile.classList.contains('merge') ? tile.classList.remove('merge') : null;
-        })
-        }, 350);
-    }
+        });
+    };
 
     moveTiles(arrayWithTiles) {
         if (!arrayWithTiles) return;

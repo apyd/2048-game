@@ -300,7 +300,7 @@
 
     &#t4 {
         background: url('../img/4x4desktop.png') no-repeat no-repeat;
-        @include animation(blur, .4s) {
+        @include animation(blur, 400ms) {
             0% { -webkit-filter: blur(20px);}
             100% { -webkit-filter: blur(0px);}
         }
@@ -311,7 +311,7 @@
     
     &#t5 {
         background: url('../img/5x5desktop.png') no-repeat no-repeat;
-        @include animation(blur, .4s) {
+        @include animation(blur, 400ms) {
             0% { -webkit-filter: blur(20px);}
             100% { -webkit-filter: blur(0px);}
         }
@@ -411,8 +411,12 @@
 
 
         &.add {
-            @include animation(addTile, .8s) {
-                0% { transform: scale(0);}
+            @include animation(addTile, 800ms) {
+                0% {
+                    visibility: hidden;
+                    transform: scale(0);
+                }
+                50% {transform: scale(0);}
                 100% { transform: scale(1);}
             }
         };
@@ -422,9 +426,9 @@
         }
 
         &.merge {
-            @include animation(mergeTiles, .6s) {
-                0% { transform: scale(2);}
-                100% { transform: scale(1);}
+            @include animation(mergeTiles, 600ms) {
+                0% { transform: scale(2) };
+                100% { transform: scale(1); }
             }
         }
         

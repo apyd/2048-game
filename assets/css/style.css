@@ -468,8 +468,8 @@
   background: url("../img/4x4desktop.png") no-repeat no-repeat;
   -webkit-animation-name: blur;
           animation-name: blur;
-  -webkit-animation-duration: 0.4s;
-          animation-duration: 0.4s;
+  -webkit-animation-duration: 400ms;
+          animation-duration: 400ms;
 }
 
 @-webkit-keyframes blur {
@@ -500,8 +500,8 @@
   background: url("../img/5x5desktop.png") no-repeat no-repeat;
   -webkit-animation-name: blur;
           animation-name: blur;
-  -webkit-animation-duration: 0.4s;
-          animation-duration: 0.4s;
+  -webkit-animation-duration: 400ms;
+          animation-duration: 400ms;
 }
 
 @keyframes blur {
@@ -628,12 +628,17 @@
 .board .tile.add {
   -webkit-animation-name: addTile;
           animation-name: addTile;
-  -webkit-animation-duration: 0.8s;
-          animation-duration: 0.8s;
+  -webkit-animation-duration: 800ms;
+          animation-duration: 800ms;
 }
 
 @-webkit-keyframes addTile {
   0% {
+    visibility: hidden;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  50% {
     -webkit-transform: scale(0);
             transform: scale(0);
   }
@@ -645,6 +650,11 @@
 
 @keyframes addTile {
   0% {
+    visibility: hidden;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  50% {
     -webkit-transform: scale(0);
             transform: scale(0);
   }
@@ -662,8 +672,8 @@
 .board .tile.merge {
   -webkit-animation-name: mergeTiles;
           animation-name: mergeTiles;
-  -webkit-animation-duration: 0.6s;
-          animation-duration: 0.6s;
+  -webkit-animation-duration: 600ms;
+          animation-duration: 600ms;
 }
 
 @-webkit-keyframes mergeTiles {
