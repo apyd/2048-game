@@ -41,6 +41,13 @@
   }
 }
 
+@media screen and (max-width: 812px) and (orientation: landscape) {
+  .body {
+    height: unset;
+    padding-bottom: 80px;
+  }
+}
+
 .btn {
   border: none;
   background-color: transparent;
@@ -113,7 +120,7 @@
   opacity: .7;
 }
 
-@media screen and (min-width: 481px) and (max-width: 724px) {
+@media screen and (min-width: 481px) and (max-width: 812px) {
   .label {
     height: 210px;
     width: 210px;
@@ -132,7 +139,7 @@
   background: url("./../img/4-gametype-l.png") center center;
 }
 
-@media screen and (min-width: 481px) and (max-width: 724px) {
+@media screen and (min-width: 481px) and (max-width: 812px) {
   .label.label--4 {
     background: url("./../img/4-gametype-m.png") center center;
   }
@@ -148,7 +155,7 @@
   background: url("./../img/5-gametype-l.png") center center;
 }
 
-@media screen and (min-width: 481px) and (max-width: 724px) {
+@media screen and (min-width: 481px) and (max-width: 812px) {
   .label.label--5 {
     background: url("./../img/5-gametype-m.png") center center;
   }
@@ -257,7 +264,7 @@
           align-items: center;
 }
 
-@media screen and (min-width: 481px) and (max-width: 724px) {
+@media screen and (min-width: 481px) and (max-width: 812px) {
   .overlay .popup {
     width: 70vw;
   }
@@ -349,12 +356,6 @@
           flex-direction: column;
   width: 100%;
   overflow: hidden;
-}
-
-@media screen and (max-width: 724px) and (orientation: landscape) {
-  .main {
-    overflow: visible;
-  }
 }
 
 .main .header__text {

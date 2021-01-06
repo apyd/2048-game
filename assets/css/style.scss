@@ -27,6 +27,11 @@
     @include mobile {
         font-size: 12px;
     }
+
+    @include screensLandscape {
+        height: unset;
+        padding-bottom: 80px;
+    }
 }
 
 .btn {
@@ -234,9 +239,6 @@
     flex-direction: column;
     width: 100%;
     overflow: hidden;
-    @include screensLandscape {
-        overflow: visible;
-    }
 
     .header__text {
         text-align: center;
