@@ -129,6 +129,10 @@
     @include positionFlex(column, center);
     width: 100vw;
 
+    .header > .header__text {
+        text-align: center;
+    }
+
     .row {
         margin-bottom: 50px;
         display: flex;

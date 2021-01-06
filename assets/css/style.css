@@ -184,6 +184,10 @@
   width: 100vw;
 }
 
+.entry-screen .header > .header__text {
+  text-align: center;
+}
+
 .entry-screen .row {
   margin-bottom: 50px;
   display: -webkit-box;
