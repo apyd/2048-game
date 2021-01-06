@@ -76,6 +76,7 @@ export default class View {
             x,
             id
         }) {
+        setTimeout(() => {
         let board = document.querySelector('.board');
         let tile = document.createElement('div');
         tile.classList.add('tile', `t${this.gameType}`, 'tile--2', 'add');
@@ -95,7 +96,8 @@ export default class View {
         tile.addEventListener('animationend', () => {
             tile.classList.contains('add') ? tile.classList.remove('add') : null;
             tile.classList.contains('merge') ? tile.classList.remove('merge') : null;
-        });
+        })
+        }, 500);
     }
 
     moveTiles(arrayWithTiles) {

@@ -613,6 +613,18 @@
   background-color: #E20338;
 }
 
+.board .tile.tile--4096 {
+  background-color: #AA3429;
+}
+
+.board .tile.tile--8192 {
+  background-color: #932620;
+}
+
+.board .tile.tile--16384 {
+  background-color: #65070C;
+}
+
 .board .tile.add {
   -webkit-animation-name: addTile;
           animation-name: addTile;
@@ -622,8 +634,8 @@
 
 @-webkit-keyframes addTile {
   0% {
-    -webkit-transform: scale(0.7);
-            transform: scale(0.7);
+    -webkit-transform: scale(0);
+            transform: scale(0);
   }
   100% {
     -webkit-transform: scale(1);
@@ -633,8 +645,8 @@
 
 @keyframes addTile {
   0% {
-    -webkit-transform: scale(0.7);
-            transform: scale(0.7);
+    -webkit-transform: scale(0);
+            transform: scale(0);
   }
   100% {
     -webkit-transform: scale(1);
@@ -656,8 +668,8 @@
 
 @-webkit-keyframes mergeTiles {
   0% {
-    -webkit-transform: scale(1.5);
-            transform: scale(1.5);
+    -webkit-transform: scale(2);
+            transform: scale(2);
   }
   100% {
     -webkit-transform: scale(1);
@@ -667,8 +679,8 @@
 
 @keyframes mergeTiles {
   0% {
-    -webkit-transform: scale(1.5);
-            transform: scale(1.5);
+    -webkit-transform: scale(2);
+            transform: scale(2);
   }
   100% {
     -webkit-transform: scale(1);

@@ -396,9 +396,23 @@
             background-color: $tile2048--bg;
         }
 
+        &.tile--4096 {
+            background-color: $tile4096--bg;
+        }
+
+        &.tile--8192 {
+            background-color: $tile8192--bg;
+        }
+
+        &.tile--16384 {
+            background-color: $tile16384--bg;
+        }
+
+
+
         &.add {
             @include animation(addTile, .8s) {
-                0% { transform: scale(.7);}
+                0% { transform: scale(0);}
                 100% { transform: scale(1);}
             }
         };
@@ -409,7 +423,7 @@
 
         &.merge {
             @include animation(mergeTiles, .6s) {
-                0% { transform: scale(1.5);}
+                0% { transform: scale(2);}
                 100% { transform: scale(1);}
             }
         }
