@@ -97,7 +97,7 @@ export default class View {
             tile.classList.contains('add') ? tile.classList.remove('add') : null;
             tile.classList.contains('merge') ? tile.classList.remove('merge') : null;
         })
-        }, 500);
+        }, 350);
     }
 
     moveTiles(arrayWithTiles) {
