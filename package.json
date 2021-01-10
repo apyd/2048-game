@@ -1,0 +1,24 @@
+{
+  "name": "2048-game",
+  "version": "1.0.0",
+  "description": "> Own implementation of 2048 game. > Link to play: https://apyd.github.io/2048-game/",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apyd/2048-game.git"
+  },
+  "author": "Artur Pydych",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/apyd/2048-game/issues"
+  },
+  "homepage": "https://github.com/apyd/2048-game#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.13",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.1.0"
+  }
+}
