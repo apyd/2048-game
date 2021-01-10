@@ -1,7 +1,7 @@
-@mixin positionFlex($direction, $align) {
+@mixin positionFlex($direction, $justify, $align) {
     display: flex;
     flex-direction: $direction;
-    justify-content: center;
+    justify-content: $justify;
     align-items: $align;
 }
 
@@ -13,20 +13,34 @@
     animation-duration: $duration;
 }
 
-@mixin tablet {
-    @media screen and (min-width: #{$screen-s-max+1}) and (max-width: #{$screen-l-max}) {
-        @content;
+/// Mixin to manage responsive breakpoints - author Hugo Giraudel
+@mixin respond-to($breakpoint) {
+    // If the key exists in the map
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media #{inspect(map-get($breakpoints, $breakpoint))} {
+            @content;
+        }
+    }
+    @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
     }
 }
 
-@mixin mobile {
-    @media screen and (max-width: #{$screen-s-max}){
-        @content;
+@mixin tile-modifiers {
+    @each $name, $hex in $tileColors {
+        &--#{$name} {
+            color: $hex;
+        }
     }
 }
 
-@mixin screensLandscape {
-    @media screen and (max-width: #{$screen-l-max}) and (orientation:landscape){
-      @content;
+@function color($color) {
+    @debug 'test: #{$color}';
+    @if map-has-key($colors,#{$color}) {
+        @return map-get($colors, $color);
+    }
+    @else {
+        @return unqoute($color);
     }
 }
