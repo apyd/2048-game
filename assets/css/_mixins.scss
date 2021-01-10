@@ -30,7 +30,7 @@
 @mixin tile-modifiers {
     @each $name, $hex in $tileColors {
         &--#{$name} {
-            color: $hex;
+            background-color: $hex;
         }
     }
 }
@@ -40,6 +40,6 @@
         @return map-get($colors, #{$color});
     }
     @else {
-        @return unqoute($color);
+        @return #{$color};
     }
 }

@@ -541,60 +541,60 @@
   position: absolute;
 }
 
-.board .tile--tile2--bg {
-  color: #FFE55E;
+.board .tile--2 {
+  background-color: #FFE55E;
 }
 
-.board .tile--tile4--bg {
-  color: #F5E027;
+.board .tile--4 {
+  background-color: #F5E027;
 }
 
-.board .tile--tile8--bg {
-  color: #FFD600;
+.board .tile--8 {
+  background-color: #FFD600;
 }
 
-.board .tile--tile16--bg {
-  color: #FFC11E;
+.board .tile--16 {
+  background-color: #FFC11E;
 }
 
-.board .tile--tile32--bg {
-  color: #FFC46B;
+.board .tile--32 {
+  background-color: #FFC46B;
 }
 
-.board .tile--tile64--bg {
-  color: #FF905A;
+.board .tile--64 {
+  background-color: #FF905A;
 }
 
-.board .tile--tile128--bg {
-  color: #FC9A40;
+.board .tile--128 {
+  background-color: #FC9A40;
 }
 
-.board .tile--tile256--bg {
-  color: #FF7A2F;
+.board .tile--256 {
+  background-color: #FF7A2F;
 }
 
-.board .tile--tile512--bg {
-  color: #F85C50;
+.board .tile--512 {
+  background-color: #F85C50;
 }
 
-.board .tile--tile1024--bg {
-  color: #EE3D48;
+.board .tile--1024 {
+  background-color: #EE3D48;
 }
 
-.board .tile--tile2048--bg {
-  color: #E20338;
+.board .tile--2048 {
+  background-color: #E20338;
 }
 
-.board .tile--tile4096--bg {
-  color: #AA3429;
+.board .tile--4096 {
+  background-color: #AA3429;
 }
 
-.board .tile--tile8192--bg {
-  color: #932620;
+.board .tile--8192 {
+  background-color: #932620;
 }
 
-.board .tile--tile16384--bg {
-  color: #65070C;
+.board .tile--16384 {
+  background-color: #65070C;
 }
 
 .board .tile.t4 {
@@ -736,7 +736,7 @@
 
 .footer .footer__link {
   text-decoration: none;
-  color: #7678ED;
+  color: #F7B801;
   font-weight: bold;
 }
 /*# sourceMappingURL=style.css.map */

@@ -12,21 +12,22 @@ $colors: (
 ) !default;
 
 $tileColors: (
-    'tile2--bg': #FFE55E,
-    'tile4--bg': #F5E027,
-    'tile8--bg': #FFD600,
-    'tile16--bg': #FFC11E,
-    'tile32--bg': #FFC46B,
-    'tile64--bg': #FF905A,
-    'tile128--bg': #FC9A40,
-    'tile256--bg': #FF7A2F,
-    'tile512--bg': #F85C50,
-    'tile1024--bg': #EE3D48,
-    'tile2048--bg': #E20338,
-    'tile4096--bg': #AA3429,
-    'tile8192--bg': #932620,
-    'tile16384--bg': #65070C
+    '2': #FFE55E,
+    '4': #F5E027,
+    '8': #FFD600,
+    '16': #FFC11E,
+    '32': #FFC46B,
+    '64': #FF905A,
+    '128': #FC9A40,
+    '256': #FF7A2F,
+    '512': #F85C50,
+    '1024': #EE3D48,
+    '2048': #E20338,
+    '4096': #AA3429,
+    '8192': #932620,
+    '16384': #65070C
 ) !default;
+
 $breakpoints: (
   'mobile': 'screen and (min-width: #{$screen-s-max+1}) and (max-width: #{$screen-l-max})',
   'tablet': 'screen and (max-width: #{$screen-s-max})',
