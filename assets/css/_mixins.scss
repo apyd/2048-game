@@ -36,9 +36,8 @@
 }
 
 @function color($color) {
-    @debug 'test: #{$color}';
-    @if map-has-key($colors,#{$color}) {
-        @return map-get($colors, $color);
+    @if map-has-key($colors, #{$color}) {
+        @return map-get($colors, #{$color});
     }
     @else {
         @return unqoute($color);
