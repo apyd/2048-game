@@ -1,4 +1,4 @@
-@use 'variables' as *;
+@use 'variables';
 
 @mixin positionFlex($direction, $justify, $align) {
     display: flex;
@@ -18,30 +18,21 @@
 /// Mixin to manage responsive breakpoints - author Hugo Giraudel
 @mixin respond-to($breakpoint) {
     // If the key exists in the map
-    @if map-has-key($breakpoints, $breakpoint) {
-        @media #{inspect(map-get($breakpoints, $breakpoint))} {
+    @if map-has-key(variables.$breakpoints, $breakpoint) {
+        @media #{inspect(map-get(variables.$breakpoints, $breakpoint))} {
             @content;
         }
     }
     @else {
         @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
-        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+        + "Available breakpoints are: #{map-keys(variables.$breakpoints)}.";
     }
 }
 
 @mixin tile-modifiers {
-    @each $name, $hex in $tileColors {
+    @each $name, $hex in variables.$tileColors {
         &--#{$name} {
             background-color: $hex;
         }
-    }
-}
-
-@function color($color) {
-    @if map-has-key($colors, #{$color}) {
-        @return map-get($colors, #{$color});
-    }
-    @else {
-        @return #{$color};
     }
 }

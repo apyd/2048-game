@@ -1,0 +1,23 @@
+@use '../abstracts/mixins';
+@use '../abstracts/functions';
+
+.scoreboard {
+    @include mixins.positionFlex(row, center, center);
+    border: 1px solid functions.color(medium-slate-blue);
+    border-radius: 5px;
+
+    .scoreboard__wrapper {
+        @include mixins.positionFlex(column, center, center);
+        height: 100%;
+        padding: 0 15px;
+
+        @include mixins.respond-to('mobile') {
+            padding: 0 10px;
+            font-size: 1rem; 
+        }
+
+        .scoreboard__value {
+            font-weight: bold;
+        }
+    }
+}

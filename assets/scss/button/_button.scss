@@ -1,0 +1,40 @@
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
+@use '../abstracts/functions';
+
+.btn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 5px;
+    background-color: transparent;
+    font-size: 1.3rem;
+    font-family: variables.$inter;
+    font-weight: bold;
+
+    @include mixins.respond-to('mobile') {
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    &--primary {
+        border: 1px solid functions.color(medium-slate-blue);
+        background-color: functions.color(medium-slate-blue);
+        color: functions.color('white');
+        
+        &:not(:disabled):hover {
+            border: 1px solid functions.color(medium-slate-blue);
+            background-color: functions.color(selective-yellow);
+            color: functions.color(dark-slate-blue);
+            cursor: pointer;
+        }
+    }
+
+    &:disabled {
+        opacity: .5;
+    
+        &:hover {
+            cursor: not-allowed;
+        }
+    }    
+}

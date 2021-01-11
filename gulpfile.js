@@ -6,7 +6,7 @@ const browserSync = require('browser-sync').create();
 const autoprefixer = require('gulp-autoprefixer');
 
 function style() {
-    return gulp.src('./assets/css/*.scss')
+    return gulp.src('./assets/scss/**/*.scss')
         .pipe(sass()).on('error', sass.logError)
         .pipe(autoprefixer({
             cascade: false
@@ -21,7 +21,7 @@ function watch() {
             baseDir: './'
         }
     });
-    gulp.watch('./assets/css/*.scss', style);
+    gulp.watch('./assets/scss/**/*.scss', style);
     gulp.watch('./*.html').on('change', browserSync.reload);
     gulp.watch('./assets/js/*.js').on('change', browserSync.reload);
 }

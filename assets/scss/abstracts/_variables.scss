@@ -31,5 +31,5 @@ $tileColors: (
 $breakpoints: (
   'mobile': (max-width: #{$screen-s-max}),
   'tablet': (min-width: #{$screen-s-max+1}) #{and} (max-width: #{$screen-l-max}),
-  'landscapeScreens': (max-width: #{$screen-l-max}) #{and} (orientation:landscape)
+  'landscapeScreens': #{'screen and'} (max-width: #{$screen-l-max}) #{'and'} (orientation:landscape)
 ) !default;

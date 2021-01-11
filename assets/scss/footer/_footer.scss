@@ -1,0 +1,15 @@
+@use '../abstracts/mixins';
+@use '../abstracts/functions';
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    @include mixins.positionFlex(row, center, center);
+    width: 100%;
+
+    .footer__link {
+        color: functions.color(selective-yellow);
+        font-weight: bold;
+        text-decoration: none;
+    }
+}
