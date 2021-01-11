@@ -1,6 +1,5 @@
 import {
     controller,
-    model,
     view
 } from './app.js';
 
@@ -15,7 +14,7 @@ export default class Model {
         this.canAddTile = true;
     }
 
-    initGame(selectedType) {
+    initializeGame(selectedType) {
             this.gameType = +selectedType;
             this.board = Array(this.gameType).fill().map(() => Array(this.gameType).fill(''));
             this.bestScore = +localStorage.getItem(`bestScore${this.gameType}`);
@@ -28,8 +27,8 @@ export default class Model {
     }
 
     generateCoordinates() {
-        let x = Math.floor((Math.random() * this.gameType));
-        let y = Math.floor((Math.random() * this.gameType));
+        const x = Math.floor((Math.random() * this.gameType));
+        const y = Math.floor((Math.random() * this.gameType));
         return this.checkCollision(x, y) ? `${x}${y}` : this.generateCoordinates();
     }
 
@@ -39,8 +38,8 @@ export default class Model {
 
     addTile() {
             if (!this.canAddTile) return;
-            let coordinates = this.generateCoordinates();
-            let id = this.nextId;
+            const coordinates = this.generateCoordinates();
+            const id = this.nextId;
             this.board[coordinates.charAt(0)][coordinates.charAt(1)] = {
                 id: id,
                 val: 2
@@ -50,7 +49,7 @@ export default class Model {
             return {
                 y: coordinates.charAt(0),
                 x: coordinates.charAt(1),
-                id: id
+                id
             };
     }
 

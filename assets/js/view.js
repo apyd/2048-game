@@ -52,7 +52,7 @@ export default class View {
         }
     }
 
-    initGame(gameType) {
+    initializeGameView(gameType) {
         this.gameType = gameType;
         document.querySelector('.board').id = `t${gameType}`;
         document.querySelectorAll('.scoreboard__value')[1].innerHTML = localStorage.getItem(`bestScore${this.gameType}`);
@@ -76,8 +76,8 @@ export default class View {
             x,
             id
         }) {
-        let board = document.querySelector('.board');
-        let tile = document.createElement('div');
+        const board = document.querySelector('.board');
+        const tile = document.createElement('div');
         tile.classList.add('tile', `t${this.gameType}`, 'tile--2', 'add');
         tile.style.left = `${(x*this.tileDimension+x*this.innerBorderWidth)+this.outerBorderWidth}px`;
         tile.style.top = `${(y*this.tileDimension+y*this.innerBorderWidth)+this.outerBorderWidth}px`;

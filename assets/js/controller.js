@@ -11,7 +11,7 @@ export default class Controller {
         this.initY;
         this.initX;
         this.startGameTime;
-        this.EndGameTime;
+        this.endGameTime;
         this.minSwipeDistance = 20;
     }
 
@@ -21,8 +21,8 @@ export default class Controller {
         model.clearBoard();
         view.clearBoard();
         !localStorage.getItem(`bestScore${this.gameType}`) ? localStorage.setItem(`bestScore${this.gameType}`, 0) : null;
-        model.initGame(this.gameType);
-        view.initGame(this.gameType);
+        model.initializeGame(this.gameType);
+        view.initializeGameView(this.gameType);
         this.startGameTime = performance.now();
         view.addTile(model.addTile());
         view.addTile(model.addTile());
@@ -34,7 +34,7 @@ export default class Controller {
         view.moveTiles(model.moveTiles(key));
         model.canAddTile ? view.addTile(model.addTile()) : null;
         if (this.tilesOnBoard === (this.gameType * this.gameType)) {
-            let isContinued = model.checkIfPossibleMerge();
+            const isContinued = model.checkIfPossibleMerge();
             !isContinued ? this.endGame() : null;
         }
     }
@@ -76,13 +76,13 @@ export default class Controller {
 
     endGame() {
         this.endGameTime = performance.now();
-        let timeElapsed = this.endGameTime - this.startGameTime;
+        const timeElapsed = this.endGameTime - this.startGameTime;
         view.showEndGamePopup(this.convertMillisToMinutesAndSeconds(timeElapsed), model.numberOfMoves, model.score);
         this.gameStatus = 0;
     }
     convertMillisToMinutesAndSeconds(millis) {
-        var minutes = Math.floor(millis / 60000);
-        var seconds = ((millis % 60000) / 1000).toFixed(0);
+        const minutes = Math.floor(millis / 60000);
+        const seconds = ((millis % 60000) / 1000).toFixed(0);
         const minutesToShow = `${minutes === 0 ?
                                             '' :
                                  minutes === 1 ?
