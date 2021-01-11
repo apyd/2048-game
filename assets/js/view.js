@@ -34,7 +34,7 @@ export default class View {
     }
 
     togglePopup() {
-        document.querySelector(".overlay").classList.toggle('hidden');
+        document.querySelector(".overlay").classList.toggle('overlay--hidden');
     }
     showEndGamePopup(time, numberOfMoves, result) {
         document.querySelectorAll('.header__text')[2].innerHTML = 'End game';
@@ -62,8 +62,8 @@ export default class View {
         this.tileDimension = this.gameSettings[`t${this.gameType}`][this.screenType].tileDimension;
         this.innerBorderWidth = this.gameSettings[`t${this.gameType}`][this.screenType].innerBorderWidth;
         this.outerBorderWidth = this.gameSettings[`t${this.gameType}`][this.screenType].outerBorderWidth;
-        document.querySelector('.entry-screen').classList.add('hidden');
-        document.querySelector('.main').classList.remove('hidden');
+        document.querySelector('.entry-screen').classList.add('overlay--hidden');
+        document.querySelector('.main').classList.remove('main--hidden');
     }
 
     showEntryScreen() {
