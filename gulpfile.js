@@ -1,14 +1,16 @@
+'use strict';
+
 const gulp = require('gulp');
-const sass = require('gulp-sass');
+const sass = require('gulp-dart-sass');
 const browserSync = require('browser-sync').create();
 const autoprefixer = require('gulp-autoprefixer');
 
 function style() {
     return gulp.src('./assets/css/*.scss')
         .pipe(sass()).on('error', sass.logError)
-            .pipe(autoprefixer({
-                cascade: false
-            }))
+        .pipe(autoprefixer({
+            cascade: false
+        }))
         .pipe(gulp.dest('./assets/css/'))
         .pipe(browserSync.stream());
 }
