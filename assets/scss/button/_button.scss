@@ -4,6 +4,7 @@
 
 .btn {
     padding: 10px;
+    margin: 20px;
     border: none;
     border-radius: 5px;
     margin: 0 5px;
@@ -15,6 +16,11 @@
     @include mixins.respond-to('mobile') {
         height: 50px;
         font-size: 1.2rem;
+    }
+
+    &:disabled {
+        opacity: .5;
+        cursor: not-allowed;
     }
 
     &--primary {
@@ -30,11 +36,26 @@
         }
     }
 
-    &:disabled {
-        opacity: .5;
+    &--close {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        width: 40px;
+        height: 40px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        margin: 0;
+        background-color: transparent;
     
         &:hover {
-            cursor: not-allowed;
+            background-color: functions.color(light-gray);
+            cursor: pointer;
         }
-    }    
+    }
+
+    &__icon {
+        height: auto;
+        width: 100%;
+    }
 }
