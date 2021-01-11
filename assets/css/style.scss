@@ -1,5 +1,5 @@
-@import './variables';
-@import './mixins';
+@use 'variables';
+@use 'mixins';
 
 *,
 *:before,
@@ -13,22 +13,22 @@ html {
 
 body {
     position: relative;
-    @include positionFlex(column, center, center);
+    @include mixins.positionFlex(column, center, center);
     height: 100%;
     min-height: 300px;
     padding: 0;
     margin: 0;
-    background-color: color(dark-slate-blue);
-    color: color(white);
-    font-family: $inter;
+    background-color: mixins.color(dark-slate-blue);
+    color: mixins.color(white);
+    font-family: variables.$inter;
     font-size: 16px;
     overscroll-behavior: contain;
 
-    @include respond-to('mobile') {
+    @include mixins.respond-to('mobile') {
         font-size: 12px;
     }
 
-    @include respond-to('landscapeScreens') {
+    @include mixins.respond-to('landscapeScreens') {
         height: unset;
         padding-bottom: 80px;
     }
@@ -41,23 +41,23 @@ body {
     margin: 0 5px;
     background-color: transparent;
     font-size: 1.3rem;
-    font-family: $inter;
+    font-family: variables.$inter;
     font-weight: bold;
 
-    @include respond-to('mobile') {
+    @include mixins.respond-to('mobile') {
         height: 50px;
         font-size: 1.2rem;
     }
 
     &--primary {
-        border: 1px solid color(medium-slate-blue);
-        background-color: color(medium-slate-blue);
-        color: color('white');
+        border: 1px solid mixins.color(medium-slate-blue);
+        background-color: mixins.color(medium-slate-blue);
+        color: mixins.color('white');
         
         &:not(:disabled):hover {
-            border: 1px solid color(medium-slate-blue);
-            background-color: color(selective-yellow);
-            color: color(dark-slate-blue);
+            border: 1px solid mixins.color(medium-slate-blue);
+            background-color: mixins.color(selective-yellow);
+            color: mixins.color(dark-slate-blue);
             cursor: pointer;
         }
     }
@@ -79,24 +79,24 @@ body {
     }
     
     &:checked + label {
-        border: 3px solid color(selective-yellow);
+        border: 3px solid mixins.color(selective-yellow);
         border-radius: 5px;
         opacity: 1;
     }
 }
 
 .label {
-    @include positionFlex(column, center, center);
+    @include mixins.positionFlex(column, center, center);
     height: 300px;
     width: 300px;
     opacity: .7;
 
-    @include respond-to('tablet') {
+    @include mixins.respond-to('tablet') {
         height: 210px;
         width: 210px;
     }
 
-    @include respond-to('mobile') {
+    @include mixins.respond-to('mobile') {
         height: 150px;
         width: 150px;
         margin: 5px;
@@ -104,29 +104,29 @@ body {
 
     &.label--4 {
         background: url('./../img/4-gametype-l.png') center center;
-        @include respond-to('tablet') {
+        @include mixins.respond-to('tablet') {
             background: url('./../img/4-gametype-m.png') center center;
         }
     
-        @include respond-to('mobile') {
+        @include mixins.respond-to('mobile') {
             background: url('./../img/4-gametype-s.png') center center;
         }
     }
 
     &.label--5 {
         background: url('./../img/5-gametype-l.png') center center;
-        @include respond-to('tablet') {
+        @include mixins.respond-to('tablet') {
             background: url('./../img/5-gametype-m.png') center center;
         }
     
-        @include respond-to('mobile') {
+        @include mixins.respond-to('mobile') {
             background: url('./../img/5-gametype-s.png') center center;
         }
     }
 }
 
 .entry-screen {
-    @include positionFlex(column, center, center);
+    @include mixins.positionFlex(column, center, center);
     width: 100vw;
 
     .header > .header__text {
@@ -167,34 +167,34 @@ body {
     z-index: 1000;
     top: 0;
     left: 0;
-    @include positionFlex(row, center, center);
+    @include mixins.positionFlex(row, center, center);
     height: 100vh;
     width: 100%;
-    background-color: color(black-7-opacity);
+    background-color: mixins.color(black-7-opacity);
 
     .popup {
         position: relative;
-        @include positionFlex(column, center, center);
+        @include mixins.positionFlex(column, center, center);
         width: 55vw;
         max-width: 650px;
         height: 55vh;
         min-height: 250px;
         max-height: 400px;
         border-radius: 5px;
-        background-color: color('white');
-        color: color(black);
+        background-color: mixins.color('white');
+        color: mixins.color(black);
 
-        @include respond-to('tablet') {
+        @include mixins.respond-to('tablet') {
             width: 70vw;
         }
 
-        @include respond-to('mobile') {
+        @include mixins.respond-to('mobile') {
             width: 80vw;
         }
 
         .popup__header {
             position: relative;
-            @include positionFlex(row, center, center);
+            @include mixins.positionFlex(row, center, center);
             width: 100%;
             padding-top: 16px;
 
@@ -215,7 +215,7 @@ body {
                 background-color: transparent;
             
                 &:hover {
-                    background-color: color(light-gray);
+                    background-color: mixins.color(light-gray);
                     cursor: pointer;
                 }
 
@@ -227,7 +227,7 @@ body {
     }
 
             .popup__body {
-                @include positionFlex(column, center, left);
+                @include mixins.positionFlex(column, center, left);
                 flex: 1;
                 font-size: vmin(4vw, 4vh);
 
@@ -249,11 +249,11 @@ body {
     }
 
     .row {
-        @include positionFlex(row, space-between, stretch);
+        @include mixins.positionFlex(row, space-between, stretch);
         width: 400px;
         margin: 0px auto 20px auto;
 
-        @include respond-to('mobile') {
+        @include mixins.respond-to('mobile') {
             width: 300px;
         }
 
@@ -262,16 +262,16 @@ body {
         }
 
         .scoreboard {
-            @include positionFlex(row, center, center);
-            border: 1px solid color(medium-slate-blue);
+            @include mixins.positionFlex(row, center, center);
+            border: 1px solid mixins.color(medium-slate-blue);
             border-radius: 5px;
         
             .scoreboard__wrapper {
-                @include positionFlex(column, center, center);
+                @include mixins.positionFlex(column, center, center);
                 height: 100%;
                 padding: 0 15px;
 
-                @include respond-to('mobile') {
+                @include mixins.respond-to('mobile') {
                     padding: 0 10px;
                     font-size: 1rem; 
                 }
@@ -290,47 +290,47 @@ body {
     height: 400px;
     margin: 0 auto;
 
-    @include respond-to('mobile') {
+    @include mixins.respond-to('mobile') {
         width: 300px;
         height: 300px;
     }
 
     &#t4 {
         background: url('../img/4x4desktop.png') no-repeat no-repeat;
-        @include animation(blur, 400ms) {
+        @include mixins.animation(blur, 400ms) {
             0% { -webkit-filter: blur(20px);}
             100% { -webkit-filter: blur(0px);}
         }
-        @include respond-to('mobile') {
+        @include mixins.respond-to('mobile') {
             background: url('../img/4x4mobile.png') no-repeat no-repeat;
         }
     }
     
     &#t5 {
         background: url('../img/5x5desktop.png') no-repeat no-repeat;
-        @include animation(blur, 400ms) {
+        @include mixins.animation(blur, 400ms) {
             0% { -webkit-filter: blur(20px);}
             100% { -webkit-filter: blur(0px);}
         }
-        @include respond-to('mobile') {
+        @include mixins.respond-to('mobile') {
             background: url('../img/5x5mobile.png') no-repeat no-repeat;
         }
     }
 
     .tile {
         position: absolute;
-        @include positionFlex(row, center, stretch);
+        @include mixins.positionFlex(row, center, stretch);
         border-radius: 5px;
-        background-color: color(dark-slate-blue);
+        background-color: mixins.color(dark-slate-blue);
 
-        @include tile-modifiers;
+        @include mixins.tile-modifiers;
 
         &.t4 {
             height: 88px;
             width: 88px;
             font-size: 16px;
 
-            @include respond-to('mobile') {
+            @include mixins.respond-to('mobile') {
                 height: 66px;
                 width: 66px;
                 font-size: 12px;
@@ -343,7 +343,7 @@ body {
             width: 72px;
             font-size: 14px;
 
-            @include respond-to('mobile') {
+            @include mixins.respond-to('mobile') {
                 height: 54px;
                 width: 54px;
                 font-size: 10px;
@@ -351,7 +351,7 @@ body {
         }
 
         &.add {
-            @include animation(addTile, 800ms) {
+            @include mixins.animation(addTile, 800ms) {
                 0% {transform: scale(0);}
                 50% {transform: scale(0);}
                 100% { transform: scale(1);}
@@ -363,7 +363,7 @@ body {
         }
 
         &.merge {
-            @include animation(mergeTiles, 600ms) {
+            @include mixins.animation(mergeTiles, 600ms) {
                 0% { transform: scale(2) };
                 100% { transform: scale(1); }
             }
@@ -379,7 +379,7 @@ body {
                 font-weight: bold;
                 line-height: 2rem;
                 text-align: center;
-                text-shadow: color(black) 1px 1px;
+                text-shadow: mixins.color(black) 1px 1px;
                 transform: translate(-50%, -50%);
             }
     }
@@ -392,11 +392,11 @@ body {
 .footer {
     position: absolute;
     bottom: 0;
-    @include positionFlex(row, center, center);
+    @include mixins.positionFlex(row, center, center);
     width: 100%;
 
     .footer__link {
-        color: color(selective-yellow);
+        color: mixins.color(selective-yellow);
         font-weight: bold;
         text-decoration: none;
     }

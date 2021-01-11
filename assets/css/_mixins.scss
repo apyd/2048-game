@@ -1,3 +1,5 @@
+@use 'variables' as *;
+
 @mixin positionFlex($direction, $justify, $align) {
     display: flex;
     flex-direction: $direction;
