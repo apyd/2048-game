@@ -7,7 +7,7 @@
     @include mixins.positionFlex(row, center, center);
     width: 100%;
 
-    .footer__link {
+    &__link {
         color: functions.color(selective-yellow);
         font-weight: bold;
         text-decoration: none;
