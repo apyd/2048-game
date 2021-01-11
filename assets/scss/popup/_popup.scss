@@ -10,6 +10,10 @@
     height: 100vh;
     width: 100%;
     background-color: functions.color(black-7-opacity);
+
+    &--hidden {
+        display: none;
+    }
 }
 
 .popup {
