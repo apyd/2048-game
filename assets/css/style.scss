@@ -7,21 +7,21 @@
     box-sizing: border-box;
 }
 
-.html {
+html {
     height: 100%;
 }
 
-.body {
-    font-family: $inter;
-    font-size: 16px;
-    background-color: color(dark-slate-blue);
+body {
+    position: relative;
+    @include positionFlex(column, center, center);
+    height: 100%;
+    min-height: 300px;
     padding: 0;
     margin: 0;
+    background-color: color(dark-slate-blue);
     color: color(white);
-    height: 100%;
-    @include positionFlex(column, center, center);
-    position: relative;
-    min-height: 300px;
+    font-family: $inter;
+    font-size: 16px;
     overscroll-behavior: contain;
 
     @include respond-to('mobile') {
@@ -35,28 +35,28 @@
 }
 
 .btn {
+    padding: 10px;
     border: none;
-    background-color: transparent;
     border-radius: 5px;
+    margin: 0 5px;
+    background-color: transparent;
     font-size: 1.3rem;
     font-family: $inter;
     font-weight: bold;
-    margin: 0 5px;
-    padding: 10px;
 
     @include respond-to('mobile') {
         height: 50px;
         font-size: 1.2rem;
     }
 
-    &.btn--primary {
-        color: color('white');
-        background-color: color(medium-slate-blue);
+    &--primary {
         border: 1px solid color(medium-slate-blue);
+        background-color: color(medium-slate-blue);
+        color: color('white');
         
         &:not(:disabled):hover {
-            background-color: color(selective-yellow);
             border: 1px solid color(medium-slate-blue);
+            background-color: color(selective-yellow);
             color: color(dark-slate-blue);
             cursor: pointer;
         }
@@ -134,10 +134,10 @@
     }
 
     .row {
-        margin-bottom: 50px;
         display: flex;
         justify-content: space-evenly;
         width: 90vw;
+        margin-bottom: 50px;
 
         .radio:not(:checked) + label img {
             border: 3px solid transparent;
@@ -150,10 +150,10 @@
         }
 
         .radio__text {
-            text-align: center;
+            margin: 5px 0 0 0;
             font-size: 1.5rem;
             font-weight: bold;
-            margin: 5px 0 0 0;
+            text-align: center;
         }
 
         .btn {
@@ -164,25 +164,25 @@
 
 .overlay {
     position: absolute;
-    @include positionFlex(row, center, center);
+    z-index: 1000;
     top: 0;
     left: 0;
+    @include positionFlex(row, center, center);
     height: 100vh;
     width: 100%;
     background-color: color(black-7-opacity);
-    z-index: 1000;
 
     .popup {
-        background-color: color('white');
         position: relative;
+        @include positionFlex(column, center, center);
         width: 55vw;
         max-width: 650px;
         height: 55vh;
         min-height: 250px;
         max-height: 400px;
         border-radius: 5px;
-                color: color(black);
-        @include positionFlex(column, center, center);
+        background-color: color('white');
+        color: color(black);
 
         @include respond-to('tablet') {
             width: 70vw;
@@ -193,9 +193,9 @@
         }
 
         .popup__header {
+            position: relative;
             @include positionFlex(row, center, center);
             width: 100%;
-            position: relative;
             padding-top: 16px;
 
             .header__text {
@@ -206,17 +206,17 @@
                 position: absolute;
                 right: 10px;
                 top: 10px;
-                padding: 10px;
-                margin: 0;
-                background-color: transparent;
                 width: 40px;
                 height: 40px;
+                padding: 10px;
                 border: none;
                 border-radius: 5px;
+                margin: 0;
+                background-color: transparent;
             
                 &:hover {
-                    cursor: pointer;
                     background-color: color(light-gray);
+                    cursor: pointer;
                 }
 
                 .icon--close {
@@ -249,10 +249,7 @@
     }
 
     .row {
-        @include positionFlex(row, center, center);
-        align-items: stretch;
-        margin-bottom: 20px;
-        justify-content: space-between;
+        @include positionFlex(row, space-between, stretch);
         width: 400px;
         margin: 0px auto 20px auto;
 
@@ -266,13 +263,13 @@
 
         .scoreboard {
             @include positionFlex(row, center, center);
-            border-radius: 5px;
             border: 1px solid color(medium-slate-blue);
+            border-radius: 5px;
         
             .scoreboard__wrapper {
                 @include positionFlex(column, center, center);
-                padding: 0 15px;
                 height: 100%;
+                padding: 0 15px;
 
                 @include respond-to('mobile') {
                     padding: 0 10px;
@@ -288,10 +285,10 @@
 }
 
 .board {
+    position: relative;
     width: 400px;
     height: 400px;
     margin: 0 auto;
-    position: relative;
 
     @include respond-to('mobile') {
         width: 300px;
@@ -321,11 +318,10 @@
     }
 
     .tile {
-        background-color: color(dark-slate-blue);
-        @include positionFlex(row, center, center);
-        align-items: stretch;
-        border-radius: 5px;
         position: absolute;
+        @include positionFlex(row, center, stretch);
+        border-radius: 5px;
+        background-color: color(dark-slate-blue);
 
         @include tile-modifiers;
 
@@ -377,14 +373,14 @@
                 position: absolute;
                 top: 50%;
                 left: 50%;
-                transform: translate(-50%, -50%);
-                font-size: 2em;
-                font-weight: bold;
                 height: 2rem;
                 width: 6rem;
+                font-size: 2em;
+                font-weight: bold;
                 line-height: 2rem;
                 text-align: center;
                 text-shadow: color(black) 1px 1px;
+                transform: translate(-50%, -50%);
             }
     }
 }
@@ -395,13 +391,13 @@
 
 .footer {
     position: absolute;
+    bottom: 0;
     @include positionFlex(row, center, center);
     width: 100%;
-    bottom: 0;
 
     .footer__link {
-        text-decoration: none;
         color: color(selective-yellow);
         font-weight: bold;
+        text-decoration: none;
     }
 }
