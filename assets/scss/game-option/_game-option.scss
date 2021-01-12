@@ -1,0 +1,75 @@
+@use '../abstracts/mixins';
+@use '../abstracts/functions';
+
+.game-option {
+
+    $self: &;
+
+    &__text {
+        margin: 5px 0 0 0;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    &__input {
+    
+        &:not(:checked) + #{$self}__img {
+            border: 3px solid red;
+            border-radius: 5px;
+        }
+
+        &:checked {
+            background-color: red;
+        }
+        
+        &:checked + #{$self}__img {
+            border: 3px solid functions.color(selective-yellow);
+            border-radius: 5px;
+            opacity: 1;
+        }
+    }
+    
+    &__img {
+        @include mixins.positionFlex(column, center, center);
+        height: 300px;
+        width: 300px;
+        background-position: center center;
+        padding: 10px;
+        opacity: .7;
+    
+        @include mixins.respond-to('tablet') {
+            height: 210px;
+            width: 210px;
+        }
+    
+        @include mixins.respond-to('mobile') {
+            height: 150px;
+            width: 150px;
+            margin: 5px;
+        }
+    
+        &--board-4x4 {
+            background-image: url('./../img/4-gametype-l.png');
+            @include mixins.respond-to('tablet') {
+                background-image: url('./../img/4-gametype-m.png');
+            }
+        
+            @include mixins.respond-to('mobile') {
+                background-image: url('./../img/4-gametype-s.png');
+            }
+        }
+    
+        &--board-5x5 {
+            background: url('./../img/5-gametype-l.png');
+            @include mixins.respond-to('tablet') {
+                background: url('./../img/5-gametype-m.png');
+            }
+        
+            @include mixins.respond-to('mobile') {
+                background: url('./../img/5-gametype-s.png');
+            }
+        }
+    }
+}
+
