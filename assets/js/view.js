@@ -54,15 +54,16 @@ export default class View {
 
     initializeGameView(gameType) {
         this.gameType = gameType;
-        document.querySelector('.board').id = `t${gameType}`;
+        document.querySelector('.board').classList = 'board';
+        document.querySelector('.board').classList.add(`board--${this.gameType}x${this.gameType}`);
         document.querySelectorAll('.score__value')[1].innerHTML = localStorage.getItem(`bestScore${this.gameType}`);
         document.querySelectorAll('.score__value')[0].innerHTML = 0;
-        let windowWidth = window.innerWidth;
+        const windowWidth = window.innerWidth;
         windowWidth > 480 ? this.screenType = 'desktop' : this.screenType = 'mobile';
         this.tileDimension = this.gameSettings[`t${this.gameType}`][this.screenType].tileDimension;
         this.innerBorderWidth = this.gameSettings[`t${this.gameType}`][this.screenType].innerBorderWidth;
         this.outerBorderWidth = this.gameSettings[`t${this.gameType}`][this.screenType].outerBorderWidth;
-        document.querySelector('.entry-screen').classList.add('overlay--hidden');
+        document.querySelector('.entry-screen').classList.add('entry-screen--hidden');
         document.querySelector('.game').classList.remove('game--hidden');
     }
 
@@ -78,7 +79,7 @@ export default class View {
         }) {
         const board = document.querySelector('.board');
         const tile = document.createElement('div');
-        tile.classList.add('tile', `t${this.gameType}`, 'tile--2', 'add');
+        tile.classList.add('tile', `tile--size-${this.gameType}`, 'tile--2', 'tile--add');
         tile.style.left = `${(x*this.tileDimension+x*this.innerBorderWidth)+this.outerBorderWidth}px`;
         tile.style.top = `${(y*this.tileDimension+y*this.innerBorderWidth)+this.outerBorderWidth}px`;
         tile.dataset.id = id;
@@ -90,11 +91,11 @@ export default class View {
         tile.appendChild(span);
         board.appendChild(tile);
         tile.addEventListener('transitionend', () => {
-            tile.classList.remove('move');
+            tile.classList.remove('tile--move');
         });
         tile.addEventListener('animationend', () => {
-            tile.classList.contains('add') ? tile.classList.remove('add') : null;
-            tile.classList.contains('merge') ? tile.classList.remove('merge') : null;
+            tile.classList.contains('tile--add') ? tile.classList.remove('tile--add') : null;
+            tile.classList.contains('tile--merge') ? tile.classList.remove('tile--merge') : null;
         });
     };
 
@@ -113,7 +114,7 @@ export default class View {
             tile.style.top = `${(arrayWithTiles[index].y*this.tileDimension+arrayWithTiles[index].y*this.innerBorderWidth)+this.outerBorderWidth}px`;
             tile.dataset.x = arrayWithTiles[index].x;
             tile.dataset.y = arrayWithTiles[index].y;
-            tile.classList.add('move');
+            tile.classList.add('tile--move');
         });
     }
 
@@ -121,12 +122,12 @@ export default class View {
     mergeTiles(retainedTile, tileToMerge, retainedObj) {
         tileToMerge.style.left = `${(retainedObj[0].x*this.tileDimension+retainedObj[0].x*this.innerBorderWidth)+this.outerBorderWidth}px`;
         tileToMerge.style.top = `${(retainedObj[0].y*this.tileDimension+retainedObj[0].y*this.innerBorderWidth)+this.outerBorderWidth}px`;
-        tileToMerge.classList.add('merge');
+        tileToMerge.classList.add('tile--merge');
         retainedTile.style.left = `${(retainedObj[0].x*this.tileDimension+retainedObj[0].x*this.innerBorderWidth)+this.outerBorderWidth}px`;
         retainedTile.style.top = `${(retainedObj[0].y*this.tileDimension+retainedObj[0].y*this.innerBorderWidth)+this.outerBorderWidth}px`;
-        retainedTile.classList = `tile t${this.gameType} tile--${retainedObj[0].val}`;
+        retainedTile.classList = `tile tile--size-${this.gameType} tile--${retainedObj[0].val}`;
         retainedTile.firstChild.innerHTML = `${retainedObj[0].val}`;
-        retainedTile.classList.add('merge');
+        retainedTile.classList.add('tile--merge');
         !(retainedTile.firstChild.textContent.length < 5) ? retainedTile.style.fontSize = `.8em` : null;
         tileToMerge.remove();
     }
