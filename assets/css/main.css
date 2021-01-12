@@ -323,15 +323,6 @@ body {
 .game-option__input {
   display: none;
 }
-.game-option__input:not(:checked) + .game-option__img {
-  border: 3px solid transparent;
-  border-radius: 5px;
-}
-.game-option__input:checked + .game-option__img {
-  border: 3px solid #F7B801;
-  border-radius: 5px;
-  opacity: 1;
-}
 .game-option__img {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -348,8 +339,10 @@ body {
   align-items: center;
   height: 300px;
   width: 300px;
+  border: 3px solid transparent;
+  border-radius: 5px;
   background-position: center center;
-  padding: 10px;
+  background-repeat: no-repeat;
   opacity: 0.7;
 }
 @media (min-width: 481px) and (max-width: 812px) {
@@ -379,17 +372,22 @@ body {
   }
 }
 .game-option__img--board-5x5 {
-  background: url("./../img/5-gametype-l.png");
+  background-image: url("./../img/5-gametype-l.png");
 }
 @media (min-width: 481px) and (max-width: 812px) {
   .game-option__img--board-5x5 {
-    background: url("./../img/5-gametype-m.png");
+    background-image: url("./../img/5-gametype-m.png");
   }
 }
 @media (max-width: 480px) {
   .game-option__img--board-5x5 {
-    background: url("./../img/5-gametype-s.png");
+    background-image: url("./../img/5-gametype-s.png");
   }
+}
+.game-option__input:checked + .game-option__img {
+  border-color: #F7B801;
+  border-radius: 3px;
+  opacity: 1;
 }
 
 .score {
