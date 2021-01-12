@@ -76,7 +76,7 @@ body {
     }
 
     &__actions {
-            display: flex;
+        display: flex;
     }
 
     &__results {
@@ -99,4 +99,9 @@ body {
     &--hidden {
         display: none;
     }
+}
+
+.pull-right {
+    position: absolute;
+    right: 0;
 }
