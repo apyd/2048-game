@@ -1,0 +1,18 @@
+@use '../abstracts/mixins';
+@use '../abstracts/functions';
+
+
+.score {
+    @include mixins.positionFlex(column, center, center);
+    height: 100%;
+    padding: 0 15px;
+
+    @include mixins.respond-to('mobile') {
+        padding: 0 10px;
+        font-size: 1rem; 
+    }
+
+    &__text--bold {
+        font-weight: bold;
+    }
+}

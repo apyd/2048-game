@@ -16,15 +16,15 @@
             <h3 class="entry-screen__heading">Select board size:</h3>
         </header>
         <div class="game-options">
-            <div class="radio">
-                <p class="radio__text">4x4</p>
-                <label class="radio__img radio__img--board-4x4" for="gameTypeA"></label>
-                <input class="radio__input" type="radio" value="4" id="gameTypeA" name="gameType" />
+            <div class="game-option">
+                <p class="game-option__text">4x4</p>
+                <label class="game-option__img game-option__img--board-4x4" for="gameTypeA"></label>
+                <input class="game-option__input" type="radio" value="4" id="gameTypeA" name="gameType" />
             </div>
-            <div class="radio">
-                <p class="radio__text">5x5</p>
-                <label class="radio__img radio__img--board-5x5" for="gametypeB"></label>
-                <input class="radio__input" type="radio" value="5" id="gametypeB" name="gameType" />
+            <div class="game-option">
+                <p class="game-option__text">5x5</p>
+                <label class="game-option__img game-option__img--board-5x5" for="gametypeB"></label>
+                <input class="game-option__input" type="radio" value="5" id="gametypeB" name="gameType" />
             </div>
         </div>
         <button class="btn btn--primary btn--start" disabled>Start game</button>
@@ -39,12 +39,12 @@
                 <button class=" btn btn--primary btn--start">Restart</button>
             </div>
         <div class="scoreboard">
-            <div class="scoreboard__score">
-                <span class="score__text--bold">Score</span>
+            <div class="score">
+                <span class="score__text score__text--bold">Score</span>
                 <span class="score__text"></span>
             </div>
-            <div class="scoreboard__score">
-                <span class="score__text--bold">Best</span>
+            <div class="score">
+                <span class="score__text score__text--bold">Best</span>
                 <span class="score__text"></span>
             </div>
         </div>
@@ -60,7 +60,7 @@
     <div class="overlay overlay--hidden">
         <div class="popup">
             <header class="popup__header">
-                <h2 class="popup__heading">Header text</h2>
+                <h2 class="popup__heading"></h2>
                 <button class="btn btn--close">
                     <img src="./assets/icons/close-icon.svg" alt="close icon" class="btn__icon">
                 </button>

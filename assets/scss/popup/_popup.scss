@@ -1,21 +1,6 @@
 @use '../abstracts/mixins';
 @use '../abstracts/functions';
 
-.overlay {
-    position: absolute;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-    @include mixins.positionFlex(row, center, center);
-    height: 100vh;
-    width: 100%;
-    background-color: functions.color(black-7-opacity);
-
-    &--hidden {
-        display: none;
-    }
-}
-
 .popup {
     position: relative;
     @include mixins.positionFlex(column, center, center);
