@@ -27,18 +27,18 @@
                 <input class="game-option__input" type="radio" value="5" id="gametypeB" name="gameType" />
             </div>
         </div>
-        <button class="btn btn--primary" disabled>Start game</button>
+        <button class="btn btn--primary" id="start-game" disabled>Start game</button>
     </div>
-    <main class="game">
+    <main class="game game--hidden">
         <header class="game__header">
             <h2 class="game__heading">2048 Game</h2>
         </header>
         <div class="game__details">
             <div class="game__actions">
-                <button class="btn">
+                <button class="btn" id="open-entry-screen">
                     <img class="btn__icon" src="./assets/icons/left-arrow.svg">
                 </button>
-                <button class="btn btn--primary">Restart</button>
+                <button class="btn btn--primary" id="restart-game">Restart</button>
             </div>
             <div class="game__results">
                 <div class="score">
@@ -62,7 +62,7 @@
         <div class="popup">
             <header class="popup__header">
                 <h2 class="popup__heading"></h2>
-                <button class="btn btn--close">
+                <button class="btn pull-right" id="close-popup">
                     <img src="./assets/icons/close-icon.svg" alt="close icon" class="btn__icon">
                 </button>
             </header>
