@@ -5,6 +5,12 @@
     width: 400px;
     height: 400px;
     margin: 0 auto;
+    background-repeat: no-repeat;
+    
+    @include mixins.animation(blur, 400ms) {
+        0% { -webkit-filter: blur(20px);}
+        100% { -webkit-filter: blur(0px);}
+    }
 
     @include mixins.respond-to('mobile') {
         width: 300px;
@@ -12,24 +18,16 @@
     }
 
     &--4x4 {
-        background: url('../img/4x4desktop.png') no-repeat no-repeat;
-        @include mixins.animation(blur, 400ms) {
-            0% { -webkit-filter: blur(20px);}
-            100% { -webkit-filter: blur(0px);}
-        }
+        background-image: url('../img/4x4desktop.png');
         @include mixins.respond-to('mobile') {
-            background: url('../img/4x4mobile.png') no-repeat no-repeat;
+            background-image: url('../img/4x4mobile.png');
         }
     }
     
     &--5x5 {
-        background: url('../img/5x5desktop.png') no-repeat no-repeat;
-        @include mixins.animation(blur, 400ms) {
-            0% { -webkit-filter: blur(20px);}
-            100% { -webkit-filter: blur(0px);}
-        }
+        background-image: url('../img/5x5desktop.png');
         @include mixins.respond-to('mobile') {
-            background: url('../img/5x5mobile.png') no-repeat no-repeat;
+            background-image: url('../img/5x5mobile.png');
         }
     }
 }

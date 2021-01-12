@@ -198,15 +198,7 @@ body {
   width: 400px;
   height: 400px;
   margin: 0 auto;
-}
-@media (max-width: 480px) {
-  .board {
-    width: 300px;
-    height: 300px;
-  }
-}
-.board--4x4 {
-  background: url("../img/4x4desktop.png") no-repeat no-repeat;
+  background-repeat: no-repeat;
   -webkit-animation-name: blur;
   animation-name: blur;
   -webkit-animation-duration: 400ms;
@@ -229,28 +221,25 @@ body {
   }
 }
 @media (max-width: 480px) {
+  .board {
+    width: 300px;
+    height: 300px;
+  }
+}
+.board--4x4 {
+  background-image: url("../img/4x4desktop.png");
+}
+@media (max-width: 480px) {
   .board--4x4 {
-    background: url("../img/4x4mobile.png") no-repeat no-repeat;
+    background-image: url("../img/4x4mobile.png");
   }
 }
 .board--5x5 {
-  background: url("../img/5x5desktop.png") no-repeat no-repeat;
-  -webkit-animation-name: blur;
-  animation-name: blur;
-  -webkit-animation-duration: 400ms;
-  animation-duration: 400ms;
-}
-@keyframes blur {
-  0% {
-    -webkit-filter: blur(20px);
-  }
-  100% {
-    -webkit-filter: blur(0px);
-  }
+  background-image: url("../img/5x5desktop.png");
 }
 @media (max-width: 480px) {
   .board--5x5 {
-    background: url("../img/5x5mobile.png") no-repeat no-repeat;
+    background-image: url("../img/5x5mobile.png");
   }
 }
 
