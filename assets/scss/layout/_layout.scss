@@ -10,6 +10,7 @@
 
 html {
     height: 100%;
+    font-size: 16px;
 }
 
 body {
@@ -38,6 +39,10 @@ body {
 .entry-screen {
     @include mixins.positionFlex(column, center, center);
     width: 100vw;
+
+    &--hidden {
+        display: none;
+    }
 
     &__heading {
         text-align: center;
@@ -104,4 +109,9 @@ body {
 .pull-right {
     position: absolute;
     right: 0;
+}
+
+.pull-top {
+    position: absolute;
+    top: 0;
 }
