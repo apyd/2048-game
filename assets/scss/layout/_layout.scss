@@ -39,52 +39,33 @@ body {
     @include mixins.positionFlex(column, center, center);
     width: 100vw;
 
-    .header > .header__text {
+    &__heading {
         text-align: center;
-    }
-
-    .row {
-        display: flex;
-        justify-content: space-evenly;
-        width: 90vw;
-        margin-bottom: 50px;
-
-        .radio:not(:checked) + label img {
-            border: 3px solid transparent;
-            border-radius: 5px;
-            opacity: .6;
-        }
-
-        .radio__img {
-            padding: 10px;
-        }
-
-        .radio__text {
-            margin: 5px 0 0 0;
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .btn {
-            margin: 20px;
-        }
     }
 }
 
+.game-options {
+    display: flex;
+    justify-content: space-evenly;
+    width: 90vw;
+    margin-bottom: 50px;
+}
 
-
-.main {
+.game {
     display: flex;
     flex-direction: column;
     width: 100%;
     overflow: hidden;
 
-    .header__text {
+    &--hidden {
+        display: none;
+    }
+
+    &__heading {
         text-align: center;
     }
 
-    .row {
+    &__details {
         @include mixins.positionFlex(row, space-between, stretch);
         width: 400px;
         margin: 0px auto 20px auto;
@@ -92,9 +73,30 @@ body {
         @include mixins.respond-to('mobile') {
             width: 300px;
         }
+    }
 
-        .btns__wrapper {
+    &__actions {
             display: flex;
-        }
+    }
+
+    &__results {
+        @include mixins.positionFlex(row, center, center);
+        border: 1px solid functions.color(medium-slate-blue);
+        border-radius: 5px;
+    }    
+}
+
+.overlay {
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    @include mixins.positionFlex(row, center, center);
+    height: 100vh;
+    width: 100%;
+    background-color: functions.color(black-7-opacity);
+
+    &--hidden {
+        display: none;
     }
 }

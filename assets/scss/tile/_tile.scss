@@ -9,7 +9,7 @@
 
     @include mixins.tile-modifiers;
 
-    &.t4 {
+    &--t4 {
         height: 88px;
         width: 88px;
         font-size: 16px;
@@ -19,10 +19,9 @@
             width: 66px;
             font-size: 12px;
         }
-
     }
 
-    &.t5 {
+    &--t5 {
         height: 72px;
         width: 72px;
         font-size: 14px;
@@ -34,7 +33,7 @@
         }
     }
 
-    &.add {
+    &--add {
         @include mixins.animation(addTile, 800ms) {
             0% {transform: scale(0);}
             50% {transform: scale(0);}
@@ -42,28 +41,28 @@
         }
     };
 
-    &.move {
+    &--move {
         transition: all .4s ease;
     }
 
-    &.merge {
+    &--merge {
         @include mixins.animation(mergeTiles, 600ms) {
             0% { transform: scale(2) };
             100% { transform: scale(1); }
         }
     }
     
-        .tile__value {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            height: 2rem;
-            width: 6rem;
-            font-size: 2em;
-            font-weight: bold;
-            line-height: 2rem;
-            text-align: center;
-            text-shadow: functions.color(black) 1px 1px;
-            transform: translate(-50%, -50%);
-        }
+    &__value {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 2rem;
+        width: 6rem;
+        font-size: 2em;
+        font-weight: bold;
+        line-height: 2rem;
+        text-align: center;
+        text-shadow: functions.color(black) 1px 1px;
+        transform: translate(-50%, -50%);
+    }
 }

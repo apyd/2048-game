@@ -13,14 +13,11 @@
     }
 
     &__input {
+        display: none;
     
         &:not(:checked) + #{$self}__img {
-            border: 3px solid red;
+            border: 3px solid transparent;
             border-radius: 5px;
-        }
-
-        &:checked {
-            background-color: red;
         }
         
         &:checked + #{$self}__img {

@@ -11,7 +11,7 @@
         height: 300px;
     }
 
-    &#t4 {
+    &--4x4 {
         background: url('../img/4x4desktop.png') no-repeat no-repeat;
         @include mixins.animation(blur, 400ms) {
             0% { -webkit-filter: blur(20px);}
@@ -22,7 +22,7 @@
         }
     }
     
-    &#t5 {
+    &--5x5 {
         background: url('../img/5x5desktop.png') no-repeat no-repeat;
         @include mixins.animation(blur, 400ms) {
             0% { -webkit-filter: blur(20px);}
