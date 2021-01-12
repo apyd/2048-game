@@ -27,30 +27,31 @@
                 <input class="game-option__input" type="radio" value="5" id="gametypeB" name="gameType" />
             </div>
         </div>
-        <button class="btn btn--primary btn--start" disabled>Start game</button>
+        <button class="btn btn--primary" disabled>Start game</button>
     </div>
-    <main class="main main--hidden">
-        <header class="header">
-            <h2 class="header__text">2048 Game</h2>
+    <main class="game">
+        <header class="game__header">
+            <h2 class="game__heading">2048 Game</h2>
         </header>
-        <div class="row">
-            <div class="btns__wrapper">
-                <button class="btn btn--arrow"><img class="btn__icon" src="./assets/icons/left-arrow.svg"></button>
-                <button class=" btn btn--primary btn--start">Restart</button>
+        <div class="game__details">
+            <div class="game__actions">
+                <button class="btn">
+                    <img class="btn__icon" src="./assets/icons/left-arrow.svg">
+                </button>
+                <button class="btn btn--primary">Restart</button>
             </div>
-        <div class="scoreboard">
-            <div class="score">
-                <span class="score__text score__text--bold">Score</span>
-                <span class="score__text"></span>
-            </div>
-            <div class="score">
-                <span class="score__text score__text--bold">Best</span>
-                <span class="score__text"></span>
+            <div class="game__results">
+                <div class="score">
+                    <span class="score__text score__text--bold">Score</span>
+                    <span class="score__value"></span>
+                </div>
+                <div class="score">
+                    <span class="score__text score__text--bold">Best</span>
+                    <span class="score__value"></span>
+                    </div>
             </div>
         </div>
-    </div>
         <div class="board"></div>
-        </div>
     </main>
     <footer class="footer">
         <p class="footer__text">2048 game created by
