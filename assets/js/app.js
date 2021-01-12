@@ -15,8 +15,8 @@ export const model = new Model();
 export const controller = new Controller();
 
 radioBtns.forEach(radioBtn => radioBtn.addEventListener('click', () => {
-    startBtn.disabled = false;
-    controller.gameType = radioBtn.value;
+	startBtn.disabled = false;
+	controller.gameType = radioBtn.value;
 }))
 
 startBtn.addEventListener("click", () => controller.startGame());
