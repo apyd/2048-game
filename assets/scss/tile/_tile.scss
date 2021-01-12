@@ -6,10 +6,9 @@
     @include mixins.positionFlex(row, center, stretch);
     border-radius: 5px;
     background-color: functions.color(dark-slate-blue);
-
     @include mixins.tile-modifiers;
 
-    &--t4 {
+    &--size-4 {
         height: 88px;
         width: 88px;
         font-size: 16px;
@@ -21,7 +20,7 @@
         }
     }
 
-    &--t5 {
+    &--size-5 {
         height: 72px;
         width: 72px;
         font-size: 14px;
