@@ -75,9 +75,16 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-pack: space-evenly;
   -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
+  -webkit-box-align: normal;
+  -ms-flex-align: normal;
+  align-items: normal;
   width: 90vw;
   margin-bottom: 50px;
 }
@@ -90,6 +97,12 @@ body {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-pack: normal;
+  -ms-flex-pack: normal;
+  justify-content: normal;
+  -webkit-box-align: normal;
+  -ms-flex-align: normal;
+  align-items: normal;
   width: 100%;
   overflow: hidden;
 }
@@ -386,7 +399,6 @@ body {
 }
 .game-option__input:checked + .game-option__img {
   border-color: #F7B801;
-  border-radius: 3px;
   opacity: 1;
 }
 

@@ -50,15 +50,13 @@ body {
 }
 
 .game-options {
-    display: flex;
-    justify-content: space-evenly;
+    @include mixins.positionFlex(row, space-evenly, normal);
     width: 90vw;
     margin-bottom: 50px;
 }
 
 .game {
-    display: flex;
-    flex-direction: column;
+    @include mixins.positionFlex(column, normal, normal);
     width: 100%;
     overflow: hidden;
 

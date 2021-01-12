@@ -61,7 +61,6 @@
 
         #{$self}__input:checked + & {
             border-color: functions.color(selective-yellow);
-            border-radius: 3px;
             opacity: 1;
         }
     }
