@@ -37,7 +37,7 @@ export default class View {
         document.querySelector(".overlay").classList.toggle('overlay--hidden');
     }
     showEndGamePopup(time, numberOfMoves, result) {
-        document.querySelectorAll('.header__text')[2].innerHTML = 'End game';
+        document.querySelector('.popup__heading').innerHTML = 'End game';
         const popupBody = document.querySelector('.popup__body');
         popupBody.innerHTML = `<p class="popup__text"><span class="popup__text--bold">Time elapsed: </span>${time}</p>
                              <p class="popup__text"><span class="popup__text--bold">Moves performed: </span>${numberOfMoves}</p>
@@ -55,20 +55,20 @@ export default class View {
     initializeGameView(gameType) {
         this.gameType = gameType;
         document.querySelector('.board').id = `t${gameType}`;
-        document.querySelectorAll('.scoreboard__value')[1].innerHTML = localStorage.getItem(`bestScore${this.gameType}`);
-        document.querySelectorAll('.scoreboard__value')[0].innerHTML = 0;
+        document.querySelectorAll('.score__value')[1].innerHTML = localStorage.getItem(`bestScore${this.gameType}`);
+        document.querySelectorAll('.score__value')[0].innerHTML = 0;
         let windowWidth = window.innerWidth;
         windowWidth > 480 ? this.screenType = 'desktop' : this.screenType = 'mobile';
         this.tileDimension = this.gameSettings[`t${this.gameType}`][this.screenType].tileDimension;
         this.innerBorderWidth = this.gameSettings[`t${this.gameType}`][this.screenType].innerBorderWidth;
         this.outerBorderWidth = this.gameSettings[`t${this.gameType}`][this.screenType].outerBorderWidth;
         document.querySelector('.entry-screen').classList.add('overlay--hidden');
-        document.querySelector('.main').classList.remove('main--hidden');
+        document.querySelector('.game').classList.remove('game--hidden');
     }
 
     showEntryScreen() {
-        document.querySelector('.entry-screen').classList.remove('hidden');
-        document.querySelector('.main').classList.add('hidden');
+        document.querySelector('.entry-screen').classList.remove('entry-screen--hidden');
+        document.querySelector('.game').classList.add('game--hidden');
     }
 
     addTile({
@@ -132,8 +132,8 @@ export default class View {
     }
 
     updateScore(score = 0) {
-        document.querySelectorAll('.scoreboard__value')[0].innerHTML = score;
-        document.querySelectorAll('.scoreboard__value')[1].innerHTML = localStorage.getItem(`bestScore${this.gameType}`);
+        document.querySelectorAll('.score__value')[0].innerHTML = score;
+        document.querySelectorAll('.score__value')[1].innerHTML = localStorage.getItem(`bestScore${this.gameType}`);
     }
 
     onScreenResize() {
