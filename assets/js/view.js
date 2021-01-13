@@ -48,8 +48,7 @@ export default class View {
 		document.querySelector('.game').classList.add('game--hidden');
 	};
 
-	addTile({ y, x, id }) {
-		const board = document.querySelector('.board');
+	createTile(x, y, id) {
 		const tile = document.createElement('div');
 		tile.classList.add('tile', `tile--size-${this.gameType}`, 'tile--2', 'tile--add');
 		tile.style.left = `${(x*this.tileDimension+x*this.innerBorderWidth)+this.outerBorderWidth}px`;
@@ -61,7 +60,6 @@ export default class View {
 		span.classList.add('tile__value');
 		span.innerHTML = "2";
 		tile.appendChild(span);
-		board.appendChild(tile);
 		tile.addEventListener('transitionend', () => {
 			tile.classList.remove('tile--move');
 		});
@@ -69,6 +67,11 @@ export default class View {
 			tile.classList.contains('tile--add') ? tile.classList.remove('tile--add') : null;
 			tile.classList.contains('tile--merge') ? tile.classList.remove('tile--merge') : null;
 		});
+		return tile;
+	};
+
+	addTileToBoard({ x, y, id }) {
+		document.querySelector('.board').appendChild(this.createTile(x, y, id));
 	};
 
 	moveTiles(arrayWithTiles) {

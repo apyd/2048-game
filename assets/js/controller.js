@@ -22,15 +22,15 @@ export default class Controller {
 		model.initializeGame(this.gameType);
 		view.initializeGameView(this.gameType);
 		this.startGameTime = performance.now();
-		view.addTile(model.addTile());
-		view.addTile(model.addTile());
+		view.addTileToBoard(model.addTileToBoard());
+		view.addTileToBoard(model.addTileToBoard());
 	};
 
 	onKeyPress(key) {
 		(key === 'Escape' && view.popupVisible) ? view.togglePopup() : null;
 		if (!key.includes('Arrow') || (!this.gameStatus)) return;
 		view.moveTiles(model.moveTiles(key));
-		model.canAddTile ? view.addTile(model.addTile()) : null;
+		model.canAddTile ? view.addTileToBoard(model.addTileToBoard()) : null;
 		if (this.tilesOnBoard === (this.gameType * this.gameType)) {
 			const isContinued = model.checkIfPossibleMerge();
 			!isContinued ? this.endGame() : null;
@@ -57,7 +57,7 @@ export default class Controller {
 				};
 				};
 			view.moveTiles(model.moveTiles(key));
-			model.canAddTile ? view.addTile(model.addTile()) : null;
+			model.canAddTile ? view.addTileToBoard(model.addTileToBoard()) : null;
 			if (this.tilesOnBoard === (this.gameType * this.gameType)) {
 				const isContinued = model.checkIfPossibleMerge();
 				!isContinued ? this.endGame() : null;

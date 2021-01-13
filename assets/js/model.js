@@ -45,7 +45,7 @@ export default class Model {
 		return !this.board[x][y];
 	};
 
-	addTile() {
+	addTileToBoard() {
 		if (!this.canAddTile) return;
 		const coordinates = this.generateCoordinates();
 		const id = this.nextAvailableTileId;
@@ -56,8 +56,8 @@ export default class Model {
 		this.nextAvailableTileId++;
 		controller.tilesOnBoard++;
 		return {
-			y: coordinates.charAt(0),
 			x: coordinates.charAt(1),
+			y: coordinates.charAt(0),
 			id
 		};
 	};
