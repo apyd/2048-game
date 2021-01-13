@@ -1,37 +1,12 @@
+import { elementsDimensions } from './elementsDimensions.js';
 export default class View {
-	constructor() {
-		this.tileDimension;
-		this.innerBorderWidth;
-		this.outerBorderWidth;
-		this.gameType;
-		this.screenType;
-		this.gameSettings = {
-			t4: {
-				mobile: {
-					tileDimension: 66,
-					innerBorderWidth: 8,
-					outerBorderWidth: 6
-				},
-				desktop: {
-					tileDimension: 88,
-					innerBorderWidth: 10,
-					outerBorderWidth: 9
-				}
-			},
-			t5: {
-				mobile: {
-					tileDimension: 54,
-					innerBorderWidth: 5,
-					outerBorderWidth: 5
-				},
-				desktop: {
-					tileDimension: 72,
-					innerBorderWidth: 7,
-					outerBorderWidth: 6
-				}
-			}
-		}
-	};
+	tileDimension;
+	innerBorderWidth;
+	outerBorderWidth;
+	gameType;
+	screenType;
+
+	constructor() {};
 
 	togglePopup() {
 		document.querySelector(".overlay").classList.toggle('overlay--hidden');
@@ -61,9 +36,9 @@ export default class View {
 		document.querySelectorAll('.score__value')[0].innerHTML = 0;
 		const windowWidth = window.innerWidth;
 		windowWidth > 480 ? this.screenType = 'desktop' : this.screenType = 'mobile';
-		this.tileDimension = this.gameSettings[`t${this.gameType}`][this.screenType].tileDimension;
-		this.innerBorderWidth = this.gameSettings[`t${this.gameType}`][this.screenType].innerBorderWidth;
-		this.outerBorderWidth = this.gameSettings[`t${this.gameType}`][this.screenType].outerBorderWidth;
+		this.tileDimension = elementsDimensions[`board${this.gameType}x${this.gameType}`][this.screenType].tileDimension;
+		this.innerBorderWidth = elementsDimensions[`board${this.gameType}x${this.gameType}`][this.screenType].innerBorderWidth;
+		this.outerBorderWidth = elementsDimensions[`board${this.gameType}x${this.gameType}`][this.screenType].outerBorderWidth;
 		document.querySelector('.entry-screen').classList.add('entry-screen--hidden');
 		document.querySelector('.game').classList.remove('game--hidden');
 	};
@@ -114,8 +89,6 @@ export default class View {
 			tile.classList.add('tile--move');
 		});
 	};
-
-
 	mergeTiles(retainedTile, tileToMerge, retainedObj) {
 		tileToMerge.style.left = `${(retainedObj[0].x*this.tileDimension+retainedObj[0].x*this.innerBorderWidth)+this.outerBorderWidth}px`;
 		tileToMerge.style.top = `${(retainedObj[0].y*this.tileDimension+retainedObj[0].y*this.innerBorderWidth)+this.outerBorderWidth}px`;
@@ -140,9 +113,9 @@ export default class View {
 		let windowWidth = window.innerWidth;
 		windowWidth > 480 ? this.screenType = 'desktop' : this.screenType = 'mobile';
 		if (screenType === this.screenType) return;
-		this.tileDimension = this.gameSettings[`t${this.gameType}`][this.screenType].tileDimension;
-		this.innerBorderWidth = this.gameSettings[`t${this.gameType}`][this.screenType].innerBorderWidth;
-		this.outerBorderWidth = this.gameSettings[`t${this.gameType}`][this.screenType].outerBorderWidth;
+		this.tileDimension = elementsDimensions[`board${this.gameType}x${this.gameType}`][this.screenType].tileDimension;
+		this.innerBorderWidth = elementsDimensions[`board${this.gameType}x${this.gameType}`][this.screenType].innerBorderWidth;
+		this.outerBorderWidth = elementsDimensions[`board${this.gameType}x${this.gameType}`][this.screenType].outerBorderWidth;
 		tiles.forEach(tile => {
 			tile.style.left = `${(tile.dataset.x*this.tileDimension+tile.dataset.x*this.innerBorderWidth)+this.outerBorderWidth}px`;
 			tile.style.top = `${(tile.dataset.y*this.tileDimension+tile.dataset.y*this.innerBorderWidth)+this.outerBorderWidth}px`;

@@ -1,14 +1,15 @@
 import { view, model } from './app.js';
 
 export default class Controller {
+	tilesOnBoard;
+	gameType;
+	initY;
+	initX;
+	startGameTime;
+	endGameTime;
+	
 	constructor() {
 		this.gameStatus = 0;
-		this.tilesOnBoard;
-		this.gameType;
-		this.initY;
-		this.initX;
-		this.startGameTime;
-		this.endGameTime;
 		this.minSwipeDistance = 20;
 	};
 

@@ -1,12 +1,13 @@
 import { controller, view } from './app.js';
 
 export default class Model {
+	bestScore;
+	gameType;
+	board;
+
 	constructor() {
-		this.nextId = 0;
+		this.nextAvailableTileId = 0;
 		this.score = 0;
-		this.bestScore;
-		this.gameType;
-		this.board;
 		this.numberOfMoves = 0;
 		this.canAddTile = true;
 	}
@@ -19,7 +20,7 @@ export default class Model {
 
 	clearBoard() {
 		this.board = Array(this.gameType).fill('').map(() => Array(this.gameType));
-		this.nextId = 0;
+		this.nextAvailableTileId = 0;
 		this.score = 0;
 	};
 
@@ -36,12 +37,12 @@ export default class Model {
 	addTile() {
 		if (!this.canAddTile) return;
 		const coordinates = this.generateCoordinates();
-		const id = this.nextId;
+		const id = this.nextAvailableTileId;
 		this.board[coordinates.charAt(0)][coordinates.charAt(1)] = {
 			id: id,
 			val: 2
 		};
-		this.nextId++;
+		this.nextAvailableTileId++;
 		controller.tilesOnBoard++;
 		return {
 			y: coordinates.charAt(0),
@@ -127,7 +128,7 @@ export default class Model {
 		}
 		return rotatedBoard;
 	};
-	
+
 	mergeTiles(arr, key) {
 		if (arr.length < 2) return arr;
 		if ((key === 'ArrowDown' || key === 'ArrowRight')) {
