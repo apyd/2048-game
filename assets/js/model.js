@@ -84,7 +84,7 @@ export default class Model {
 		let previouslyUpdatedTiles = this.generateArrayWithUpdatedTiles(this.board);
 		this.board = [...sortedBoard];
 		let arrWithUpdatedTiles = this.generateArrayWithUpdatedTiles(sortedBoard);
-		this.checkIfArraysEqual(previouslyUpdatedTiles, arrWithUpdatedTiles) ? this.canAddTile = false : this.canAddTile = true;
+		this.canAddTile = !this.checkIfArraysEqual(previouslyUpdatedTiles, arrWithUpdatedTiles);
 		if (!this.canAddTile) return;
 		this.numberOfMoves++;
 		return arrWithUpdatedTiles;
@@ -110,26 +110,23 @@ export default class Model {
 		if (typeof arr1 === 'undefined') return false;
 		let previouslyUpdatedTiles = JSON.stringify(arr1);
 		let arrWithUpdatedTiles = JSON.stringify(arr2);
-		let results;
-		previouslyUpdatedTiles === arrWithUpdatedTiles ? results = true : results = false;
-		return results;
+		return previouslyUpdatedTiles === arrWithUpdatedTiles
 	};
 
 	generateArrayWithUpdatedTiles(board) {
 		let arrayWithTiles = [];
 		for (let [index, subArray] of board.entries()) {
-			arrayWithTiles.push(subArray.filter(el => el).map(el => {
-				return {
+			subArray.filter(el => el).map(el => {
+				arrayWithTiles.push({
 					id: el.id,
 					val: el.val,
 					y: index,
 					x: subArray.map(arrayEl => { return arrayEl.id }).indexOf(el.id),
-						mergedId: el.mergedId
-					};
-			}));
+					mergedId: el.mergedId
+				});
+			});
 		}
-		let arr = [].concat(...arrayWithTiles);
-		return arr;
+		return arrayWithTiles;
 	};
 
 	rotateBoard(boardToRotate) {
