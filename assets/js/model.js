@@ -14,12 +14,23 @@ export default class Model {
 
 	initializeGame(selectedType) {
 		this.gameType = +selectedType;
-		this.board = Array(this.gameType).fill().map(() => Array(this.gameType).fill(''));
+		this.board = this.createBoard();
 		this.bestScore = +localStorage.getItem(`bestScore${this.gameType}`);
 	};
 
+	createBoard(boardType) {
+	    switch (boardType) {
+	        case 1:
+	            return Array(this.gameType).fill().map(() => Array());
+	        case 2:
+	            return Array(this.gameType).fill().map(() => Array(this.gameType));
+	        default:
+	            return Array(this.gameType).fill().map(() => Array(this.gameType).fill(''));
+	    }
+	};
+
 	clearBoard() {
-		this.board = Array(this.gameType).fill('').map(() => Array(this.gameType));
+		this.board = this.createBoard();
 		this.nextAvailableTileId = 0;
 		this.score = 0;
 	};
@@ -53,7 +64,7 @@ export default class Model {
 
 	moveTiles(key) {
 		let boardToSort = [...this.board];
-		let sortedBoard = Array(this.gameType).fill().map(() => Array(this.gameType));
+		let sortedBoard = this.createBoard(2);
 		(key === 'ArrowUp' || key === 'ArrowDown') ? boardToSort = this.rotateBoard([...boardToSort]): null;
 		if (key === 'ArrowRight' || key === 'ArrowDown') {
 			for (let [index, subArray] of boardToSort.entries()) {
@@ -120,7 +131,7 @@ export default class Model {
 	};
 
 	rotateBoard(boardToRotate) {
-		let rotatedBoard = Array(this.gameType).fill().map(() => Array());
+		let rotatedBoard = this.createBoard(1);
 		for (let i = 0; i < boardToRotate.length; i++) {
 			for (let j = 0; j < boardToRotate.length; j++) {
 				rotatedBoard[i].push(boardToRotate[j][i]);
