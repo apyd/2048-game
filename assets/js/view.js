@@ -109,9 +109,8 @@ export default class View {
 
 	onScreenResize() {
 		let tiles = document.querySelectorAll('.tile');
-		let screenType = this.screenType;
-		let windowWidth = window.innerWidth;
-		windowWidth > 480 ? this.screenType = 'desktop' : this.screenType = 'mobile';
+		let screenType = this.screenType; 
+		this.screenType = window.innerWidth > 480 ? 'desktop' : this.screenType = 'mobile';
 		if (screenType === this.screenType) return;
 		this.tileDimension = elementsDimensions[`board${this.gameType}x${this.gameType}`][this.screenType].tileDimension;
 		this.innerBorderWidth = elementsDimensions[`board${this.gameType}x${this.gameType}`][this.screenType].innerBorderWidth;

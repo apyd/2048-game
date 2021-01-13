@@ -42,7 +42,7 @@ export default class Model {
 	};
 
 	checkCollision(x, y) {
-		return this.board[x][y] ? false : true;
+		return !this.board[x][y];
 	};
 
 	addTile() {
