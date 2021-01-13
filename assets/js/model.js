@@ -1,4 +1,5 @@
 import { controller, view } from './app.js';
+import { generateRandomCoordinates } from './utils.js';
 
 export default class Model {
 	bestScore;
@@ -19,14 +20,14 @@ export default class Model {
 	};
 
 	createBoard(boardType) {
-	    switch (boardType) {
-	        case 1:
-	            return Array(this.gameType).fill().map(() => Array());
-	        case 2:
-	            return Array(this.gameType).fill().map(() => Array(this.gameType));
-	        default:
-	            return Array(this.gameType).fill().map(() => Array(this.gameType).fill(''));
-	    }
+		switch (boardType) {
+			case 1:
+				return Array(this.gameType).fill().map(() => Array());
+			case 2:
+				return Array(this.gameType).fill().map(() => Array(this.gameType));
+			default:
+				return Array(this.gameType).fill().map(() => Array(this.gameType).fill(''));
+		}
 	};
 
 	clearBoard() {
@@ -35,30 +36,32 @@ export default class Model {
 		this.score = 0;
 	};
 
-	generateCoordinates() {
-		const x = Math.floor((Math.random() * this.gameType));
-		const y = Math.floor((Math.random() * this.gameType));
-		return this.checkCollision(x, y) ? `${x}${y}` : this.generateCoordinates();
+	checkCollision({ x, y }) {
+		return !!this.board[y][x] ? false : { x, y };
 	};
 
-	checkCollision(x, y) {
-		return !this.board[x][y];
-	};
+	createTile() {
+		return {
+			id: this.nextAvailableTileId,
+			val: 2
+		}
+	}
 
 	addTileToBoard() {
-		if (!this.canAddTile) return;
-		const coordinates = this.generateCoordinates();
-		const id = this.nextAvailableTileId;
-		this.board[coordinates.charAt(0)][coordinates.charAt(1)] = {
-			id: id,
-			val: 2
-		};
+		if (!this.canAddTile) return; 
+		const tile = this.createTile();
+		let tileCoordinates;
+		while (!tileCoordinates) {
+			tileCoordinates = this.checkCollision(generateRandomCoordinates(this.gameType));
+		}
+		console.log(tileCoordinates);
+		this.board[tileCoordinates.y][tileCoordinates.x] = tile;
 		this.nextAvailableTileId++;
 		controller.tilesOnBoard++;
 		return {
-			x: coordinates.charAt(1),
-			y: coordinates.charAt(0),
-			id
+			y: tileCoordinates.y,
+				x: tileCoordinates.x,
+				id: tile.id
 		};
 	};
 
@@ -71,7 +74,7 @@ export default class Model {
 				sortedBoard[index] = subArray.filter(el => !el).concat(this.mergeTiles(subArray.filter(el => el), key));
 				sortedBoard[index] = [...sortedBoard[index]].filter(el => !el).concat([...sortedBoard[index]].filter(el => el));
 			}
-		} 
+		}
 		else {
 			for (let [index, subArray] of boardToSort.entries()) {
 				sortedBoard[index] = this.mergeTiles(subArray.filter(el => el), key).concat(subArray.filter(el => !el));
@@ -122,7 +125,7 @@ export default class Model {
 					val: el.val,
 					y: index,
 					x: subArray.map(arrayEl => { return arrayEl.id }).indexOf(el.id),
-					    mergedId: el.mergedId
+						mergedId: el.mergedId
 					};
 			}));
 		}
@@ -163,7 +166,7 @@ export default class Model {
 				}
 			}
 		}
-	return arr;
+		return arr;
 	};
 
 	updateScore(pointsToAdd) {
