@@ -54,14 +54,13 @@ export default class Model {
 		while (!tileCoordinates) {
 			tileCoordinates = this.checkCollision(generateRandomCoordinates(this.gameType));
 		}
-		console.log(tileCoordinates);
 		this.board[tileCoordinates.y][tileCoordinates.x] = tile;
 		this.nextAvailableTileId++;
-		controller.tilesOnBoard++;
+		controller.incrementNumberOfTilesOnBoard();
 		return {
 			y: tileCoordinates.y,
-				x: tileCoordinates.x,
-				id: tile.id
+			x: tileCoordinates.x,
+			id: tile.id
 		};
 	};
 

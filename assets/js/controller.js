@@ -67,6 +67,10 @@ export default class Controller {
 		this.initX = eX;
 	};
 
+	incrementNumberOfTilesOnBoard() {
+	    this.tilesOnBoard = ++this.tilesOnBoard;
+	}
+
 	stopGame() {
 		this.gameStatus = 0;
 		view.showEntryScreen();
