@@ -107,7 +107,7 @@ export default class Model {
 	};
 
 	checkIfArraysEqual(arr1, arr2) {
-		if (typeof arr1 === 'undefined') return false;
+		if (!!(arr1 && arr2)) return false;
 		let previouslyUpdatedTiles = JSON.stringify(arr1);
 		let arrWithUpdatedTiles = JSON.stringify(arr2);
 		return previouslyUpdatedTiles === arrWithUpdatedTiles
@@ -158,7 +158,7 @@ export default class Model {
 					arr[i].mergedId = arr[i + 1].id;
 					arr[i + 1] = '';
 					this.updateScore(arr[i].val);
-					controller.tilesOnBoard--;
+					controller.decrementNumberOfTilesOnBoard();
 				}
 			}
 		}

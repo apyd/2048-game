@@ -71,6 +71,10 @@ export default class Controller {
 	    this.tilesOnBoard = ++this.tilesOnBoard;
 	}
 
+	decrementNumberOfTilesOnBoard() {
+	    this.tilesOnBoard = --this.tilesOnBoard;
+	}
+
 	stopGame() {
 		this.gameStatus = 0;
 		view.showEntryScreen();
