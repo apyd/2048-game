@@ -1,4 +1,8 @@
 import { view, model } from './app.js';
+import { calculateAngle, convertMillisToMinutesAndSeconds, convertAngleToKey, checkIfEnoughSwipeDistance } from './utils.js';
+import keys from './keys.js';
+import gameStatuses from './gameStatuses.js';
+import touchStates from './touchStates.js';
 
 export default class Controller {
 	tilesOnBoard;
@@ -7,90 +11,72 @@ export default class Controller {
 	initX;
 	startGameTime;
 	endGameTime;
-	
+
 	constructor() {
 		this.gameStatus = 0;
 		this.minSwipeDistance = 20;
-	};
+	}
 
 	startGame() {
 		this.tilesOnBoard = 0;
-		this.gameStatus = 1;
+		this.gameStatus = gameStatuses.started;
 		model.clearBoard();
 		view.clearBoard();
-		!localStorage.getItem(`bestScore${this.gameType}`) ? localStorage.setItem(`bestScore${this.gameType}`, 0) : null;
+		if (!localStorage.getItem(`bestScore${this.gameType}`)) return localStorage.setItem(`bestScore${this.gameType}`, 0);
 		model.initializeGame(this.gameType);
 		view.initializeGameView(this.gameType);
+		view.addTileToBoard(model.addTileToBoard());
+		view.addTileToBoard(model.addTileToBoard());
 		this.startGameTime = performance.now();
-		view.addTileToBoard(model.addTileToBoard());
-		view.addTileToBoard(model.addTileToBoard());
-	};
+		return true;
+	}
 
 	onKeyPress(key) {
-		(key === 'Escape' && view.popupVisible) ? view.togglePopup() : null;
-		if (!key.includes('Arrow') || (!this.gameStatus)) return;
+		if (keys[key] && view.isPopupOpened) return view.togglePopup();
+		if (!keys[key] || this.gameStatus === (gameStatuses.stopped || gameStatuses.ended)) return false;
 		view.moveTiles(model.moveTiles(key));
-		model.canAddTile ? view.addTileToBoard(model.addTileToBoard()) : null;
-		if (this.tilesOnBoard === (this.gameType * this.gameType)) {
+		if (model.canAddTile) return view.addTileToBoard(model.addTileToBoard());
+		if (this.tilesOnBoard === this.gameType * this.gameType) {
 			const isContinued = model.checkIfPossibleMerge();
-			!isContinued ? this.endGame() : null;
-		};
-		};
+			if (!isContinued) return this.endGame();
+		}
+		return true;
+	}
 
 	onTouch(type, eX, eY) {
-		if (type === 'touchend') {
-			let key;
-			if (Math.abs(Math.round(eY - this.initY)) < this.minSwipeDistance && Math.abs(Math.round(eX - this.initX)) < this.minSwipeDistance) return;
-			let angle = (Math.atan2(Math.round(eY - this.initY), (Math.round(eX - this.initX))));
-			angle *= 180 / Math.PI;
-			angle = Math.round(angle);
-			if (angle === 0) return;
-			else {
-				if (angle >= -135 && angle < -45) {
-					key = 'ArrowUp';
-				} else if (angle >= -45 && angle < 45) {
-					key = 'ArrowRight';
-				} else if (angle >= 45 && angle < 135) {
-					key = 'ArrowDown';
-				} else {
-					key = 'ArrowLeft';
-				};
-				};
+		if (touchStates.touchend === type) {
+			if (!checkIfEnoughSwipeDistance(eX, this.initX, eY, this.initY, this.minSwipeDistance)) return;
+			const angle = calculateAngle(this.initX, this.initY, eX, eY);
+			if (angle) return;
+			const key = convertAngleToKey(angle);
 			view.moveTiles(model.moveTiles(key));
-			model.canAddTile ? view.addTileToBoard(model.addTileToBoard()) : null;
-			if (this.tilesOnBoard === (this.gameType * this.gameType)) {
-				const isContinued = model.checkIfPossibleMerge();
-				!isContinued ? this.endGame() : null;
-			};
-			};
+			if (model.canAddTile) {
+				view.addTileToBoard(model.addTileToBoard());
+				const isContinued = (this.tileOnBoard === (this.gameType ** 2));
+				if (isContinued) this.endGame();
+			}
+		}
 		this.initY = eY;
 		this.initX = eX;
-	};
+	}
 
 	incrementNumberOfTilesOnBoard() {
-	    this.tilesOnBoard = ++this.tilesOnBoard;
+		this.tilesOnBoard += 1;
 	}
 
 	decrementNumberOfTilesOnBoard() {
-	    this.tilesOnBoard = --this.tilesOnBoard;
+		this.tilesOnBoard -= 1;
 	}
 
 	stopGame() {
-		this.gameStatus = 0;
+		this.gameStatus = gameStatuses.stopped;
 		view.showEntryScreen();
-	};
+	}
 
 	endGame() {
 		this.endGameTime = performance.now();
 		const timeElapsed = this.endGameTime - this.startGameTime;
-		view.showEndGamePopup(this.convertMillisToMinutesAndSeconds(timeElapsed), model.numberOfMoves, model.score);
-		this.gameStatus = 0;
-	};
-
-	convertMillisToMinutesAndSeconds(millis) {
-		const minutes = Math.floor(millis / 60000);
-		const seconds = ((millis % 60000) / 1000).toFixed(0);
-		const minutesToShow = `${minutes === 0 ? '' : minutes === 1 ? `${minutes} minute` : `${minutes} minutes`}`;
-		return `${minutesToShow} ${seconds} seconds`;
-	};
+		view.showEndGamePopup(convertMillisToMinutesAndSeconds(timeElapsed), model.numberOfMoves, model.score);
+		this.gameStatus = gameStatuses.stopped;
+	}
 }
