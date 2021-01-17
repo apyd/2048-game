@@ -16,8 +16,12 @@ module.exports = {
 		'no-tabs': 0,
 		'eol-last': 0,
 		'import/extensions': 0,
-		'lines-between-class-members': ['error', 'always', { exceptAfterSingleLine: true }],
-		'no-param-reassign': ['error', { props: false }],
+		'lines-between-class-members': ['error', 'always', {
+			exceptAfterSingleLine: true
+		}],
+		'no-param-reassign': ['error', {
+			props: false
+		}],
 		'comma-dangle': ['error', {
 			arrays: 'never',
 			objects: 'never',
@@ -25,7 +29,15 @@ module.exports = {
 			exports: 'never',
 			functions: 'never'
 		}],
-		'max-len': ['error', { code: 125 }],
-		'prefer-exponentiation-operator': 0
+		'max-len': ['error', {
+			code: 125
+		}],
+		'prefer-exponentiation-operator': 0,
+		'object-curly-newline': ['error', {
+			ImportDeclaration: 'never',
+			ExportDeclaration: {
+				multiline: true
+			}
+		}]
 	}
 };
