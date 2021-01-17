@@ -1,25 +1,38 @@
 {
-  "name": "2048-game",
-  "version": "1.0.0",
-  "description": "> Own implementation of 2048 game. > Link to play: https://apyd.github.io/2048-game/",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/apyd/2048-game.git"
-  },
-  "author": "Artur Pydych",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/apyd/2048-game/issues"
-  },
-  "homepage": "https://github.com/apyd/2048-game#readme",
-  "devDependencies": {
-    "browser-sync": "^2.26.13",
-    "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^7.0.1",
-    "gulp-dart-sass": "^1.0.2"
-  }
+	"name": "2048-game",
+	"version": "1.0.0",
+	"description": "> Own implementation of 2048 game. > Link to play: https://apyd.github.io/2048-game/",
+	"main": "app.js",
+	"scripts": {
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/apyd/2048-game.git"
+	},
+	"author": "Artur Pydych",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/apyd/2048-game/issues"
+	},
+	"homepage": "https://github.com/apyd/2048-game#readme",
+	"devDependencies": {
+		"@babel/core": "^7.12.10",
+		"@babel/eslint-parser": "^7.12.1",
+		"@babel/plugin-proposal-class-properties": "^7.12.1",
+		"@babel/plugin-syntax-class-properties": "^7.12.1",
+		"@babel/preset-env": "^7.12.11",
+		"browser-sync": "^2.26.13",
+		"eslint": "^7.17.0",
+		"eslint-config-airbnb-base": "^14.2.1",
+		"eslint-config-prettier": "^7.1.0",
+		"eslint-plugin-import": "^2.22.1",
+		"eslint-plugin-prettier": "^3.3.1",
+		"gulp": "^4.0.2",
+		"gulp-autoprefixer": "^7.0.1",
+		"gulp-dart-sass": "^1.0.2",
+		"prettier": "^2.2.1"
+	},
+	"dependencies": {}
 }
