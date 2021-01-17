@@ -11,16 +11,16 @@ export default class View {
 		this.isPopupOpened = 0;
 	}
 
-	clearBoard() {
+	static clearBoard() {
 		const board = document.querySelector('.board');
 		while (board.firstChild) {
 			board.removeChild(board.lastChild);
 		}
 	}
 
-	showEntryScreen() {
-		document.querySelector('.entry-screen').classList.remove('entry-screen--hidden');
-		document.querySelector('.game').classList.add('game--hidden');
+	static switchView() {
+		document.querySelector('.entry-screen').classList.toggle('entry-screen--hidden');
+		document.querySelector('.game').classList.toggle('game--hidden');
 	}
 
 	togglePopup() {
@@ -38,6 +38,7 @@ export default class View {
 	}
 
 	initializeGameView(gameType) {
+		View.clearBoard();
 		this.gameType = gameType;
 		document.querySelector('.board').classList = 'board';
 		document.querySelector('.board').classList.add(`board--${this.gameType}x${this.gameType}`);
@@ -48,8 +49,7 @@ export default class View {
 		this.tileDimension = elementsDimensions[`board${this.gameType}x${this.gameType}`][this.screenType].tileDimension;
 		this.innerBorderWidth = elementsDimensions[`board${this.gameType}x${this.gameType}`][this.screenType].innerBorderWidth;
 		this.outerBorderWidth = elementsDimensions[`board${this.gameType}x${this.gameType}`][this.screenType].outerBorderWidth;
-		document.querySelector('.entry-screen').classList.add('entry-screen--hidden');
-		document.querySelector('.game').classList.remove('game--hidden');
+		View.switchView();
 	}
 
 	createTile(x, y, id) {

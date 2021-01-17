@@ -1,11 +1,11 @@
 import { view, model } from './app.js';
+import View from './view.js';
 import { calculateAngle, convertMillisToMinutesAndSeconds, convertAngleToKey, checkIfEnoughSwipeDistance } from './utils.js';
 import keys from './keys.js';
 import gameStatuses from './gameStatuses.js';
 import touchStates from './touchStates.js';
 
 export default class Controller {
-	tilesOnBoard;
 	gameType;
 	initY;
 	initX;
@@ -13,22 +13,9 @@ export default class Controller {
 	endGameTime;
 
 	constructor() {
+		this.tilesOnBoard = 0;
 		this.gameStatus = 0;
 		this.minSwipeDistance = 20;
-	}
-
-	startGame() {
-		this.tilesOnBoard = 0;
-		this.gameStatus = gameStatuses.started;
-		model.clearBoard();
-		view.clearBoard();
-		if (!localStorage.getItem(`bestScore${this.gameType}`)) return localStorage.setItem(`bestScore${this.gameType}`, 0);
-		model.initializeGame(this.gameType);
-		view.initializeGameView(this.gameType);
-		view.addTileToBoard(model.addTileToBoard());
-		view.addTileToBoard(model.addTileToBoard());
-		this.startGameTime = performance.now();
-		return true;
 	}
 
 	onKeyPress(key) {
@@ -68,9 +55,21 @@ export default class Controller {
 		this.tilesOnBoard -= 1;
 	}
 
+	startGame() {
+		this.tilesOnBoard = 0;
+		this.gameStatus = gameStatuses.started;
+		if (!localStorage.getItem(`bestScore${this.gameType}`)) return localStorage.setItem(`bestScore${this.gameType}`, 0);
+		model.initializeGame(this.gameType);
+		view.initializeGameView(this.gameType);
+		view.addTileToBoard(model.addTileToBoard());
+		view.addTileToBoard(model.addTileToBoard());
+		this.startGameTime = performance.now();
+		return true;
+	}
+
 	stopGame() {
 		this.gameStatus = gameStatuses.stopped;
-		view.showEntryScreen();
+		View.switchView();
 	}
 
 	endGame() {
