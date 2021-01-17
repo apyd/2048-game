@@ -30,7 +30,8 @@ module.exports = {
 			functions: 'never'
 		}],
 		'max-len': ['error', {
-			code: 125
+			code: 125,
+			ignoreTemplateLiterals: true
 		}],
 		'prefer-exponentiation-operator': 0,
 		'object-curly-newline': ['error', {
