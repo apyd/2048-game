@@ -39,6 +39,7 @@ module.exports = {
 			ExportDeclaration: {
 				multiline: true
 			}
-		}]
+		}],
+		'no-plusplus': [2, { allowForLoopAfterthoughts: true }]
 	}
 };
