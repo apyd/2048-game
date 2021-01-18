@@ -16,10 +16,10 @@ radioBtns.forEach((radioBtn) => radioBtn.addEventListener('click', () => {
 	startBtn.disabled = false;
 	controller.gameType = radioBtn.value;
 }));
-startBtn.addEventListener('click', (e) => controller.startGame(e));
-restartBtn.addEventListener('click', (e) => controller.startGame(e));
+startBtn.addEventListener('click', () => controller.startGame());
+restartBtn.addEventListener('click', () => controller.startGame());
 closeBtn.addEventListener('click', () => view.togglePopup());
-arrowBtn.addEventListener('click', () => controller.cancelGame(e));
+arrowBtn.addEventListener('click', () => controller.cancelGame());
 overlay.addEventListener('click', (e) => { if (e.target === overlay) view.togglePopup(); });
 window.addEventListener('keyup', (e) => controller.onKeyPress(e.key));
 window.addEventListener('DOMContentLoaded', () => view.updateScore());
