@@ -1,5 +1,5 @@
 const gameStatuses = {
-	stopped: 0,
+	cancelled: 0,
 	ended: 1,
 	started: 2
 };

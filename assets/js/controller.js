@@ -1,5 +1,4 @@
 import { view, model } from './app.js';
-import View from './view.js';
 import { calculateAngle, convertMillisToMinutesAndSeconds, convertAngleToKey, checkIfEnoughSwipeDistance } from './utils.js';
 import keys from './keys.js';
 import gameStatuses from './gameStatuses.js';
@@ -20,7 +19,7 @@ export default class Controller {
 
 	onKeyPress(key) {
 		if (keys[key] && view.isPopupOpened) return view.togglePopup();
-		if (!keys[key] || this.gameStatus === (gameStatuses.stopped || gameStatuses.ended)) return false;
+		if (!keys[key] || this.gameStatus === (gameStatuses.cancelled || gameStatuses.ended)) return false;
 		view.moveTiles(model.moveTiles(key));
 		if (model.canAddTile) return view.addTileToBoard(model.addTileToBoard());
 		if (this.tilesOnBoard === this.gameType * this.gameType) {
@@ -61,15 +60,16 @@ export default class Controller {
 		if (!localStorage.getItem(`bestScore${this.gameType}`)) return localStorage.setItem(`bestScore${this.gameType}`, 0);
 		model.initializeGame(this.gameType);
 		view.initializeGameView(this.gameType);
+		if (!view.isGameViewOpened) { view.switchView(); }
 		view.addTileToBoard(model.addTileToBoard());
 		view.addTileToBoard(model.addTileToBoard());
 		this.startGameTime = performance.now();
 		return true;
 	}
 
-	stopGame() {
-		this.gameStatus = gameStatuses.stopped;
-		View.switchView();
+	cancelGame() {
+		this.gameStatus = gameStatuses.cancelled;
+		view.switchView();
 	}
 
 	endGame() {
