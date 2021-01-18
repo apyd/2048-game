@@ -9,6 +9,7 @@ export default class View {
 
 	constructor() {
 		this.isPopupOpened = 0;
+		this.isGameViewOpened = 0;
 	}
 
 	static clearBoard() {
@@ -18,23 +19,24 @@ export default class View {
 		}
 	}
 
-	static switchView() {
+	switchView() {
+		this.isGameViewOpened = !this.isGameViewOpened;
 		document.querySelector('.entry-screen').classList.toggle('entry-screen--hidden');
 		document.querySelector('.game').classList.toggle('game--hidden');
 	}
 
-	togglePopup() {
-		document.querySelector('.overlay').classList.toggle('overlay--hidden');
-		this.isPopupOpened = !this.isPopupOpened;
-	}
-
-	showEndGamePopup(time, numberOfMoves, result) {
-		document.querySelector('.popup__heading').innerHTML = 'End game';
-		const popupBody = document.querySelector('.popup__body');
-		popupBody.innerHTML = `<p class="popup__text"><span class="popup__text--bold">Time elapsed: </span>${time}</p>
-								<p class="popup__text"><span class="popup__text--bold">Moves performed: </span>${numberOfMoves}</p>
-								<p class="popup__text"><span class="popup__text--bold">Your result: </span>${result} points </p>`;
-		this.togglePopup();
+	onScreenResize() {
+		const tiles = document.querySelectorAll('.tile');
+		let screenType;
+		this.screenType = window.innerWidth >= 480 ? 'desktop' : 'mobile';
+		if (screenType === this.screenType) return;
+		this.tileDimension = elementsDimensions[`board${this.gameType}x${this.gameType}`][this.screenType].tileDimension;
+		this.innerBorderWidth = elementsDimensions[`board${this.gameType}x${this.gameType}`][this.screenType].innerBorderWidth;
+		this.outerBorderWidth = elementsDimensions[`board${this.gameType}x${this.gameType}`][this.screenType].outerBorderWidth;
+		tiles.forEach((tile) => {
+			tile.style.left = `${tile.dataset.x * this.tileDimension + tile.dataset.x * this.innerBorderWidth + this.outerBorderWidth}px`;
+			tile.style.top = `${tile.dataset.y * this.tileDimension + tile.dataset.y * this.innerBorderWidth + this.outerBorderWidth}px`;
+		});
 	}
 
 	initializeGameView(gameType) {
@@ -49,7 +51,25 @@ export default class View {
 		this.tileDimension = elementsDimensions[`board${this.gameType}x${this.gameType}`][this.screenType].tileDimension;
 		this.innerBorderWidth = elementsDimensions[`board${this.gameType}x${this.gameType}`][this.screenType].innerBorderWidth;
 		this.outerBorderWidth = elementsDimensions[`board${this.gameType}x${this.gameType}`][this.screenType].outerBorderWidth;
-		View.switchView();
+	}
+
+	updateScore(score = 0) {
+		document.querySelectorAll('.score__value')[0].innerHTML = score;
+		document.querySelectorAll('.score__value')[1].innerHTML = localStorage.getItem(`bestScore${this.gameType}`);
+	}
+
+	togglePopup() {
+		document.querySelector('.overlay').classList.toggle('overlay--hidden');
+		this.isPopupOpened = !this.isPopupOpened;
+	}
+
+	showEndGamePopup(time, numberOfMoves, result) {
+		document.querySelector('.popup__heading').innerHTML = 'End game';
+		const popupBody = document.querySelector('.popup__body');
+		popupBody.innerHTML = `<p class="popup__text"><span class="popup__text--bold">Time elapsed: </span>${time}</p>
+								<p class="popup__text"><span class="popup__text--bold">Moves performed: </span>${numberOfMoves}</p>
+								<p class="popup__text"><span class="popup__text--bold">Your result: </span>${result} points </p>`;
+		this.togglePopup();
 	}
 
 	createTile(x, y, id) {
@@ -106,24 +126,5 @@ export default class View {
 		retainedTile.classList.add('tile--merge');
 		if (retainedTile.firstChild.textContent.length < 5) { retainedTile.style.fontSize = '.8em'; }
 		tileToMerge.remove();
-	}
-
-	updateScore(score = 0) {
-		document.querySelectorAll('.score__value')[0].innerHTML = score;
-		document.querySelectorAll('.score__value')[1].innerHTML = localStorage.getItem(`bestScore${this.gameType}`);
-	}
-
-	onScreenResize() {
-		const tiles = document.querySelectorAll('.tile');
-		let screenType;
-		this.screenType = window.innerWidth > 480 ? 'desktop' : (this.screenType = 'mobile');
-		if (screenType === this.screenType) return;
-		this.tileDimension = elementsDimensions[`board${this.gameType}x${this.gameType}`][this.screenType].tileDimension;
-		this.innerBorderWidth = elementsDimensions[`board${this.gameType}x${this.gameType}`][this.screenType].innerBorderWidth;
-		this.outerBorderWidth = elementsDimensions[`board${this.gameType}x${this.gameType}`][this.screenType].outerBorderWidth;
-		tiles.forEach((tile) => {
-			tile.style.left = `${tile.dataset.x * this.tileDimension + tile.dataset.x * this.innerBorderWidth + this.outerBorderWidth}px`;
-			tile.style.top = `${tile.dataset.y * this.tileDimension + tile.dataset.y * this.innerBorderWidth + this.outerBorderWidth}px`;
-		});
 	}
 }
