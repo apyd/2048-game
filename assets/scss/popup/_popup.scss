@@ -4,7 +4,7 @@
 .popup {
     position: relative;
     @include mixins.positionFlex(column, center, center);
-    width: 55vw;
+    width: 80vw;
     max-width: 650px;
     height: 55vh;
     min-height: 250px;
@@ -17,15 +17,19 @@
         width: 70vw;
     }
 
-    @include mixins.respond-to('mobile') {
-        width: 80vw;
+    @include mixins.respond-to('desktop') {
+        width: 55vw;
     }
 
     &__header {
         position: relative;
         @include mixins.positionFlex(row, center, center);
         width: 100%;
-        padding-top: 18px;
+		padding-top: 8px;
+		
+		@include mixins.respond-to('tablet') {
+			padding-top: 12px;
+		}
     }
 
     &__heading {
@@ -34,8 +38,12 @@
 
     &__body {
         @include mixins.positionFlex(column, center, left);
-        flex: 1;
-        font-size: vmin(4vw, 4vh);
+		flex: 1;
+		font-size: .7rem;
+
+		@include mixins.respond-to('tablet') {
+			font-size: .9rem;
+		}
     }
 
     &__text--bold {

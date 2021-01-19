@@ -10,7 +10,11 @@
 
 html {
     height: 100%;
-    font-size: 16px;
+	font-size: 16px;
+	
+	@include mixins.respond-to('tablet') {
+        font-size: 18px;
+    }
 }
 
 body {
@@ -22,20 +26,18 @@ body {
     background-color: functions.color(dark-slate-blue);
     color: functions.color(white);
     font-family: variables.$inter;
-    font-size: 16px;
-    overscroll-behavior: contain;
-
-    @include mixins.respond-to('mobile') {
-        font-size: 12px;
-    }
+	overscroll-behavior: contain;
 }
 
 .wrapper {
     @include mixins.positionFlex(column, normal, center);
     flex: 9;
     width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
+	margin: 0 auto;
+	
+	@include mixins.respond-to('desktop') {
+		max-width: 900px;
+	}
 }
 
 .entry-screen {
@@ -61,7 +63,8 @@ body {
 .game {
     @include mixins.positionFlex(column, center, normal);
     flex: 9;
-    width: 100%;
+	width: 100%;
+	overflow: hidden;
 
     &--hidden {
         display: none;
@@ -73,11 +76,11 @@ body {
 
     &__details {
         @include mixins.positionFlex(row, space-between, stretch);
-        width: 400px;
+        width: 300px;
         margin: 0px auto 20px auto;
 
-        @include mixins.respond-to('mobile') {
-            width: 300px;
+        @include mixins.respond-to('tablet') {
+            width: 400px;
         }
     }
 

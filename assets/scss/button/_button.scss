@@ -3,19 +3,18 @@
 @use '../abstracts/functions';
 
 .btn {
-    @include mixins.positionFlex(row, center, center);
+	@include mixins.positionFlex(row, center, center);
     padding: .5em;
     margin: .2em;
     border: none;
     border-radius: 5px;
-    background-color: transparent;
-    font-size: 1.3rem;
+	background-color: transparent;
+	font-size: 1.1rem;
     font-family: variables.$inter;
     font-weight: bold;
 
-    @include mixins.respond-to('mobile') {
-        height: 50px;
-        font-size: 1.2rem;
+    @include mixins.respond-to('tablet') {
+		font-size: 1.2rem;
     }
 
     &:disabled {

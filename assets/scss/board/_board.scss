@@ -2,8 +2,8 @@
 
 .board {
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     margin: 0 auto;
     background-repeat: no-repeat;
     
@@ -12,22 +12,22 @@
         100% { -webkit-filter: blur(0px);}
     }
 
-    @include mixins.respond-to('mobile') {
-        width: 300px;
-        height: 300px;
+    @include mixins.respond-to('tablet') {
+        width: 400px;
+        height: 400px;
     }
 
     &--4x4 {
-        background-image: url('../img/4x4desktop.png');
-        @include mixins.respond-to('mobile') {
-            background-image: url('../img/4x4mobile.png');
+        background-image: url('../img/4x4mobile.png');
+        @include mixins.respond-to('tablet') {
+            background-image: url('../img/4x4desktop.png');
         }
     }
     
     &--5x5 {
-        background-image: url('../img/5x5desktop.png');
-        @include mixins.respond-to('mobile') {
-            background-image: url('../img/5x5mobile.png');
+        background-image: url('../img/5x5mobile.png');
+        @include mixins.respond-to('tablet') {
+            background-image: url('../img/5x5desktop.png');
         }
     }
 }

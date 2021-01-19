@@ -2,7 +2,7 @@
 @use '../abstracts/functions';
 
 .footer {
-    @include mixins.positionFlex(row, center, center);
+    @include mixins.positionFlex(column, flex-end, center);
 	flex: 1;
 	width: 100%;
 

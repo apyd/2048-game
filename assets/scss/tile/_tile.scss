@@ -9,26 +9,25 @@
     @include mixins.tile-modifiers;
 
     &--size-4 {
-        height: 88px;
-        width: 88px;
-        font-size: 16px;
+        height: 66px;
+		width: 66px;
+		font-size: 2rem;
 
-        @include mixins.respond-to('mobile') {
-            height: 66px;
-            width: 66px;
-            font-size: 12px;
+        @include mixins.respond-to('tablet') {
+            height: 88px;
+            width: 88px;
         }
     }
 
     &--size-5 {
-        height: 72px;
-        width: 72px;
-        font-size: 14px;
+        height: 54px;
+		width: 54px;
+		font-size: 1.6rem;
 
-        @include mixins.respond-to('mobile') {
-            height: 54px;
-            width: 54px;
-            font-size: 10px;
+        @include mixins.respond-to('tablet') {
+            height: 72px;
+			width: 72px;
+			font-size: 1.8rem;
         }
     }
 
@@ -55,13 +54,14 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        height: 2rem;
-        width: 6rem;
-        font-size: 2em;
+        height: 2em;
+        width: 6em;
+        font-size: 1em;
         font-weight: bold;
-        line-height: 2rem;
+        line-height: 2em;
         text-align: center;
         text-shadow: functions.color(black) 1px 1px;
-        transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+		
     }
 }

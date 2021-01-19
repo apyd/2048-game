@@ -5,11 +5,10 @@
 .score {
     @include mixins.positionFlex(column, center, center);
     height: 100%;
-    padding: 0 15px;
+	padding: 0 10px;
 
-    @include mixins.respond-to('mobile') {
-        padding: 0 10px;
-        font-size: 1rem; 
+    @include mixins.respond-to('tablet') {
+        padding: 0 15px;
     }
 
     &__text--bold {

@@ -30,5 +30,6 @@ $tileColors: (
 
 $breakpoints: (
   'mobile': (max-width: #{$screen-s-max}),
-  'tablet': (min-width: #{$screen-s-max+1}) #{and} (max-width: #{$screen-l-max}),
+  'tablet': (min-width: #{$screen-s-max+1}),
+  'desktop': (min-width: #{$screen-l-max+1}),
 ) !default;

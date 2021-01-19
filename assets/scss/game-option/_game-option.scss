@@ -18,44 +18,45 @@
     
     &__img {
         @include mixins.positionFlex(column, center, center);
-        height: 300px;
-        width: 300px;
+        height: 150px;
+        width: 150px;
         border: 3px solid transparent;
         border-radius: 5px;
         background-position: center center;
         background-repeat: no-repeat;
-        opacity: .7;
+		opacity: .7;
+		margin: 5px;
     
         @include mixins.respond-to('tablet') {
             height: 210px;
-            width: 210px;
+			width: 210px;
+			margin: 0;
         }
     
-        @include mixins.respond-to('mobile') {
-            height: 150px;
-            width: 150px;
-            margin: 5px;
+        @include mixins.respond-to('desktop') {
+            height: 300px;
+            width: 300px;
         }
     
         &--board-4x4 {
-            background-image: url('./../img/4-gametype-l.png');
+            background-image: url('./../img/4-gametype-s.png');
             @include mixins.respond-to('tablet') {
                 background-image: url('./../img/4-gametype-m.png');
             }
         
-            @include mixins.respond-to('mobile') {
-                background-image: url('./../img/4-gametype-s.png');
+            @include mixins.respond-to('desktop') {
+                background-image: url('./../img/4-gametype-l.png');
             }
         }
     
         &--board-5x5 {
-            background-image: url('./../img/5-gametype-l.png');
+            background-image: url('./../img/5-gametype-s.png');
             @include mixins.respond-to('tablet') {
                 background-image: url('./../img/5-gametype-m.png');
             }
         
-            @include mixins.respond-to('mobile') {
-                background-image: url('./../img/5-gametype-s.png');
+            @include mixins.respond-to('desktop') {
+                background-image: url('./../img/5-gametype-l.png');
             }
         }
 
