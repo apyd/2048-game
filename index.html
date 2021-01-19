@@ -10,49 +10,51 @@
     <title>2048 Game</title>
 </head>
 <body>
-    <div class="entry-screen">
-        <header class="entry-screen__header">
-            <h2 class="entry-screen__heading">2048 Game</h2>
-            <h3 class="entry-screen__heading">Select board size:</h3>
-        </header>
-        <div class="game-options">
-            <div class="game-option">
-                <p class="game-option__text">4x4</p>
-                <input class="game-option__input" type="radio" value="4" id="4x4" name="gameType" />
-                <label class="game-option__img game-option__img--board-4x4" for="4x4"></label>
-            </div>
-            <div class="game-option">
-                <p class="game-option__text">5x5</p>
-                <input class="game-option__input" type="radio" value="5" id="5x5" name="gameType" />
-                <label class="game-option__img game-option__img--board-5x5" for="5x5"></label>
-            </div>
-        </div>
-        <button class="btn btn--primary" id="start-game" disabled>Start game</button>
-    </div>
-    <main class="game game--hidden">
-        <header class="game__header">
-            <h2 class="game__heading">2048 Game</h2>
-        </header>
-        <div class="game__details">
-            <div class="game__actions">
-                <button class="btn" id="open-entry-screen">
-                    <img class="btn__icon" src="./assets/icons/left-arrow.svg">
-                </button>
-                <button class="btn btn--primary" id="restart-game">Restart</button>
-            </div>
-            <div class="game__results">
-                <div class="score">
-                    <span class="score__text score__text--bold">Score</span>
-                    <span class="score__value"></span>
-                </div>
-                <div class="score">
-                    <span class="score__text score__text--bold">Best</span>
-                    <span class="score__value"></span>
-                    </div>
-            </div>
-        </div>
-        <div class="board"></div>
-    </main>
+	<main class="wrapper">
+		<div class="entry-screen">
+			<header class="entry-screen__header">
+				<h2 class="entry-screen__heading">2048 Game</h2>
+				<h3 class="entry-screen__heading">Select board size:</h3>
+			</header>
+			<div class="game-options">
+				<div class="game-option">
+					<p class="game-option__text">4x4</p>
+					<input class="game-option__input" type="radio" value="4" id="4x4" name="gameType" />
+					<label class="game-option__img game-option__img--board-4x4" for="4x4"></label>
+				</div>
+				<div class="game-option">
+					<p class="game-option__text">5x5</p>
+					<input class="game-option__input" type="radio" value="5" id="5x5" name="gameType" />
+					<label class="game-option__img game-option__img--board-5x5" for="5x5"></label>
+				</div>
+			</div>
+			<button class="btn btn--primary" id="start-game" disabled>Start game</button>
+		</div>
+		<div class="game game--hidden">
+			<header class="game__header">
+				<h2 class="game__heading">2048 Game</h2>
+			</header>
+			<div class="game__details">
+				<div class="game__actions">
+					<button class="btn" id="open-entry-screen">
+						<img class="btn__icon" src="./assets/icons/left-arrow.svg">
+					</button>
+					<button class="btn btn--primary" id="restart-game">Restart</button>
+				</div>
+				<div class="game__results">
+					<div class="score">
+						<span class="score__text score__text--bold">Score</span>
+						<span class="score__value"></span>
+					</div>
+					<div class="score">
+						<span class="score__text score__text--bold">Best</span>
+						<span class="score__value"></span>
+						</div>
+				</div>
+			</div>
+			<div class="board"></div>
+		</div>
+	</main>
     <footer class="footer">
         <p class="footer__text">2048 game created by
             <a class="footer__link" href="https://github.com/apyd">Artur Pydych</a>

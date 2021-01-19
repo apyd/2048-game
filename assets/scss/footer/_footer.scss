@@ -2,10 +2,9 @@
 @use '../abstracts/functions';
 
 .footer {
-    position: absolute;
-    bottom: 0;
     @include mixins.positionFlex(row, center, center);
-    width: 100%;
+	flex: 1;
+	width: 100%;
 
     &__link {
         color: functions.color(selective-yellow);
