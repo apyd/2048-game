@@ -17,6 +17,7 @@ export default class Model {
 	initializeGame(selectedType) {
 		this.gameType = +selectedType;
 		this.clearBoard();
+		this.canAddTile = true;
 		this.bestScore = +localStorage.getItem(`bestScore${this.gameType}`);
 	}
 

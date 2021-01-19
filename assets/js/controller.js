@@ -76,6 +76,6 @@ export default class Controller {
 		this.endGameTime = performance.now();
 		const timeElapsed = this.endGameTime - this.startGameTime;
 		view.showEndGamePopup(convertMillisToMinutesAndSeconds(timeElapsed), model.numberOfMoves, model.score);
-		this.gameStatus = gameStatuses.stopped;
+		this.gameStatus = gameStatuses.ended;
 	}
 }

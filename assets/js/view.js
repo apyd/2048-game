@@ -124,7 +124,7 @@ export default class View {
 		retainedTile.classList = `tile tile--size-${this.gameType} tile--${retainedObj[0].val}`;
 		retainedTile.firstChild.innerHTML = `${retainedObj[0].val}`;
 		retainedTile.classList.add('tile--merge');
-		if (retainedTile.firstChild.textContent.length < 5) { retainedTile.style.fontSize = '.8em'; }
+		if (retainedTile.firstChild.textContent.length < 4) { retainedTile.style.fontSize = '.6em'; }
 		tileToMerge.remove();
 	}
 }
