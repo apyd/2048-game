@@ -13,24 +13,19 @@ export function calculateAngle(initX, initY, eX, eY) {
 }
 
 export function convertAngleToKey(angle) {
-	let key;
-	if (angle >= -135 && angle < -45) key = keys.arrowUp;
-	else if (angle >= -45 && angle < 45) key = keys.arrowRight;
-	else if (angle >= 45 && angle < 135) key = keys.arrowDown;
-	else key = keys.arrowLeft;
-	return key;
+	if (angle >= -135 && angle < -45) return keys.ArrowUp;
+	if (angle >= -45 && angle < 45) return keys.ArrowRight;
+	if (angle >= 45 && angle < 135) return keys.ArrowDown;
+	return keys.ArrowLeft;
 }
 
 export function checkIfEnoughSwipeDistance(eX, initX, eY, initY, minSwipeDistance) {
-	return !!(Math.abs(Math.round(eY - initY)) < minSwipeDistance
-	&& Math.abs(Math.round(eX - initX)) < minSwipeDistance);
+	return !(Math.abs(Math.round(eY - initY)) < minSwipeDistance && Math.abs(Math.round(eX - initX)) < minSwipeDistance);
 }
 
-export function checkIfArraysEqual(arr1, arr2) {
-	if (arr1 && arr2) return false;
-	const previouslyUpdatedTiles = JSON.stringify(arr1);
-	const arrWithUpdatedTiles = JSON.stringify(arr2);
-	return previouslyUpdatedTiles === arrWithUpdatedTiles;
+export function checkIfArraysEqual(firstArray, secondArray) {
+	if (!(firstArray || secondArray)) return false;
+	return JSON.stringify(firstArray) === JSON.stringify(secondArray);
 }
 
 export function convertMillisToMinutesAndSeconds(millis) {

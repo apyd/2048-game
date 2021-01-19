@@ -33,7 +33,7 @@ export default class Controller {
 		if (touchStates.touchend === type) {
 			if (!checkIfEnoughSwipeDistance(eX, this.initX, eY, this.initY, this.minSwipeDistance)) return;
 			const angle = calculateAngle(this.initX, this.initY, eX, eY);
-			if (angle) return;
+			if (!angle) return;
 			const key = convertAngleToKey(angle);
 			view.moveTiles(model.moveTiles(key));
 			if (model.canAddTile) {
