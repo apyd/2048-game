@@ -24,17 +24,9 @@ export default class Model {
 	createBoard(boardType) {
 		switch (boardType) {
 		case 1:
-			return Array(this.gameType)
-				.fill()
-				.map(() => []);
-		case 2:
-			return Array(this.gameType)
-				.fill()
-				.map(() => Array(this.gameType));
+			return Array(this.gameType).fill().map(() => []);
 		default:
-			return Array(this.gameType)
-				.fill()
-				.map(() => Array(this.gameType).fill(''));
+			return new Array(this.gameType).fill().map(() => new Array(this.gameType).fill(''));
 		}
 	}
 
@@ -121,12 +113,14 @@ export default class Model {
 
 	checkIfPossibleMerge() {
 		const board = [...this.board];
-		board.forEach((boardRow) => {
-			for (let i = 0; i <= boardRow.length - 2; i++) {
-				if (boardRow[i].val === boardRow[i + 1].val) return true;
+		const rotatedBoard = this.rotateBoard(board);
+		for (let i = 0; i <= board.length - 1; i++) {
+			for (let j = 0; j < board.length - 1; j++) {
+				if ((board[i][j].val === board[i][j + 1].val)
+				|| (rotatedBoard[i][j].val === rotatedBoard[i][j + 1].val)) return true;
 			}
-			return false;
-		});
+		}
+		return false;
 	}
 
 	mergeTiles(array, key) {

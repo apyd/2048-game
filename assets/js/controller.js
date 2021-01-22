@@ -18,10 +18,10 @@ export default class Controller {
 	}
 
 	onKeyPress(key) {
-		if (keys[key] && view.isPopupOpened) return view.togglePopup();
+		if (key === keys.esc && view.isPopupOpened) return view.togglePopup();
 		if (!keys[key] || this.gameStatus === (gameStatuses.cancelled || gameStatuses.ended)) return false;
 		view.moveTiles(model.moveTiles(key));
-		if (model.canAddTile) return view.addTileToBoard(model.addTileToBoard());
+		if (model.canAddTile) { view.addTileToBoard(model.addTileToBoard()); }
 		if (this.tilesOnBoard === this.gameType * this.gameType) {
 			const isContinued = model.checkIfPossibleMerge();
 			if (!isContinued) return this.endGame();
@@ -35,12 +35,7 @@ export default class Controller {
 			const angle = calculateAngle(this.initX, this.initY, eX, eY);
 			if (!angle) return;
 			const key = convertAngleToKey(angle);
-			view.moveTiles(model.moveTiles(key));
-			if (model.canAddTile) {
-				view.addTileToBoard(model.addTileToBoard());
-				const isContinued = (this.tileOnBoard === (this.gameType ** 2));
-				if (isContinued) this.endGame();
-			}
+			this.onKeyPress(key);
 		}
 		this.initY = eY;
 		this.initX = eX;

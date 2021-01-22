@@ -1,4 +1,6 @@
+import { controller } from './app.js';
 import elementsDimensions from './elementsDimensions.js';
+import gameStatuses from './gameStatuses.js';
 
 export default class View {
 	tileDimension;
@@ -26,10 +28,11 @@ export default class View {
 	}
 
 	onScreenResize() {
-		const tiles = document.querySelectorAll('.tile');
-		let screenType;
-		this.screenType = window.innerWidth >= 480 ? 'desktop' : 'mobile';
+		if (controller.gameStatus !== gameStatuses.started) return;
+		const screenType = window.innerWidth >= 480 ? 'desktop' : 'mobile';
 		if (screenType === this.screenType) return;
+		this.screenType = screenType;
+		const tiles = document.querySelectorAll('.tile');
 		this.tileDimension = elementsDimensions[`board${this.gameType}x${this.gameType}`][this.screenType].tileDimension;
 		this.innerBorderWidth = elementsDimensions[`board${this.gameType}x${this.gameType}`][this.screenType].innerBorderWidth;
 		this.outerBorderWidth = elementsDimensions[`board${this.gameType}x${this.gameType}`][this.screenType].outerBorderWidth;
@@ -124,7 +127,7 @@ export default class View {
 		retainedTile.classList = `tile tile--size-${this.gameType} tile--${retainedObj[0].val}`;
 		retainedTile.firstChild.innerHTML = `${retainedObj[0].val}`;
 		retainedTile.classList.add('tile--merge');
-		if (retainedTile.firstChild.textContent.length < 4) { retainedTile.style.fontSize = '.6em'; }
+		if (!(retainedTile.firstChild.textContent.length < 4)) { retainedTile.style.fontSize = '1rem'; }
 		tileToMerge.remove();
 	}
 }
