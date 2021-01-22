@@ -13,14 +13,15 @@ html {
 	font-size: 16px;
 	
 	@include mixins.respond-to('tablet') {
-        font-size: 18px;
-    }
+		font-size: 18px;
+		height: 100%;
+	}
 }
 
 body {
     position: relative;
     @include mixins.positionFlex(column, normal, normal);
-    height: 100%;
+    height: calc(100% - 45px);
     padding: 0;
     margin: 0;
     background-color: functions.color(dark-slate-blue);
