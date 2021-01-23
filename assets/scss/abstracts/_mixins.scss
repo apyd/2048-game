@@ -1,4 +1,5 @@
 @use 'variables';
+@use 'sass:list';
 
 @mixin positionFlex($direction, $justify, $align) {
     display: flex;
@@ -12,7 +13,7 @@
       @content;
     }
     animation-name: $name;
-    animation-duration: $duration;
+	animation-duration: $duration;
 }
 
 /// Mixin to manage responsive breakpoints - author Hugo Giraudel
@@ -35,4 +36,14 @@
             background-color: $hex;
         }
     }
+}
+
+@mixin background-image($url, $from, $to : $from) {
+	background-image: url($url + '-' + nth(map-keys(variables.$breakpoints), 1) + '.png');
+	@for $i from $from through $to {
+		$item : nth(map-keys(variables.$breakpoints), $i);
+			@include respond-to($item) {
+				background-image: url($url + '-' +nth(map-keys(variables.$breakpoints), $i) + '.png');
+		};
+	}
 }

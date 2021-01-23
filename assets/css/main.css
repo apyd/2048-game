@@ -252,19 +252,19 @@ body {
   }
 }
 .board--4x4 {
-  background-image: url("../img/4x4mobile.png");
+  background-image: url("../img/4x4-board-mobile.png");
 }
 @media (min-width: 481px) {
   .board--4x4 {
-    background-image: url("../img/4x4desktop.png");
+    background-image: url("../img/4x4-board-tablet.png");
   }
 }
 .board--5x5 {
-  background-image: url("../img/5x5mobile.png");
+  background-image: url("../img/5x5-board-mobile.png");
 }
 @media (min-width: 481px) {
   .board--5x5 {
-    background-image: url("../img/5x5desktop.png");
+    background-image: url("../img/5x5-board-tablet.png");
   }
 }
 
@@ -387,29 +387,29 @@ body {
   }
 }
 .game-option__img--board-4x4 {
-  background-image: url("./../img/4-gametype-s.png");
+  background-image: url("../img/4x4-gametype-mobile.png");
 }
 @media (min-width: 481px) {
   .game-option__img--board-4x4 {
-    background-image: url("./../img/4-gametype-m.png");
+    background-image: url("../img/4x4-gametype-tablet.png");
   }
 }
 @media (min-width: 813px) {
   .game-option__img--board-4x4 {
-    background-image: url("./../img/4-gametype-l.png");
+    background-image: url("../img/4x4-gametype-desktop.png");
   }
 }
 .game-option__img--board-5x5 {
-  background-image: url("./../img/5-gametype-s.png");
+  background-image: url("../img/5x5-gametype-mobile.png");
 }
 @media (min-width: 481px) {
   .game-option__img--board-5x5 {
-    background-image: url("./../img/5-gametype-m.png");
+    background-image: url("../img/5x5-gametype-tablet.png");
   }
 }
 @media (min-width: 813px) {
   .game-option__img--board-5x5 {
-    background-image: url("./../img/5-gametype-l.png");
+    background-image: url("../img/5x5-gametype-desktop.png");
   }
 }
 .game-option__input:checked + .game-option__img {

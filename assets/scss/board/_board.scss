@@ -18,16 +18,10 @@
     }
 
     &--4x4 {
-        background-image: url('../img/4x4mobile.png');
-        @include mixins.respond-to('tablet') {
-            background-image: url('../img/4x4desktop.png');
-        }
+		@include mixins.background-image('../img/4x4-board', 2);
     }
     
     &--5x5 {
-        background-image: url('../img/5x5mobile.png');
-        @include mixins.respond-to('tablet') {
-            background-image: url('../img/5x5desktop.png');
-        }
+		@include mixins.background-image('../img/5x5-board', 2);
     }
 }

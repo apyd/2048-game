@@ -39,25 +39,11 @@
         }
     
         &--board-4x4 {
-            background-image: url('./../img/4-gametype-s.png');
-            @include mixins.respond-to('tablet') {
-                background-image: url('./../img/4-gametype-m.png');
-            }
-        
-            @include mixins.respond-to('desktop') {
-                background-image: url('./../img/4-gametype-l.png');
-            }
+			@include mixins.background-image('../img/4x4-gametype', 2, 3);
         }
     
         &--board-5x5 {
-            background-image: url('./../img/5-gametype-s.png');
-            @include mixins.respond-to('tablet') {
-                background-image: url('./../img/5-gametype-m.png');
-            }
-        
-            @include mixins.respond-to('desktop') {
-                background-image: url('./../img/5-gametype-l.png');
-            }
+			@include mixins.background-image('../img/5x5-gametype', 2, 3);
         }
 
         #{$self}__input:checked + & {
