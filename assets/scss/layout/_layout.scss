@@ -44,21 +44,38 @@ body {
 .entry-screen {
     @include mixins.positionFlex(column, center, center);
     width: 100%;
-    flex: 9;
+	flex: 9;
 
     &--hidden {
         display: none;
-    }
+	}
 
-    &__heading {
-        text-align: center;
-    }
+    &__main-heading {
+		@include mixins.positionFlex(column, center, center);
+	}
+	
+	&__sub-heading {
+		padding-top: 15px;
+		font-size: .6em;
+	}
 }
 
 .game-options {
     @include mixins.positionFlex(row, space-evenly, normal);
     width: 100%;
-    padding-bottom: 20px;
+	padding-bottom: 20px;
+	border: none;
+
+	&__legend {
+		border: 0;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		width: 1px;
+	}
 }
 
 .game {
