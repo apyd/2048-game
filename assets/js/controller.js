@@ -1,6 +1,6 @@
 import { view, model } from './app.js';
 import { calculateAngle, convertMillisToMinutesAndSeconds, convertAngleToKey, checkIfEnoughSwipeDistance } from './utils.js';
-import keys from './keys.js';
+import { arrowKeys, actionKeys } from './keys.js';
 import gameStatuses from './gameStatuses.js';
 import touchStates from './touchStates.js';
 
@@ -17,20 +17,39 @@ export default class Controller {
 		this.minSwipeDistance = 20;
 	}
 
-	onKeyPress(key) {
-		if (key === keys.esc && view.isPopupOpened) return view.togglePopup();
-		if (!keys[key] || this.gameStatus === (gameStatuses.cancelled || gameStatuses.ended)) return false;
-		view.moveTiles(model.moveTiles(key));
-		if (model.canAddTile) { view.addTileToBoard(model.addTileToBoard()); }
-		if (this.tilesOnBoard === this.gameType * this.gameType) {
-			const isContinued = model.checkIfPossibleMerge();
-			if (!isContinued) return this.endGame();
+	onKeyPress(e) {
+		console.log(e);
+		const { code } = e;
+		if (arrowKeys[code] && this.gameStatus !== (gameStatuses.started)) return false;
+		if (code === actionKeys.esc && view.isPopupOpened) return view.togglePopup();
+		if (actionKeys[code] && actionKeys.esc !== code && e.target.dataset.action) {
+			const { action } = e.target.dataset;
+			if (action === 'start-game') return this.startGame();
+			if (action === 'game-type') {
+				document.querySelectorAll('[data-action="start-game"]')[0].disabled = false;
+				this.gameType = e.target.control.value;
+				e.target.control.checked = true;
+				return true;
+			}
+			e.preventDefault();
+			return this.cancelGame();
 		}
-		return true;
+		if (arrowKeys[code]) {
+			view.moveTiles(model.moveTiles(code));
+			if (model.canAddTile) { view.addTileToBoard(model.addTileToBoard()); }
+			if (this.tilesOnBoard === this.gameType * this.gameType) {
+				const isContinued = model.checkIfPossibleMerge();
+				if (!isContinued) return this.endGame();
+			}
+		}
+		return false;
 	}
 
-	onTouch(type, eX, eY) {
-		if (touchStates.touchend === type) {
+	onTouch(e) {
+		e.preventDefault();
+		const eX = e.changedTouches[0].clientX;
+		const eY = e.changedTouches[0].clientY;
+		if (e.type === touchStates.touchend) {
 			if (!checkIfEnoughSwipeDistance(eX, this.initX, eY, this.initY, this.minSwipeDistance)) return;
 			const angle = calculateAngle(this.initX, this.initY, eX, eY);
 			if (!angle) return;

@@ -1,4 +1,4 @@
-import keys from './keys.js';
+import { arrowKeys } from './keys.js';
 
 export function generateRandomCoordinates(maxBoundary) {
 	return {
@@ -13,10 +13,10 @@ export function calculateAngle(initX, initY, eX, eY) {
 }
 
 export function convertAngleToKey(angle) {
-	if (angle >= -135 && angle < -45) return keys.ArrowUp;
-	if (angle >= -45 && angle < 45) return keys.ArrowRight;
-	if (angle >= 45 && angle < 135) return keys.ArrowDown;
-	return keys.ArrowLeft;
+	if (angle >= -135 && angle < -45) return arrowKeys.ArrowUp;
+	if (angle >= -45 && angle < 45) return arrowKeys.ArrowRight;
+	if (angle >= 45 && angle < 135) return arrowKeys.ArrowDown;
+	return arrowKeys.ArrowLeft;
 }
 
 export function checkIfEnoughSwipeDistance(eX, initX, eY, initY, minSwipeDistance) {

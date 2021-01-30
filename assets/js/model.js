@@ -1,4 +1,4 @@
-import keys from './keys.js';
+import { arrowKeys } from './keys.js';
 import { controller, view } from './app.js';
 import { generateRandomCoordinates, checkIfArraysEqual } from './utils.js';
 
@@ -66,9 +66,9 @@ export default class Model {
 
 	moveTiles(key) {
 		let boardToSort = [...this.board];
-		boardToSort = (key === keys.ArrowUp || key === keys.ArrowDown) ? this.rotateBoard([...boardToSort]) : boardToSort;
+		boardToSort = (key === arrowKeys.ArrowUp || key === arrowKeys.ArrowDown) ? this.rotateBoard([...boardToSort]) : boardToSort;
 		let sortedBoard = boardToSort.map((boardRow) => Model.sortArray(this.mergeTiles(boardRow, key), key));
-		sortedBoard = (key === keys.ArrowUp || key === keys.ArrowDown) ? this.rotateBoard([...sortedBoard]) : sortedBoard;
+		sortedBoard = (key === arrowKeys.ArrowUp || key === arrowKeys.ArrowDown) ? this.rotateBoard([...sortedBoard]) : sortedBoard;
 		const previouslyUpdatedTiles = Model.generateArrayWithUpdatedTiles(this.board);
 		this.board = [...sortedBoard];
 		const arrWithUpdatedTiles = Model.generateArrayWithUpdatedTiles(sortedBoard);
@@ -79,7 +79,7 @@ export default class Model {
 	}
 
 	static sortArray(arrayToSort, key) {
-		if (key === keys.ArrowLeft || key === keys.ArrowUp) {
+		if (key === arrowKeys.ArrowLeft || key === arrowKeys.ArrowUp) {
 			return ((arrayToSort.filter((arrayElement) => arrayElement)))
 				.concat(arrayToSort.filter((arrayElement) => !arrayElement));
 		}
@@ -126,7 +126,7 @@ export default class Model {
 	mergeTiles(array, key) {
 		const filteredArray = array.filter((el) => el);
 		if (filteredArray.length < 2) return array;
-		if (key === keys.ArrowDown || key === keys.ArrowRight) {
+		if (key === arrowKeys.ArrowDown || key === arrowKeys.ArrowRight) {
 			for (let i = filteredArray.length - 1; i >= 1; i--) {
 				if (filteredArray[i].val === filteredArray[i - 1].val) {
 					filteredArray[i].val += filteredArray[i - 1].val;

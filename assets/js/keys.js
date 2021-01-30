@@ -1,9 +1,12 @@
-const keys = {
+export const arrowKeys = {
 	ArrowUp: 'ArrowUp',
 	ArrowDown: 'ArrowDown',
 	ArrowLeft: 'ArrowLeft',
-	ArrowRight: 'ArrowRight',
-	Esc: 'Esc'
+	ArrowRight: 'ArrowRight'
 };
 
-export default keys;
+export const actionKeys = {
+	Esc: 'Esc',
+	Space: 'Space',
+	Enter: 'Enter'
+};
