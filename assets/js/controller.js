@@ -17,9 +17,7 @@ export default class Controller {
 		this.minSwipeDistance = 20;
 	}
 
-	onKeyPress(e) {
-		console.log(e);
-		const { code } = e;
+	onKeyPress(e, code = e.code) {
 		if (arrowKeys[code] && this.gameStatus !== (gameStatuses.started)) return false;
 		if (code === actionKeys.esc && view.isPopupOpened) return view.togglePopup();
 		if (actionKeys[code] && actionKeys.esc !== code && e.target.dataset.action) {
@@ -46,7 +44,6 @@ export default class Controller {
 	}
 
 	onTouch(e) {
-		e.preventDefault();
 		const eX = e.changedTouches[0].clientX;
 		const eY = e.changedTouches[0].clientY;
 		if (e.type === touchStates.touchend) {
@@ -54,7 +51,7 @@ export default class Controller {
 			const angle = calculateAngle(this.initX, this.initY, eX, eY);
 			if (!angle) return;
 			const key = convertAngleToKey(angle);
-			this.onKeyPress(key);
+			this.onKeyPress(e, key);
 		}
 		this.initY = eY;
 		this.initX = eX;

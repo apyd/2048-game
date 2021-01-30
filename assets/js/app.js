@@ -24,4 +24,4 @@ window.addEventListener('resize', () => view.onScreenResize());
 window.addEventListener('DOMContentLoaded', () => {
 	view.updateScore();
 });
-['touchstart', 'touchEnd'].forEach((eventType) => board.addEventListener(eventType, (e) => controller.onTouch(e)));
+['touchstart', 'touchend'].forEach((eventType) => board.addEventListener(eventType, (e) => controller.onTouch(e)));
