@@ -6,7 +6,7 @@ export const arrowKeys = {
 };
 
 export const actionKeys = {
-	Esc: 'Esc',
+	Esc: 'Escape',
 	Space: 'Space',
 	Enter: 'Enter'
 };

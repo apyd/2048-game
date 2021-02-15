@@ -1,6 +1,6 @@
-import { controller } from './app.js';
 import elementsDimensions from './elementsDimensions.js';
 import gameStatuses from './gameStatuses.js';
+import { actionKeys } from './keys.js';
 
 export default class View {
 	tileDimension;
@@ -27,8 +27,8 @@ export default class View {
 		document.querySelector('.game').classList.toggle('game--hidden');
 	}
 
-	onScreenResize() {
-		if (controller.gameStatus !== gameStatuses.started) return;
+	onScreenResize(gameStatus) {
+		if (gameStatus !== gameStatuses.started) return;
 		const screenType = window.innerWidth >= 480 ? 'desktop' : 'mobile';
 		if (screenType === this.screenType) return;
 		this.screenType = screenType;
@@ -44,7 +44,7 @@ export default class View {
 
 	initializeGameView(gameType) {
 		View.clearBoard();
-		this.gameType = gameType;
+		this.gameType = +gameType;
 		document.querySelector('.board').classList = 'board';
 		document.querySelector('.board').classList.add(`board--${this.gameType}x${this.gameType}`);
 		document.querySelectorAll('.score__value')[1].innerHTML = localStorage.getItem(`bestScore${this.gameType}`);
@@ -61,9 +61,13 @@ export default class View {
 		document.querySelectorAll('.score__value')[1].innerHTML = localStorage.getItem(`bestScore${this.gameType}`);
 	}
 
-	togglePopup() {
-		document.querySelector('.overlay').classList.toggle('overlay--hidden');
-		this.isPopupOpened = !this.isPopupOpened;
+	togglePopup(target) {
+		const overlay = document.querySelector('.overlay');
+		const closeButton = document.querySelector('[data-action="close-popup"]');
+		if ([overlay, closeButton].includes(target) || target === actionKeys.Esc) {
+			overlay.classList.toggle('overlay--hidden');
+			this.isPopupOpened = !this.isPopupOpened;
+		}
 	}
 
 	showEndGamePopup(time, numberOfMoves, result) {
@@ -100,7 +104,7 @@ export default class View {
 	}
 
 	moveTiles(arrayWithTiles) {
-		if (!arrayWithTiles) return;
+		if (!arrayWithTiles) return false;
 		const tiles = document.querySelectorAll('.tile');
 		let index;
 		tiles.forEach((tile) => {
@@ -115,7 +119,9 @@ export default class View {
 			tile.dataset.x = arrayWithTiles[index].x;
 			tile.dataset.y = arrayWithTiles[index].y;
 			tile.classList.add('tile--move');
+			return true;
 		});
+		return true;
 	}
 
 	mergeTiles(retainedTile, tileToMerge, retainedObj) {

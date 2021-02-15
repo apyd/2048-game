@@ -63,7 +63,8 @@ body {
 .game-options {
     @include mixins.positionFlex(row, space-evenly, normal);
     width: 100%;
-	padding-bottom: 20px;
+	padding: 0 0 20px 0;
+	margin: 0;
 	border: none;
 
 	&__legend {
@@ -115,7 +116,6 @@ body {
 
 .overlay {
     position: absolute;
-    z-index: 1000;
     top: 0;
     left: 0;
     @include mixins.positionFlex(row, center, center);

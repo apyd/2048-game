@@ -35,3 +35,27 @@ export function convertMillisToMinutesAndSeconds(millis) {
 	const minutesToShow = `${minutes === 1 ? `${minutes} minute` : `${minutes} minutes`}`;
 	return `${minutesToShow} ${seconds} seconds`;
 }
+
+export function sortArray(arrayToSort, key) {
+	if (key === arrowKeys.ArrowLeft || key === arrowKeys.ArrowUp) {
+		return ((arrayToSort.filter((arrayElement) => arrayElement)))
+			.concat(arrayToSort.filter((arrayElement) => !arrayElement));
+	}
+	return ((arrayToSort.filter((arrayElement) => !arrayElement)))
+		.concat(arrayToSort.filter((arrayElement) => arrayElement));
+}
+
+export function getAllElementsFromMultidimensionalArray(multiDimensionalArray) {
+	return [].concat(...multiDimensionalArray).filter((el) => el);
+}
+
+export function updateItemsCoordinatesInMultidimensionalArray(multiDimensionalArray) {
+	return multiDimensionalArray.map((array, index) => array.map((arrayItem) => {
+		if (!arrayItem) return '';
+		return {
+			...arrayItem,
+			y: index,
+			x: array.map((arrayElement) => arrayElement.id).indexOf(arrayItem.id)
+		};
+	}));
+}

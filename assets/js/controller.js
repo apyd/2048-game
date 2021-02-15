@@ -1,4 +1,3 @@
-import { view, model } from './app.js';
 import { calculateAngle, convertMillisToMinutesAndSeconds, convertAngleToKey, checkIfEnoughSwipeDistance } from './utils.js';
 import { arrowKeys, actionKeys } from './keys.js';
 import gameStatuses from './gameStatuses.js';
@@ -10,16 +9,36 @@ export default class Controller {
 	initX;
 	startGameTime;
 	endGameTime;
+	view;
+	tile;
+	board;
+	score;
 
 	constructor() {
-		this.tilesOnBoard = 0;
 		this.gameStatus = 0;
 		this.minSwipeDistance = 20;
 	}
 
-	onKeyPress(e, code = e.code) {
-		if (arrowKeys[code] && this.gameStatus !== (gameStatuses.started)) return false;
-		if (code === actionKeys.esc && view.isPopupOpened) return view.togglePopup();
+	setView(view) {
+		this.view = view;
+	}
+
+	setTile(tile) {
+		this.tile = tile;
+	}
+
+	setBoard(board) {
+		this.board = board;
+	}
+
+	setScore(score) {
+		this.score = score;
+	}
+
+	onKeyPress(e) {
+		const { code } = e;
+		if (arrowKeys[code] && this.gameStatus !== gameStatuses.started) return false;
+		if (code === actionKeys.Esc && this.view.isPopupOpened) return this.view.togglePopup(code);
 		if (actionKeys[code] && actionKeys.esc !== code && e.target.dataset.action) {
 			const { action } = e.target.dataset;
 			if (action === 'start-game') return this.startGame();
@@ -33,10 +52,13 @@ export default class Controller {
 			return this.cancelGame();
 		}
 		if (arrowKeys[code]) {
-			view.moveTiles(model.moveTiles(code));
-			if (model.canAddTile) { view.addTileToBoard(model.addTileToBoard()); }
-			if (this.tilesOnBoard === this.gameType * this.gameType) {
-				const isContinued = model.checkIfPossibleMerge();
+			this.view.moveTiles(this.board.moveTiles(code));
+			this.view.updateScore(this.score.getCurrentScore());
+			if (this.board.canAddTile) {
+				this.view.addTileToBoard(this.board.addTileToBoard(this.tile));
+			}
+			if (this.board.tilesOnBoard === this.gameType * this.gameType) {
+				const isContinued = this.board.checkIfPossibleMerge();
 				if (!isContinued) return this.endGame();
 			}
 		}
@@ -57,36 +79,36 @@ export default class Controller {
 		this.initX = eX;
 	}
 
-	incrementNumberOfTilesOnBoard() {
-		this.tilesOnBoard += 1;
-	}
-
-	decrementNumberOfTilesOnBoard() {
-		this.tilesOnBoard -= 1;
+	initializeGame() {
+		this.board.resetBoard(this.gameType);
+		this.tile.resetNextAvailableTileId();
+		this.score.resetScore();
+		this.score.setBestScore(this.gameType);
+		this.view.initializeGameView(this.gameType);
 	}
 
 	startGame() {
-		this.tilesOnBoard = 0;
 		this.gameStatus = gameStatuses.started;
 		if (!localStorage.getItem(`bestScore${this.gameType}`)) return localStorage.setItem(`bestScore${this.gameType}`, 0);
-		model.initializeGame(this.gameType);
-		view.initializeGameView(this.gameType);
-		if (!view.isGameViewOpened) { view.switchView(); }
-		view.addTileToBoard(model.addTileToBoard());
-		view.addTileToBoard(model.addTileToBoard());
+		this.initializeGame();
+		if (!this.view.isGameViewOpened) { this.view.switchView(); }
+		this.view.addTileToBoard(this.board.addTileToBoard());
+		this.view.addTileToBoard(this.board.addTileToBoard());
 		this.startGameTime = performance.now();
 		return true;
 	}
 
 	cancelGame() {
 		this.gameStatus = gameStatuses.cancelled;
-		view.switchView();
+		this.view.switchView();
 	}
 
 	endGame() {
 		this.endGameTime = performance.now();
 		const timeElapsed = this.endGameTime - this.startGameTime;
-		view.showEndGamePopup(convertMillisToMinutesAndSeconds(timeElapsed), model.numberOfMoves, model.score);
+		const { numberOfMoves } = this.board;
+		const { currentScore } = this.score;
+		this.view.showEndGamePopup(convertMillisToMinutesAndSeconds(timeElapsed), numberOfMoves, currentScore);
 		this.gameStatus = gameStatuses.ended;
 	}
 }
