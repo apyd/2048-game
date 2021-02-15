@@ -35,8 +35,7 @@ export default class Controller {
 		this.score = score;
 	}
 
-	onKeyPress(e) {
-		const { code } = e;
+	onKeyPress(e, code = e.code) {
 		if (arrowKeys[code] && this.gameStatus !== gameStatuses.started) return false;
 		if (code === actionKeys.Esc && this.view.isPopupOpened) return this.view.togglePopup(code);
 		if (actionKeys[code] && actionKeys.esc !== code && e.target.dataset.action) {
