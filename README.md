@@ -7,6 +7,7 @@
 * [Screenshots](#screenshots)
 * [Technologies](#technologies)
 * [Features](#features)
+* [Setup](#setup)
 * [Contact](#contact)
 
 
@@ -38,6 +39,12 @@ HTML5, SCSS, Javascript
 * Game available on desktop and mobile devices (it handles touch swipe gestures on mobile screen)
 * End game provides details such as number of moves performed, game duration and score.
 * Best user score is stored in LocalStorage and it's different for each board size.
+
+## Setup
+
+Project contains basic eslint and prettier configuration.
+It also use basic gulp configuration to work with browsersync, autoprefixer and dart-sass.
+To run project on local environment please firstly install nodejs, install all needed packages and then use command: gulp watch.
 
 ## Contact
 Created by [@apyd](https://github.com/apyd) - feel free to contact me!
