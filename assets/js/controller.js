@@ -53,12 +53,12 @@ export default class Controller {
 		if (arrowKeys[code]) {
 			this.view.moveTiles(this.board.moveTiles(code));
 			this.view.updateScore(this.score.getCurrentScore());
-			if (this.board.canAddTile) {
-				this.view.addTileToBoard(this.board.addTileToBoard(this.tile));
-			}
 			if (this.board.tilesOnBoard === this.gameType * this.gameType) {
 				const isContinued = this.board.checkIfPossibleMerge();
 				if (!isContinued) return this.endGame();
+			}
+			if (this.board.canAddTile) {
+				this.view.addTileToBoard(this.board.addTileToBoard(this.tile));
 			}
 		}
 		return false;

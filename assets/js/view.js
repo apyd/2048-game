@@ -73,10 +73,11 @@ export default class View {
 	showEndGamePopup(time, numberOfMoves, result) {
 		document.querySelector('.popup__heading').innerHTML = 'End game';
 		const popupBody = document.querySelector('.popup__body');
+		const overlay = document.querySelector('.overlay');
 		popupBody.innerHTML = `<p class="popup__text"><span class="popup__text--bold">Time elapsed: </span>${time}</p>
 								<p class="popup__text"><span class="popup__text--bold">Moves performed: </span>${numberOfMoves}</p>
 								<p class="popup__text"><span class="popup__text--bold">Your result: </span>${result} points </p>`;
-		this.togglePopup();
+		this.togglePopup(overlay);
 	}
 
 	createTile(x, y, id) {
