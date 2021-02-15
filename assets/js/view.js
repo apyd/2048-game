@@ -28,7 +28,7 @@ export default class View {
 	}
 
 	onScreenResize(gameStatus) {
-		if (gameStatus !== gameStatuses.started) return;
+		if (gameStatus === gameStatuses.cancelled) return;
 		const screenType = window.innerWidth >= 480 ? 'desktop' : 'mobile';
 		if (screenType === this.screenType) return;
 		this.screenType = screenType;
